@@ -1,12 +1,14 @@
 import setuptools
-from underautomation.universal_robots.lib.version import VERSION
 
 with open('README.md', "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
+with open('underautomation/universal_robots/lib/version.txt', "r", encoding="utf-8") as fh:
+    version = fh.read()
+
 setuptools.setup(
     name="UnderAutomation.UniversalRobots",
-    version=VERSION,
+    version=version,
     author="UnderAutomation",
     author_email="support@underautomation.com",
     description="Quickly create applications that communicate with your Universal Robots cobot",
