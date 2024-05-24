@@ -1,9 +1,12 @@
 import setuptools
+import os
 
 with open('README.md', "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-with open('underautomation/universal_robots/lib/version.txt', "r", encoding="utf-8") as fh:
+version_file = os.path.realpath(os.path.join(os.path.dirname(__file__), "underautomation",  'universal_robots', 'lib', 'version.txt'))
+
+with open(version_file, "r", encoding="utf-8") as fh:
     version = fh.read()
 
 setuptools.setup(
@@ -28,7 +31,8 @@ setuptools.setup(
     ],
     include_package_data=True,
     package_data={"": [
-        "universal_robots/lib/*.dll"
+        "universal_robots/lib/*.dll",
+        "universal_robots/lib/*.txt"
     ]}
 )
 
