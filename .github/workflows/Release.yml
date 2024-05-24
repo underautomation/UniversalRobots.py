@@ -1,0 +1,24 @@
+name: CI
+
+on: 
+  push:
+    tags:
+    - 'v*'
+
+jobs:
+  build:
+
+    runs-on: windows-2022
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build and publish
+      run: |
+        pip install twine
+        python setup.py sdist bdist_wheel
+        twine upload dist/* -u __token__ -p $PYPI_TOKEN
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: ""
+        bodyFile: ""
+        token: ${{ secrets.GITHUB_TOKEN }}
