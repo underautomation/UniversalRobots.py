@@ -35,6 +35,8 @@ class SftpClientBase(URServiceBase):
 		return [SftpFile(x) for x in self._instance.ListDirectory(path, listCallback)]
 	def enumerate_programs(self) -> typing.List[str]:
 		return self._instance.EnumeratePrograms()
+	def enumerate_installations(self) -> typing.List[str]:
+		return self._instance.EnumerateInstallations()
 	def begin_list_directory(self, path: str, asyncCallback: typing.Any, state: typing.Any, listCallback: typing.Any=None) -> typing.Any:
 		return self._instance.BeginListDirectory(path, asyncCallback, state, listCallback)
 	def end_list_directory(self, asyncResult: typing.Any) -> typing.List[SftpFile]:

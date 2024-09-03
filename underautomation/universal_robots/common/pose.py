@@ -22,6 +22,10 @@ class Pose(CartesianCoordinates):
 		return pose.TryParse(value, pose._instance)
 	def from_rotation_vector_to_quaternion(self, x: float, y: float, z: float, w: float) -> None:
 		self._instance.FromRotationVectorToQuaternion(x, y, z, w)
+	def from_rpy_to4x4_matrix(self) -> typing.List[float]:
+		return self._instance.FromRPYTo4x4Matrix()
+	def from_rotation_vector_to4x4_matrix(self) -> typing.List[float]:
+		return self._instance.FromRotationVectorTo4x4Matrix()
 	@staticmethod
 	def from_quaternion_to_rotation_vector(x: float, y: float, z: float, w: float) -> 'Pose':
 		return Pose(None, None, None, None, None, None, pose.FromQuaternionToRotationVector(x, y, z, w))
