@@ -15,3 +15,4 @@ class StatusCode(int):
 	SocketInternalError = status_code.SocketInternalError
 	RTDEThreadAborted = status_code.RTDEThreadAborted
 	WriteInputsRtdeError = status_code.WriteInputsRtdeError
+	RTDEOverrun = status_code.RTDEOverrun

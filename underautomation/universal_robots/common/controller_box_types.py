@@ -8,3 +8,5 @@ class ControllerBoxTypes(int):
 	UR5 = controller_box_types.UR5
 	UR10 = controller_box_types.UR10
 	UR16 = controller_box_types.UR16
+	UR20 = controller_box_types.UR20
+	UR30 = controller_box_types.UR30
