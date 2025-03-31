@@ -6,7 +6,9 @@ Quickly create applications that communicate with an [Universal Robots](https://
 
 SDK : Software Development Kit
 
-More information : [https://underautomation.com](https://underautomation.com)
+
+🔗 **More Information:** [https://underautomation.com/fanuc](https://underautomation.com/universal-robots)  
+🔗 Also available in **[🟦 .NET](https://github.com/underautomation/UniversalRobots.NET)** & **[🟨 LabVIEW](https://github.com/underautomation/UniversalRobots.vi)** & [🧊 Unity](https://github.com/underautomation/UniversalRobots.Unity)
 
 
 [![UnderAutomation Universal Robots communication SDK](https://user-images.githubusercontent.com/47540360/136141853-1ec87530-d88e-467f-adb4-ec3c46d26010.png)](https://underautomation.com)
