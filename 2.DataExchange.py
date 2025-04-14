@@ -8,8 +8,7 @@ from underautomation.universal_robots.ur import UR
 robot = UR()
 
 # Setup connection to th robot
-param = ConnectParameters()
-param.ip = "192.168.0.1"
+param = ConnectParameters("192.168.56.101")
 
 # Enable primary interface to get variable values
 param.primary_interface.enable = True
