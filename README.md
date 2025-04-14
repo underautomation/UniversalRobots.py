@@ -6,28 +6,30 @@ Quickly create applications that communicate with an [Universal Robots](https://
 
 SDK : Software Development Kit
 
-
 🔗 **More Information:** [https://underautomation.com/fanuc](https://underautomation.com/universal-robots)  
 🔗 Also available in **[🟦 .NET](https://github.com/underautomation/UniversalRobots.NET)** & **[🟨 LabVIEW](https://github.com/underautomation/UniversalRobots.vi)** & [🧊 Unity](https://github.com/underautomation/UniversalRobots.Unity)
 
-
 [![UnderAutomation Universal Robots communication SDK](https://user-images.githubusercontent.com/47540360/136141853-1ec87530-d88e-467f-adb4-ec3c46d26010.png)](https://underautomation.com)
-
 
 https://user-images.githubusercontent.com/47540360/143318635-6d6aaaf4-5642-457a-8ff1-4322f2defe82.mp4
 
 ## Try it
+
 From Pypi :
+
 ```
 pip install UnderAutomation.UniversalRobots
 ```
 
 From this repo :
+
 ```
 git clone https://github.com/underautomation/UniversalRobots.py.git
+pip install pythonnet==3.0.3
 ```
 
 Import features :
+
 ```py
 from underautomation.universal_robots.ur import UR
 from underautomation.universal_robots.connect_parameters import ConnectParameters
@@ -42,14 +44,16 @@ from underautomation.universal_robots.rtde.rtde_input_values import RtdeInputVal
 ## Features
 
 ### RTDE and Primary Interface
+
 Full support for :
+
 - RTDE (Real-Time Data Exchange) : read and write registers up to 500Hz
-- Primary Interface : 
+- Primary Interface :
   - Receive robot state data at 10Hz : Cartesian and angular position, robot status, inputs and outputs value, and 100+ more measurements ...
   - Send URScript
   - Get variables
 
-``` py
+```py
 # Create a robot instance
 robot = UR()
 
@@ -103,7 +107,7 @@ def on_value_updated(p, e):
     name = variables[0].name
     value = variables[0].to_pose()
     type = variables[0].type
-    ##    
+    ##
 
 # Event raised when a program or installation variable change
 robot.primary_interface.global_variables.values_updated(on_value_updated)
@@ -134,15 +138,19 @@ robot.primary_interface.joint_data_received(on_joint_data_received)
 ```
 
 ### Read variables
+
 Read program and installation variables :
-``` py
+
+```py
 myVar = robot.primary_interface.global_variables.get_by_name("myVar")
 variables =  robot.primary_interface.global_variables.get_all()
 ```
 
 ### Dashboard Server
+
 Remote control the robot : load, play, pause, and stop a robot program, power on and off, release brake, shutdown, ...
-``` py
+
+```py
 # Create a new robot instance
 robot = UR()
 
@@ -171,10 +179,12 @@ state = robot.dashboard.get_program_state()
 ```
 
 ### XML-RPC
+
 From your robot program, remote call a function implemented in your .NET program. For example, this allows you to request a position resulting from image processing.
 
 Robot code (URScript) :
-``` ruby
+
+```ruby
 # Connect to the SDK and specifie the IP and port of the PC
 rpc:=rpc_factory("xmlrpc","http://192.168.0.10:50000")
 
@@ -183,7 +193,8 @@ answer:=rpc.GetPose(100)
 ```
 
 Python code :
-``` py
+
+```py
 # XML-RPC server on port 50000
 parameters.xml_rpc.enable = True
 parameters.xml_rpc.port = 50000
@@ -193,10 +204,12 @@ parameters.xml_rpc.port = 50000
 ```
 
 ### Socket communication
-The library can start a communication. The robot can connect to your server and exchange custom data. 
+
+The library can start a communication. The robot can connect to your server and exchange custom data.
 
 Robot code (URScript) :
-``` ruby
+
+```ruby
 # Connect to robot socket server in URScript
 socket_open("192.168.0.10", 50001)
 
@@ -208,7 +221,8 @@ var1 := socket_get_var("MY_VAR")
 ```
 
 Python code :
- ``` py
+
+```py
 robot = UR()
 
 # Setup connection to th robot
@@ -224,14 +238,14 @@ robot.connect(param)
 ##
 # Function called when robot connects with URScipt function socket_open()
 def on_socket_client_connection(o, e : SocketClientConnectionEventArgs):
-    e.client.socket_write("Hello cobot <3")
+   e.client.socket_write("Hello cobot <3")
 
 robot.socket_communication.socket_client_connection(on_socket_client_connection)
 
 # Function called when the robot sends a message with socket_write()
 def on_socket_request(o,e:SocketRequestEventArgs):
-    # Get robot message
-    robotMessage = e.Message
+   # Get robot message
+   robotMessage = e.Message
 
 robot.socket_communication.socket_request(on_socket_request)
 
@@ -248,16 +262,18 @@ clientEndpoint = connectedClients[0].end_point
 # Send a message to a specific connected robot
 connectedClients[0].socket_write("Hello robot [0]")
 
-  # Handle client disconnection
+ # Handle client disconnection
 def on_socket_client_disconnection(o,e):
-    pass
+   pass
 
 connectedClients[0].socket_client_disconnection(on_socket_client_disconnection)
 ```
 
 ### SFTP
+
 Manipulate files and folders of the robot via SFTP (Secure File Transfer Protocol) : download to the robot, import from the robot, rename, delete, move, list files in a folder...
-``` py
+
+```py
 robot = UR()
 
 # Setup connection to th robot
@@ -286,14 +302,18 @@ robot.sftp.write_all_text("/home/ur/file.txt", "Hello robot !")
 ```
 
 ### SSH
+
 Open a SSH (Secure Shell) connection with the robot to execute Linux command lines, as in the terminal.
-``` py
+
+```py
 robot.ssh.run_command("echo Hello > /home/ur/Desktop/NewFile.txt");
 ```
 
 ### Convert position types
+
 Convert Rotation Vector to and from RPY.
-``` py
+
+```py
 # Create X, Y, Z, RX, RY, RZ pose
 pose = Pose(0.1, 0.2, -0.1, 0, 0.05, 0.1)
 
@@ -303,8 +323,10 @@ vectorPose = pose.from_rpy_to_rotation_vector()
 ```
 
 ### Edit program and installation files
+
 Open and edit program (.urp) and installation (.installation) files :
-``` py
+
+```py
 # Decompile program and installation files and access inner XML
 installation = URInstallation.load("C:\\temp\\default.installation")
 prg = URProgram.load("C:\\temp\\prg.urp")
@@ -312,7 +334,7 @@ internalXml = prg.xml
 ```
 
 ## License
-This SDK is a commercial library and a license *must* be purshased. Once acquired, any application you develop can be delivered to an unlimited number of customers without royalties and without recurring subscription.
+
+This SDK is a commercial library and a license _must_ be purshased. Once acquired, any application you develop can be delivered to an unlimited number of customers without royalties and without recurring subscription.
 
 More information : [https://underautomation.com](https://underautomation.com)
-
