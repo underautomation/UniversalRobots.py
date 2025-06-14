@@ -1,0 +1,46 @@
+/* Conteneur principal du body */
+#body-container {
+    height: 100%;
+}
+
+/* Barre de titre */
+#header {
+    height: 3;
+    background: black;
+    color: cyan;
+    dock: top;
+
+    align-horizontal: center;
+    align-vertical: middle;
+}
+
+/* Titre de l'application */
+#app-title {
+    text-style: bold;
+    color: cyan;
+}
+
+/* Barre latérale */
+#sidebar {
+    width: 30;
+    height: 100%;
+    background: #222222;
+    color: white;
+    padding: 1 2;
+    layout: vertical;
+}
+
+/* Titre du menu */
+#menu-title {
+    height: 3;
+    text-style: bold;
+    color: white;
+    padding-bottom: 1;
+    border-bottom: solid white;
+}
+
+/* Liste du menu */
+#menu-list {
+    height: 100%;
+    overflow-y: auto;
+}
