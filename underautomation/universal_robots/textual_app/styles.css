@@ -1,46 +1,115 @@
-/* Conteneur principal du body */
+/* Conteneur principal qui englobe la barre latérale et la vue principale */
 #body-container {
-    height: 100%;
+    height: 100%; /* occupe toute la hauteur de l'écran */
 }
 
-/* Barre de titre */
+/* Barre de titre de l'application */
 #header {
-    height: 3;
-    background: black;
-    color: cyan;
-    dock: top;
+    height: 3; /* hauteur fixe */
+    background: black; /* fond noir */
+    color: cyan; /* texte cyan */
+    dock: top; /* attaché en haut de l'écran */
 
-    align-horizontal: center;
-    align-vertical: middle;
+    layout: horizontal; /* disposition horizontale des enfants */
+    align: left middle; /* enfants alignés à gauche et centrés verticalement */
+    padding: 1 2; /* marges internes : 1 ligne en haut/bas, 2 colonnes gauche/droite */
 }
 
-/* Titre de l'application */
+/* Titre centré de l'application (non utilisé directement ici mais utile si défini) */
 #app-title {
-    text-style: bold;
+    text-style: italic; /* italique */
+    color: cyan; /* couleur cyan */
+    content-align: center middle; /* centré dans son conteneur */
+    width: 1fr; /* prend tout l’espace disponible */
+}
+
+/* Lien vers le site officiel */
+#app-link {
     color: cyan;
+    link-style: underline; /* souligné pour indiquer le lien */
+    content-align: center middle; /* centré dans la zone d'en-tête */
 }
 
-/* Barre latérale */
+/* Barre latérale gauche */
 #sidebar {
-    width: 30;
-    height: 100%;
-    background: #222222;
-    color: white;
-    padding: 1 2;
-    layout: vertical;
+    width: 30; /* largeur fixe */
+    height: 100%; /* pleine hauteur */
+    background: #222222; /* gris foncé */
+    color: white; /* texte blanc */
+    padding: 1 2; /* marges internes */
+    layout: vertical; /* disposition verticale des boutons/menu */
 }
 
-/* Titre du menu */
+/* Titre de la section menu dans la sidebar */
 #menu-title {
     height: 3;
-    text-style: bold;
+    text-style: bold; /* texte en gras */
     color: white;
     padding-bottom: 1;
-    border-bottom: solid white;
+    border-bottom: solid white; /* ligne blanche en bas */
 }
 
-/* Liste du menu */
+/* Liste des éléments du menu (ListView) */
 #menu-list {
     height: 100%;
-    overflow-y: auto;
+    overflow-y: auto; /* permet le scroll vertical si nécessaire */
+}
+
+/* Conteneur principal de la vue centrale */
+#main-view {
+    background: #111111; /* fond très foncé */
+    color: white;
+    width: 1fr; /* prend tout l’espace restant */
+    height: 100%;
+    padding: 1;
+    overflow-y: auto; /* scroll vertical si contenu déborde */
+}
+
+/* Style spécifique pour la vue de connexion */
+#connection_view {
+    layout: vertical;
+    padding: 1;
+    background: #222; /* fond légèrement plus clair */
+    border: round white; /* bordure blanche arrondie */
+}
+
+/* Vue RTDE principale */
+#rtde_view {
+    layout: vertical;
+    padding: 1 2;
+    background: #222222; /* fond gris foncé */
+    color: white;
+    border: round #0066cc; /* bordure bleue arrondie */
+    overflow-y: auto; /* scroll vertical */
+}
+
+/* Titre de la section RTDE */
+#rtde_view .view-title {
+    text-style: bold;
+    content-align: center middle; /* centré */
+    padding-bottom: 1;
+    border-bottom: solid #0066cc; /* ligne bleue sous le titre */
+    color: #0066cc; /* couleur du titre */
+}
+
+/* Boutons de la vue RTDE */
+#rtde_view Button {
+    background: #004d99; /* bleu foncé */
+    border: round #0066cc; /* bordure bleue arrondie */
+    color: white;
+    margin-bottom: 1; /* espacement entre les boutons */
+}
+
+/* Effet au survol des boutons RTDE */
+#rtde_view Button:hover {
+    background: #0066cc; /* bleu plus clair au survol */
+}
+
+/* Zone de log de la vue RTDE */
+#rtde_view Static {
+    border: round #0066cc; /* bordure bleue */
+    background: #111111; /* fond très foncé */
+    height: 8; /* hauteur fixe */
+    padding: 1;
+    overflow-y: auto; /* scroll vertical si nécessaire */
 }
