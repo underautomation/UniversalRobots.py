@@ -9,7 +9,6 @@ from underautomation.universal_robots.common.interpreter_mode_connect_parameters
 import clr
 import os
 clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__),  'lib', 'UnderAutomation.UniversalRobots.dll')))
-from UnderAutomation.UniversalRobots import ConnectParameters as connect_parameters
 
 class ConnectParameters:
 	def __init__(self, ip: str, _internal = 0):
