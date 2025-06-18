@@ -1,2 +1,2 @@
 from .ur import UR
-from .connection_parameters import ConnectionParameters
+from .connect_parameters import ConnectParameters
