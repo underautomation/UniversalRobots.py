@@ -92,9 +92,12 @@ class DashboardClientBase(URServiceBase):
 	@property
 	def port(self) -> int:
 		return self._instance.Port
-	@port.setter
-	def port(self, value: int):
-		self._instance.Port = value
+	@property
+	def receive_timeout_ms(self) -> int:
+		return self._instance.ReceiveTimeoutMs
+	@property
+	def send_timeout_ms(self) -> int:
+		return self._instance.SendTimeoutMs
 	@property
 	def initialized(self) -> bool:
 		return self._instance.Initialized

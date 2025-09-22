@@ -11,5 +11,5 @@ class DashboardClientInternal(DashboardClientBase):
 			self._instance = dashboard_client_internal()
 		else:
 			self._instance = _internal
-	def enable(self, port: int=29999) -> None:
-		self._instance.Enable(port)
+	def enable(self, port: int=29999, receiveTimeoutMs: int=2000, sendTimeoutMs: int=500) -> None:
+		self._instance.Enable(port, receiveTimeoutMs, sendTimeoutMs)

@@ -17,8 +17,32 @@ class DashboardClientParametersBase:
 	def port(self, value: int):
 		self._instance.Port = value
 	@property
+	def receive_timeout_ms(self) -> int:
+		return self._instance.ReceiveTimeoutMs
+	@receive_timeout_ms.setter
+	def receive_timeout_ms(self, value: int):
+		self._instance.ReceiveTimeoutMs = value
+	@property
+	def send_timeout_ms(self) -> int:
+		return self._instance.SendTimeoutMs
+	@send_timeout_ms.setter
+	def send_timeout_ms(self, value: int):
+		self._instance.SendTimeoutMs = value
+	@property
 	def defaul_t__port(self) -> int:
 		return self._instance.DEFAULT_PORT
 	@defaul_t__port.setter
 	def defaul_t__port(self, value: int):
 		self._instance.DEFAULT_PORT = value
+	@property
+	def defaul_t__receiv_e__timeou_t__ms(self) -> int:
+		return self._instance.DEFAULT_RECEIVE_TIMEOUT_MS
+	@defaul_t__receiv_e__timeou_t__ms.setter
+	def defaul_t__receiv_e__timeou_t__ms(self, value: int):
+		self._instance.DEFAULT_RECEIVE_TIMEOUT_MS = value
+	@property
+	def defaul_t__sen_d__timeou_t__ms(self) -> int:
+		return self._instance.DEFAULT_SEND_TIMEOUT_MS
+	@defaul_t__sen_d__timeou_t__ms.setter
+	def defaul_t__sen_d__timeou_t__ms(self, value: int):
+		self._instance.DEFAULT_SEND_TIMEOUT_MS = value
