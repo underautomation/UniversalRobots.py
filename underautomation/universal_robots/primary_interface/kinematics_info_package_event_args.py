@@ -54,3 +54,21 @@ class KinematicsInfoPackageEventArgs(PackageEventArgs):
 	@wrist3.setter
 	def wrist3(self, value: JointKinematicsInfo):
 		self._instance.Wrist3 = value
+	@property
+	def a2(self) -> float:
+		return self._instance.A2
+	@property
+	def a3(self) -> float:
+		return self._instance.A3
+	@property
+	def d1(self) -> float:
+		return self._instance.D1
+	@property
+	def d4(self) -> float:
+		return self._instance.D4
+	@property
+	def d5(self) -> float:
+		return self._instance.D5
+	@property
+	def d6(self) -> float:
+		return self._instance.D6

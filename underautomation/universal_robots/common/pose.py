@@ -29,6 +29,12 @@ class Pose(CartesianCoordinates):
 	@staticmethod
 	def from_quaternion_to_rotation_vector(x: float, y: float, z: float, w: float) -> 'Pose':
 		return Pose(None, None, None, None, None, None, pose.FromQuaternionToRotationVector(x, y, z, w))
+	@staticmethod
+	def from4x4_matrix_to_rotation_vector(matrixTransform: typing.List[float]) -> 'Pose':
+		return Pose(None, None, None, None, None, None, pose.From4x4MatrixToRotationVector(matrixTransform))
+	@staticmethod
+	def from4x4_matrix_to_rpy(matrixTransform: typing.List[float]) -> 'Pose':
+		return Pose(None, None, None, None, None, None, pose.From4x4MatrixToRPY(matrixTransform))
 	@property
 	def rx_degrees(self) -> float:
 		return self._instance.RxDegrees

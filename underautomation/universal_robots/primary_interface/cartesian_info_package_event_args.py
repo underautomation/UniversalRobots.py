@@ -1,4 +1,5 @@
 import typing
+from underautomation.universal_robots.common.pose import Pose
 from underautomation.universal_robots.common.package_event_args import PackageEventArgs
 import clr
 import os
@@ -11,6 +12,10 @@ class CartesianInfoPackageEventArgs(PackageEventArgs):
 			self._instance = cartesian_info_package_event_args()
 		else:
 			self._instance = _internal
+	def as_pose(self) -> Pose:
+		return Pose(None, None, None, None, None, None, self._instance.AsPose())
+	def as_tcp_offset_pose(self) -> Pose:
+		return Pose(None, None, None, None, None, None, self._instance.AsTCPOffsetPose())
 	@property
 	def x(self) -> float:
 		return self._instance.X

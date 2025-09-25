@@ -13,6 +13,8 @@ class PrimaryInterfaceCommands:
 			self._instance = primary_interface_commands()
 		else:
 			self._instance = _internal
+	def test(self) -> None:
+		self._instance.Test()
 	def power_on(self) -> StatusCode:
 		return StatusCode(self._instance.PowerOn())
 	def power_off(self) -> StatusCode:
