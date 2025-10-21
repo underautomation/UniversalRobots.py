@@ -20,14 +20,14 @@ setuptools.setup(
     url="https://underautomation.com/universal-robots",
     project_urls={
         'Documentation': 'https://underautomation.com/universal-robots/documentation/get-started-python',
-        'Source': 'https://github.com/underautomation/UniversalRobots',
+        'Source': 'https://github.com/underautomation/UniversalRobots.py',
     },
     classifiers=[],
     package_dir={"": "."},
     packages=setuptools.find_packages(where="."),
     python_requires=">=3.7",
     install_requires=[
-        'pythonnet==3.0.3'
+        'pythonnet==3.0.5'
     ],
     include_package_data=True,
     package_data={"": [
@@ -35,5 +35,3 @@ setuptools.setup(
         "universal_robots/lib/*.txt"
     ]}
 )
-
-

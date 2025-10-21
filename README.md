@@ -25,7 +25,8 @@ From this repo :
 
 ```
 git clone https://github.com/underautomation/UniversalRobots.py.git
-pip install pythonnet==3.0.3
+cd UniversalRobots.py
+pip install -e .
 ```
 
 Import features :
