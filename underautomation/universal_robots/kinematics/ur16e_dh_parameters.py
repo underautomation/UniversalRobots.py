@@ -1,10 +1,11 @@
 import typing
+from underautomation.universal_robots.common.i_ur_dh_parameters import IUrDhParameters
 import clr
 import os
 clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
 from UnderAutomation.UniversalRobots.Kinematics import Ur16eDhParameters as ur16e_dh_parameters
 
-class Ur16eDhParameters:
+class Ur16eDhParameters(IUrDhParameters):
 	def __init__(self, _internal = 0):
 		if(_internal == 0):
 			self._instance = ur16e_dh_parameters()

@@ -18,6 +18,7 @@ import os
 clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..", "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
 from UnderAutomation.UniversalRobots.Rtde.Internal import RtdeClientBase as rtde_client_base
 
+T = typing.TypeVar('T')
 class RtdeClientBase(URServiceBase):
 	def __init__(self, _internal = 0):
 		if(_internal == 0):

@@ -30,6 +30,7 @@ import os
 clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..", "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
 from UnderAutomation.UniversalRobots.PrimaryInterface.Internal import PrimaryInterfaceClientBase as primary_interface_client_base
 
+T = typing.TypeVar('T')
 class PrimaryInterfaceClientBase(URServiceBase):
 	def __init__(self, _internal = 0):
 		if(_internal == 0):

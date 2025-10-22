@@ -1,4 +1,5 @@
 import typing
+from underautomation.universal_robots.common.i_ur_dh_parameters import IUrDhParameters
 from underautomation.universal_robots.primary_interface.joint_kinematics_info import JointKinematicsInfo
 from underautomation.universal_robots.common.package_event_args import PackageEventArgs
 import clr
@@ -6,7 +7,7 @@ import os
 clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
 from UnderAutomation.UniversalRobots.PrimaryInterface import KinematicsInfoPackageEventArgs as kinematics_info_package_event_args
 
-class KinematicsInfoPackageEventArgs(PackageEventArgs):
+class KinematicsInfoPackageEventArgs(PackageEventArgs, IUrDhParameters):
 	def __init__(self, _internal = 0):
 		if(_internal == 0):
 			self._instance = kinematics_info_package_event_args()

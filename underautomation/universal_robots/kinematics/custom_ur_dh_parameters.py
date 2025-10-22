@@ -5,7 +5,7 @@ import os
 clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
 from UnderAutomation.UniversalRobots.Kinematics import CustomUrDhParameters as custom_ur_dh_parameters
 
-class CustomUrDhParameters:
+class CustomUrDhParameters(IUrDhParameters):
 	def __init__(self, a2: float, a3: float, d1: float, d4: float, d5: float, d6: float, _internal = 0):
 		if(_internal == 0):
 			self._instance = custom_ur_dh_parameters(a2, a3, d1, d4, d5, d6)

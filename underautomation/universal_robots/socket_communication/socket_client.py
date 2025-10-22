@@ -1,10 +1,11 @@
 import typing
+from underautomation.universal_robots.socket_communication.i_socket_handler import ISocketHandler
 import clr
 import os
 clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
 from UnderAutomation.UniversalRobots.SocketCommunication import SocketClient as socket_client
 
-class SocketClient:
+class SocketClient(ISocketHandler):
 	def __init__(self, _internal = 0):
 		if(_internal == 0):
 			self._instance = socket_client()

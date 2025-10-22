@@ -1,4 +1,5 @@
 import typing
+from underautomation.universal_robots.common.i_ur_dh_parameters import IUrDhParameters
 from underautomation.universal_robots.common.controller_box_types import ControllerBoxTypes
 from underautomation.universal_robots.common.robot_models import RobotModels
 from underautomation.universal_robots.common.robot_sub_types import RobotSubTypes
@@ -9,7 +10,7 @@ import os
 clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
 from UnderAutomation.UniversalRobots.PrimaryInterface import ConfigurationDataPackageEventArgs as configuration_data_package_event_args
 
-class ConfigurationDataPackageEventArgs(PackageEventArgs):
+class ConfigurationDataPackageEventArgs(PackageEventArgs, IUrDhParameters):
 	def __init__(self, _internal = 0):
 		if(_internal == 0):
 			self._instance = configuration_data_package_event_args()
