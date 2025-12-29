@@ -14,9 +14,5 @@ class URInstallation(URArchive):
 	@staticmethod
 	def load(urpFile: str) -> 'URInstallation':
 		return URInstallation(None, ur_installation.Load(urpFile))
-	@property
-	def extension(self) -> str:
-		return self._instance.EXTENSION
-	@extension.setter
-	def extension(self, value: str):
-		self._instance.EXTENSION = value
+
+URInstallation.extension = URInstallation(None, ur_installation.EXTENSION)

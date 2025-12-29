@@ -104,7 +104,7 @@ class SftpClientBase(URServiceBase):
 	def get_attributes(self, path: str) -> SftpFileAttributes:
 		return SftpFileAttributes(self._instance.GetAttributes(path))
 	def set_attributes(self, path: str, fileAttributes: SftpFileAttributes) -> None:
-		self._instance.SetAttributes(path, fileAttributes._instance)
+		self._instance.SetAttributes(path, fileAttributes._instance if fileAttributes else None)
 	def synchronize_directories(self, sourcePath: str, destinationPath: str, searchPattern: str) -> typing.List[typing.Any]:
 		return self._instance.SynchronizeDirectories(sourcePath, destinationPath, searchPattern)
 	def begin_synchronize_directories(self, sourcePath: str, destinationPath: str, searchPattern: str, asyncCallback: typing.Any, state: typing.Any) -> typing.Any:

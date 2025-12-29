@@ -18,9 +18,9 @@ class RtdeInputValues(RtdeBaseValues1[RtdeInputData]):
 		else:
 			self._instance = _internal
 	def set_value(self, data: RtdeInputData, index: int, value: typing.Any) -> None:
-		self._instance.SetValue(data._instance, index, value)
+		self._instance.SetValue(data, index, value)
 	def get_value(self, item: RtdeInputSetupItem) -> typing.Any:
-		return self._instance.GetValue(item._instance)
+		return self._instance.GetValue(item._instance if item else None)
 	def reset(self) -> None:
 		self._instance.Reset()
 	@property

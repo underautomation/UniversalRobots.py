@@ -50,5 +50,5 @@ class JointsValues1(typing.Generic[T]):
 	def wrist3(self, value: T):
 		self._instance.Wrist3 = value
 	@property
-	def values(self) -> typing.Any:
-		return self._instance.Values
+	def values(self) -> typing.List[T]:
+		return list(self._instance.Values)

@@ -17,10 +17,8 @@ class RtdeClient(RtdeClientBase):
 		else:
 			self._instance = _internal
 	def connect(self, ip: str, outputSetup: RtdeOutputSetup, inputSetup: RtdeInputSetup, version: RtdeVersions, frequency: float, port: int=30004) -> None:
-		self._instance.Connect(ip, outputSetup._instance, inputSetup._instance, version._instance, frequency, port)
-	@property
-	def all_outputs_description(self) -> RtdeOutputsDescription:
-		return RtdeOutputsDescription(self._instance.AllOutputsDescription)
-	@property
-	def all_inputs_description(self) -> RtdeInputsDescription:
-		return RtdeInputsDescription(self._instance.AllInputsDescription)
+		self._instance.Connect(ip, outputSetup._instance if outputSetup else None, inputSetup._instance if inputSetup else None, version, frequency, port)
+
+RtdeClient.all_outputs_description = RtdeClient(rtde_client.AllOutputsDescription)
+
+RtdeClient.all_inputs_description = RtdeClient(rtde_client.AllInputsDescription)

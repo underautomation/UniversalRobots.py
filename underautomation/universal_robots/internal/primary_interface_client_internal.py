@@ -13,4 +13,4 @@ class PrimaryInterfaceClientInternal(PrimaryInterfaceClientBase):
 		else:
 			self._instance = _internal
 	def connect(self, port: Interfaces) -> None:
-		self._instance.Connect(port._instance)
+		self._instance.Connect(port)

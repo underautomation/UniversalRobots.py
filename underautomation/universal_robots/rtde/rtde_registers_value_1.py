@@ -7,7 +7,7 @@ clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..", 
 from UnderAutomation.UniversalRobots.Rtde import RtdeRegistersValue as rtde_registers_value_1
 
 T = typing.TypeVar('T')
-class RtdeRegistersValue1(RtdeValue1[typing.Any], IRtdeRegistersValue, typing.Generic[T]):
+class RtdeRegistersValue1(RtdeValue1[typing.List[T]], IRtdeRegistersValue, typing.Generic[T]):
 	def __init__(self, _internal = 0):
 		if(_internal == 0):
 			self._instance = rtde_registers_value_1()

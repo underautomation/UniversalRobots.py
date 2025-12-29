@@ -20,7 +20,7 @@ class PrimaryInterfaceCommands:
 	def power_off(self) -> StatusCode:
 		return StatusCode(self._instance.PowerOff())
 	def set_operational_mode(self, mode: OperationalModes) -> StatusCode:
-		return StatusCode(self._instance.SetOperationalMode(mode._instance))
+		return StatusCode(self._instance.SetOperationalMode(mode))
 	def pause_program(self) -> StatusCode:
 		return StatusCode(self._instance.PauseProgram())
 	def set_real(self) -> StatusCode:
@@ -46,7 +46,7 @@ class PrimaryInterfaceCommands:
 	def close_popup(self, id: int) -> StatusCode:
 		return StatusCode(self._instance.ClosePopup(id))
 	def reply_popup(self, id: int, value: str, type: RequestedTypes) -> StatusCode:
-		return StatusCode(self._instance.ReplyPopup(id, value, type._instance))
+		return StatusCode(self._instance.ReplyPopup(id, value, type))
 	def release_brakes(self) -> StatusCode:
 		return StatusCode(self._instance.ReleaseBrakes())
 	def unlock_protective_stop(self) -> StatusCode:

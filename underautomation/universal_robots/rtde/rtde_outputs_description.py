@@ -13,7 +13,7 @@ class RtdeOutputsDescription:
 		else:
 			self._instance = _internal
 	def get(self, data: RtdeOutputData) -> RtdeOutputDataDescription:
-		return RtdeOutputDataDescription(self._instance.Get(data._instance))
+		return RtdeOutputDataDescription(self._instance.Get(data))
 	@property
 	def items(self) -> typing.Any:
 		return self._instance.Items

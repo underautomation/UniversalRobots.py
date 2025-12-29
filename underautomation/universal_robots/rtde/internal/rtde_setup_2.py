@@ -18,5 +18,5 @@ class RtdeSetup2(typing.Generic[T, U]):
 		return self._instance.Remove(data, index)
 	def contains(self, data: U, index: int=0) -> bool:
 		return self._instance.Contains(data, index)
-	def to_distinct_list(self) -> typing.Any:
-		return self._instance.ToDistinctList()
+	def to_distinct_list(self) -> typing.List[T]:
+		return list(self._instance.ToDistinctList())

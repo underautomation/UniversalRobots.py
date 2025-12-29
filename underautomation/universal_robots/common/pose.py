@@ -19,7 +19,7 @@ class Pose(CartesianCoordinates):
 		return self._instance.ToString()
 	@staticmethod
 	def try_parse(value: str, pose: 'Pose') -> bool:
-		return pose.TryParse(value, pose._instance)
+		return pose.TryParse(value, pose._instance if pose else None)
 	def from_rotation_vector_to_quaternion(self, x: float, y: float, z: float, w: float) -> None:
 		self._instance.FromRotationVectorToQuaternion(x, y, z, w)
 	def from_rpy_to4x4_matrix(self) -> typing.List[float]:

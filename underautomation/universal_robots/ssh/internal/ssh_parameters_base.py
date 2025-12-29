@@ -28,9 +28,5 @@ class SshParametersBase:
 	@port.setter
 	def port(self, value: int):
 		self._instance.Port = value
-	@property
-	def defaul_t__port(self) -> int:
-		return self._instance.DEFAULT_PORT
-	@defaul_t__port.setter
-	def defaul_t__port(self, value: int):
-		self._instance.DEFAULT_PORT = value
+
+SshParametersBase.defaul_t__port = SshParametersBase(ssh_parameters_base.DEFAULT_PORT)

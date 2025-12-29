@@ -28,21 +28,9 @@ class DashboardClientParametersBase:
 	@send_timeout_ms.setter
 	def send_timeout_ms(self, value: int):
 		self._instance.SendTimeoutMs = value
-	@property
-	def defaul_t__port(self) -> int:
-		return self._instance.DEFAULT_PORT
-	@defaul_t__port.setter
-	def defaul_t__port(self, value: int):
-		self._instance.DEFAULT_PORT = value
-	@property
-	def defaul_t__receiv_e__timeou_t__ms(self) -> int:
-		return self._instance.DEFAULT_RECEIVE_TIMEOUT_MS
-	@defaul_t__receiv_e__timeou_t__ms.setter
-	def defaul_t__receiv_e__timeou_t__ms(self, value: int):
-		self._instance.DEFAULT_RECEIVE_TIMEOUT_MS = value
-	@property
-	def defaul_t__sen_d__timeou_t__ms(self) -> int:
-		return self._instance.DEFAULT_SEND_TIMEOUT_MS
-	@defaul_t__sen_d__timeou_t__ms.setter
-	def defaul_t__sen_d__timeou_t__ms(self, value: int):
-		self._instance.DEFAULT_SEND_TIMEOUT_MS = value
+
+DashboardClientParametersBase.defaul_t__port = DashboardClientParametersBase(dashboard_client_parameters_base.DEFAULT_PORT)
+
+DashboardClientParametersBase.defaul_t__receiv_e__timeou_t__ms = DashboardClientParametersBase(dashboard_client_parameters_base.DEFAULT_RECEIVE_TIMEOUT_MS)
+
+DashboardClientParametersBase.defaul_t__sen_d__timeou_t__ms = DashboardClientParametersBase(dashboard_client_parameters_base.DEFAULT_SEND_TIMEOUT_MS)

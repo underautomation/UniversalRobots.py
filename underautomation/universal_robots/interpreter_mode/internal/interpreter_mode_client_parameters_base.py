@@ -16,9 +16,5 @@ class InterpreterModeClientParametersBase:
 	@port.setter
 	def port(self, value: int):
 		self._instance.Port = value
-	@property
-	def defaul_t__port(self) -> int:
-		return self._instance.DEFAULT_PORT
-	@defaul_t__port.setter
-	def defaul_t__port(self, value: int):
-		self._instance.DEFAULT_PORT = value
+
+InterpreterModeClientParametersBase.defaul_t__port = InterpreterModeClientParametersBase(interpreter_mode_client_parameters_base.DEFAULT_PORT)

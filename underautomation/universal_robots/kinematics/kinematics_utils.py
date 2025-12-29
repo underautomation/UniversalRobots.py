@@ -22,16 +22,16 @@ class KinematicsUtils:
 		return kinematics_utils.HomogeneousMultiply(A, B)
 	@staticmethod
 	def forward_kinematics(jointAnglesRad: typing.List[float], dhParameters: IUrDhParameters) -> KinematicsResult:
-		return KinematicsResult(kinematics_utils.ForwardKinematics(jointAnglesRad, dhParameters._instance))
+		return KinematicsResult(kinematics_utils.ForwardKinematics(jointAnglesRad, dhParameters._instance if dhParameters else None))
 	@staticmethod
 	def get_nearest_solution(jointSolutions: typing.List[float], jointReference: typing.List[float]) -> typing.List[float]:
 		return kinematics_utils.GetNearestSolution(jointSolutions, jointReference)
 	@staticmethod
 	def inverse_kinematics(toolTransform: typing.List[float], dhParameters: IUrDhParameters) -> typing.List[float]:
-		return kinematics_utils.InverseKinematics(toolTransform, dhParameters._instance)
+		return kinematics_utils.InverseKinematics(toolTransform, dhParameters._instance if dhParameters else None)
 	@staticmethod
 	def get_singularity(elbow: float, shoulder: float, wrist1: float, wrist2: float, dhParameters: IUrDhParameters) -> SingularityType:
-		return SingularityType(kinematics_utils.GetSingularity(elbow, shoulder, wrist1, wrist2, dhParameters._instance))
+		return SingularityType(kinematics_utils.GetSingularity(elbow, shoulder, wrist1, wrist2, dhParameters._instance if dhParameters else None))
 	@staticmethod
 	def get_dh_parameters_from_model(model: RobotModelsExtended) -> IUrDhParameters:
-		return IUrDhParameters(kinematics_utils.GetDhParametersFromModel(model._instance))
+		return IUrDhParameters(kinematics_utils.GetDhParametersFromModel(model))

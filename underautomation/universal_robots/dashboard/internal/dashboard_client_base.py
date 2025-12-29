@@ -57,9 +57,9 @@ class DashboardClientBase(URServiceBase):
 	def get_polyscope_version(self) -> CommandResponse1[PolyscopeVersion]:
 		return CommandResponse1[PolyscopeVersion](None, self._instance.GetPolyscopeVersion())
 	def set_user_role(self, role: UserRoles) -> CommandResponse:
-		return CommandResponse(self._instance.SetUserRole(role._instance))
+		return CommandResponse(self._instance.SetUserRole(role))
 	def set_operational_mode(self, mode: OperationalModes) -> CommandResponse:
-		return CommandResponse(self._instance.SetOperationalMode(mode._instance))
+		return CommandResponse(self._instance.SetOperationalMode(mode))
 	def clear_operational_mode(self) -> CommandResponse:
 		return CommandResponse(self._instance.ClearOperationalMode())
 	def get_operational_mode(self) -> CommandResponse1[OperationalModes]:

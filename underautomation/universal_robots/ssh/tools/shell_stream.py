@@ -36,7 +36,7 @@ class ShellStream:
 	def expect(self, regex: typing.Any, timeout: typing.Any) -> str:
 		return self._instance.Expect(regex, timeout)
 	def begin_expect(self, timeout: typing.Any, callback: typing.Any, state: typing.Any, expectActions: typing.List[ExpectAction]) -> typing.Any:
-		return self._instance.BeginExpect(timeout, callback, state, expectActions._instance)
+		return self._instance.BeginExpect(timeout, callback, state, expectActions)
 	def end_expect(self, asyncResult: typing.Any) -> str:
 		return self._instance.EndExpect(asyncResult)
 	def read_line(self, timeout: typing.Any) -> str:

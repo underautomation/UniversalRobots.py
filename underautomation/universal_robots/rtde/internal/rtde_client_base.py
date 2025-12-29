@@ -18,7 +18,6 @@ import os
 clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..", "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
 from UnderAutomation.UniversalRobots.Rtde.Internal import RtdeClientBase as rtde_client_base
 
-T = typing.TypeVar('T')
 class RtdeClientBase(URServiceBase):
 	def __init__(self, _internal = 0):
 		if(_internal == 0):
@@ -70,7 +69,7 @@ class RtdeClientBase(URServiceBase):
 	def resume(self) -> None:
 		self._instance.Resume()
 	def write_inputs(self, inputValues: RtdeInputValues) -> None:
-		self._instance.WriteInputs(inputValues._instance)
+		self._instance.WriteInputs(inputValues._instance if inputValues else None)
 	def disconnect(self) -> None:
 		self._instance.Disconnect()
 	@property

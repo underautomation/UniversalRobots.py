@@ -22,7 +22,7 @@ class RtdeOutputValues(RtdeBaseValues1[RtdeOutputData]):
 		else:
 			self._instance = _internal
 	def get_value(self, item: RtdeOutputSetupItem) -> typing.Any:
-		return self._instance.GetValue(item._instance)
+		return self._instance.GetValue(item._instance if item else None)
 	@property
 	def timestamp(self) -> float:
 		return self._instance.Timestamp
