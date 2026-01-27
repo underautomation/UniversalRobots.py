@@ -6,6 +6,7 @@ from underautomation.universal_robots.common.ssh_connect_parameters import SshCo
 from underautomation.universal_robots.common.rtde_connect_parameters import RtdeConnectParameters
 from underautomation.universal_robots.common.xml_rpc_connect_parameters import XmlRpcConnectParameters
 from underautomation.universal_robots.common.interpreter_mode_connect_parameters import InterpreterModeConnectParameters
+from underautomation.universal_robots.common.rest_connect_parameters import RestConnectParameters
 import clr
 import os
 clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__),  'lib', 'UnderAutomation.UniversalRobots.dll')))
@@ -71,3 +72,9 @@ class ConnectParameters:
 	@interpreter_mode.setter
 	def interpreter_mode(self, value: InterpreterModeConnectParameters):
 		self._instance.InterpreterMode = value
+	@property
+	def rest(self) -> RestConnectParameters:
+		return RestConnectParameters(self._instance.Rest)
+	@rest.setter
+	def rest(self, value: RestConnectParameters):
+		self._instance.Rest = value

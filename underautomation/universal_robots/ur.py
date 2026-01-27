@@ -7,6 +7,7 @@ from underautomation.universal_robots.internal.rtde_client_internal import RtdeC
 from underautomation.universal_robots.internal.ssh_client_internal import SshClientInternal
 from underautomation.universal_robots.internal.sftp_client_internal import SftpClientInternal
 from underautomation.universal_robots.internal.interpreter_mode_client_internal import InterpreterModeClientInternal
+from underautomation.universal_robots.internal.rest_client_internal import RestClientInternal
 from underautomation.universal_robots.connect_parameters import ConnectParameters
 from underautomation.universal_robots.license.license_info import LicenseInfo
 from underautomation.universal_robots.internal.ur_service_base import URServiceBase
@@ -52,6 +53,9 @@ class UR(URServiceBase):
 	@property
 	def interpreter_mode(self) -> InterpreterModeClientInternal:
 		return InterpreterModeClientInternal(self._instance.InterpreterMode)
+	@property
+	def rest(self) -> RestClientInternal:
+		return RestClientInternal(self._instance.Rest)
 	@property
 	def ip(self) -> str:
 		return self._instance.IP
