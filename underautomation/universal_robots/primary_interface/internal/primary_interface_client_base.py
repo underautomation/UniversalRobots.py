@@ -25,6 +25,7 @@ from underautomation.universal_robots.primary_interface.internal.primary_interfa
 from underautomation.universal_robots.primary_interface.interfaces import Interfaces
 from underautomation.universal_robots.internal.ur_service_base import URServiceBase
 from underautomation.universal_robots.common.package_event_args import PackageEventArgs
+from underautomation.universal_robots.primary_interface.internal.raw_package_received_event_args import RawPackageReceivedEventArgs
 import clr
 import os
 clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..", "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
@@ -111,6 +112,11 @@ class PrimaryInterfaceClientBase(URServiceBase):
 			def __init__(self, _internal):
 				self._instance = _internal
 		self._instance.PackageReceived+= lambda sender, e : handler(Wrapper(sender), Wrapper(e))
+	def raw_package_received(self, handler):
+		class Wrapper :
+			def __init__(self, _internal):
+				self._instance = _internal
+		self._instance.RawPackageReceived+= lambda sender, e : handler(Wrapper(sender), Wrapper(e))
 	def program_threads_received(self, handler):
 		class Wrapper :
 			def __init__(self, _internal):
