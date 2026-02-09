@@ -14,6 +14,9 @@ class LicenseInfo:
 	def __repr__(self):
 		return self._instance.ToString()
 	@property
+	def is_licensed(self) -> bool:
+		return self._instance.IsLicensed
+	@property
 	def license_key(self) -> str:
 		return self._instance.LicenseKey
 	@property
