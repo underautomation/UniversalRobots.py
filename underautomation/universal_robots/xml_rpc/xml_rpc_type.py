@@ -1,14 +1,12 @@
-import clr
-import os
-clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
-from UnderAutomation.UniversalRobots.XmlRpc import XmlRpcType as xml_rpc_type
+from enum import IntEnum
 
-class XmlRpcType(int):
-	Unknown = xml_rpc_type.Unknown
-	Array = xml_rpc_type.Array
-	Boolean = xml_rpc_type.Boolean
-	Double = xml_rpc_type.Double
-	Integer = xml_rpc_type.Integer
-	String = xml_rpc_type.String
-	Struct = xml_rpc_type.Struct
-	Pose = xml_rpc_type.Pose
+class XmlRpcType(IntEnum):
+	'''All supported types that can be transmitted by XML-RPC'''
+	Unknown = -1 # Type is not supported
+	Array = 0 # The RPC type is a XmlRpcArrayValue
+	Boolean = 1 # The RPC type is a XmlRpcBooleanValue
+	Double = 2 # The RPC type is a XmlRpcDoubleValue
+	Integer = 3 # The RPC type is a XmlRpcIntegerValue
+	String = 4 # The RPC type is a XmlRpcStringValue
+	Struct = 5 # The RPC type is a XmlRpcStructValue
+	Pose = 6 # The RPC type is a XmlRpcPoseValue

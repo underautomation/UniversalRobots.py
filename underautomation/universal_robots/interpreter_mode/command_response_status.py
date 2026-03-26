@@ -1,10 +1,8 @@
-import clr
-import os
-clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
-from UnderAutomation.UniversalRobots.InterpreterMode import CommandResponseStatus as command_response_status
+from enum import IntEnum
 
-class CommandResponseStatus(int):
-	Error = command_response_status.Error
-	Ack = command_response_status.Ack
-	Discard = command_response_status.Discard
-	State = command_response_status.State
+class CommandResponseStatus(IntEnum):
+	'''Type of response of an Interpreter Mode command'''
+	Error = -1 # Something went wrong when receiving response
+	Ack = 0 # The command compilation succeed and Interpreter mode will execute the statement
+	Discard = 1 # Program is not running or the statement results in a compilation or linker error
+	State = 2 # Answer from a state command

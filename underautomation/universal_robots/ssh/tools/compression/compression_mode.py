@@ -1,8 +1,6 @@
-import clr
-import os
-clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..", "..", "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
-from UnderAutomation.UniversalRobots.Ssh.Tools.Compression import CompressionMode as compression_mode
+from enum import IntEnum
 
-class CompressionMode(int):
-	Compress = compression_mode.Compress
-	Decompress = compression_mode.Decompress
+class CompressionMode(IntEnum):
+	'''Specifies compression modes'''
+	Compress = 0 # Specifies that content should be compressed.
+	Decompress = 1 # Specifies that content should be decompressed.

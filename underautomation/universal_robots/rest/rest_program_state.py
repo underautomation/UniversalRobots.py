@@ -1,10 +1,8 @@
-import clr
-import os
-clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
-from UnderAutomation.UniversalRobots.Rest import RestProgramState as rest_program_state
+from enum import IntEnum
 
-class RestProgramState(int):
-	Unknown = rest_program_state.Unknown
-	Stopped = rest_program_state.Stopped
-	Playing = rest_program_state.Playing
-	Paused = rest_program_state.Paused
+class RestProgramState(IntEnum):
+	'''Program state values returned by the REST API'''
+	Unknown = 0 # Unknown state
+	Stopped = 1 # Program is stopped
+	Playing = 2 # Program is playing
+	Paused = 3 # Program is paused

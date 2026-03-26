@@ -1,14 +1,13 @@
-import clr
-import os
-clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
-from UnderAutomation.UniversalRobots.PrimaryInterface import RequestedTypes as requested_types
+from enum import IntEnum
 
-class RequestedTypes(int):
-	Boolean = requested_types.Boolean
-	Integer = requested_types.Integer
-	Float = requested_types.Float
-	String = requested_types.String
-	Pose = requested_types.Pose
-	JointVector = requested_types.JointVector
-	Waypoint = requested_types.Waypoint
-	Expression = requested_types.Expression
+class RequestedTypes(IntEnum):
+	'''Types for popup assignment'''
+	Boolean = 0 # Popup for boolean value assignment
+	Integer = 1 # Popup for integer number value assignment
+	Float = 2 # Popup for float number value assignment
+	String = 3 # Popup for string value assignment
+	Pose = 4 # Popup for pose value assignment
+	JointVector = 5 # Popup for joint vector value assignment
+	Waypoint = 6 # Unused
+	Expression = 7 # Unused
+	None_ = 8 # It's a simple popup message

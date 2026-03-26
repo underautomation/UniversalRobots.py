@@ -1,10 +1,8 @@
-import clr
-import os
-clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
-from UnderAutomation.UniversalRobots.Rtde import RTDEStates as rtde_states
+from enum import IntEnum
 
-class RTDEStates(int):
-	Disabled = rtde_states.Disabled
-	Connecting = rtde_states.Connecting
-	Started = rtde_states.Started
-	Paused = rtde_states.Paused
+class RTDEStates(IntEnum):
+	'''Represents the current state of the RTDE connection lifecycle.'''
+	Disabled = 0 # RTDE is not connected.
+	Connecting = 1 # RTDE connection and recipe setup are in progress.
+	Started = 2 # RTDE is actively streaming data.
+	Paused = 3 # RTDE streaming is paused but the connection remains open.

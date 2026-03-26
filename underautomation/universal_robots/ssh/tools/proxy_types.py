@@ -1,9 +1,8 @@
-import clr
-import os
-clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..", "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
-from UnderAutomation.UniversalRobots.Ssh.Tools import ProxyTypes as proxy_types
+from enum import IntEnum
 
-class ProxyTypes(int):
-	Socks4 = proxy_types.Socks4
-	Socks5 = proxy_types.Socks5
-	Http = proxy_types.Http
+class ProxyTypes(IntEnum):
+	'''Specifies the type of proxy client will use to connect to server.'''
+	None_ = 0 # No proxy server.
+	Socks4 = 1 # A SOCKS4 proxy server.
+	Socks5 = 2 # A SOCKS5 proxy server.
+	Http = 3 # A HTTP proxy server.

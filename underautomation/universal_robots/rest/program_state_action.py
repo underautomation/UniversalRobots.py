@@ -1,10 +1,8 @@
-import clr
-import os
-clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
-from UnderAutomation.UniversalRobots.Rest import ProgramStateAction as program_state_action
+from enum import IntEnum
 
-class ProgramStateAction(int):
-	play = program_state_action.play
-	pause = program_state_action.pause
-	stop = program_state_action.stop
-	resume = program_state_action.resume
+class ProgramStateAction(IntEnum):
+	'''Actions available for changing the program state via REST API'''
+	play = 0 # Start or resume playing the program
+	pause = 1 # Pause the running program
+	stop = 2 # Stop the running program
+	resume = 3 # Resume a paused program

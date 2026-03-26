@@ -1,20 +1,18 @@
-import clr
-import os
-clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
-from UnderAutomation.UniversalRobots.Rtde import RtdeTypes as rtde_types
+from enum import IntEnum
 
-class RtdeTypes(int):
-	Bool = rtde_types.Bool
-	Uint8 = rtde_types.Uint8
-	Uint32 = rtde_types.Uint32
-	Int32 = rtde_types.Int32
-	Uint64 = rtde_types.Uint64
-	Double = rtde_types.Double
-	Vector3D = rtde_types.Vector3D
-	Pose = rtde_types.Pose
-	CartesianCoordinates = rtde_types.CartesianCoordinates
-	JointsDoubleValues = rtde_types.JointsDoubleValues
-	JointsIntValues = rtde_types.JointsIntValues
-	BoolArray = rtde_types.BoolArray
-	Int32Array = rtde_types.Int32Array
-	DoubleArray = rtde_types.DoubleArray
+class RtdeTypes(IntEnum):
+	'''RTDE data types used to describe the wire format of each RTDE variable.'''
+	Bool = 0 # Boolean value (1 byte on the wire).
+	Uint8 = 1 # Unsigned 8-bit integer.
+	Uint32 = 2 # Unsigned 32-bit integer.
+	Int32 = 3 # Signed 32-bit integer.
+	Uint64 = 4 # Unsigned 64-bit integer.
+	Double = 5 # 64-bit floating-point number.
+	Vector3D = 6 # 3-element double vector (X, Y, Z).
+	Pose = 7 # 6-element double vector representing a TCP pose (X, Y, Z, Rx, Ry, Rz).
+	CartesianCoordinates = 8 # 6-element double vector representing Cartesian coordinates.
+	JointsDoubleValues = 9 # 6-element double vector with one value per robot joint.
+	JointsIntValues = 10 # 6-element 32-bit integer vector with one value per robot joint.
+	BoolArray = 11 # Boolean value stored as part of a register array.
+	Int32Array = 12 # 32-bit integer value stored as part of a register array.
+	DoubleArray = 13 # 64-bit double value stored as part of a register array.

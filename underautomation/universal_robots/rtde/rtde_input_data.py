@@ -1,22 +1,19 @@
-import clr
-import os
-clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
-from UnderAutomation.UniversalRobots.Rtde import RtdeInputData as rtde_input_data
+from enum import IntEnum
 
-class RtdeInputData(int):
-	SpeedSliderMask = rtde_input_data.SpeedSliderMask
-	SpeedSliderFraction = rtde_input_data.SpeedSliderFraction
-	StandardDigitalOutputMask = rtde_input_data.StandardDigitalOutputMask
-	ConfigurableDigitalOutputMask = rtde_input_data.ConfigurableDigitalOutputMask
-	StandardDigitalOutput = rtde_input_data.StandardDigitalOutput
-	ConfigurableDigitalOutput = rtde_input_data.ConfigurableDigitalOutput
-	StandardAnalogOutputMask = rtde_input_data.StandardAnalogOutputMask
-	StandardAnalogOutputType = rtde_input_data.StandardAnalogOutputType
-	StandardAnalogOutput0 = rtde_input_data.StandardAnalogOutput0
-	StandardAnalogOutput1 = rtde_input_data.StandardAnalogOutput1
-	InputBtRegisters0To31 = rtde_input_data.InputBtRegisters0To31
-	InputBtRegisters32To63 = rtde_input_data.InputBtRegisters32To63
-	InputBitRegisters = rtde_input_data.InputBitRegisters
-	InputIntRegisters = rtde_input_data.InputIntRegisters
-	InputDoubleRegisters = rtde_input_data.InputDoubleRegisters
-	ExternalForceTorque = rtde_input_data.ExternalForceTorque
+class RtdeInputData(IntEnum):
+	SpeedSliderMask = 0 # 0 = don't change speed slider with this input, 1 = use speed_slider_fraction to set speed slider value
+	SpeedSliderFraction = 1 # new speed slider value
+	StandardDigitalOutputMask = 2 # Standard digital output bit mask
+	ConfigurableDigitalOutputMask = 3 # Configurable digital output bit mask
+	StandardDigitalOutput = 4 # Standard digital outputs
+	ConfigurableDigitalOutput = 5 # Configurable digital outputs
+	StandardAnalogOutputMask = 6 # Standard analog output mask
+	StandardAnalogOutputType = 7 # Output domain {0=current[mA], 1=voltage[V]}. Bits 0-1: standard_analog_output_0 | standard_analog_output_1
+	StandardAnalogOutput0 = 8 # Standard analog output 0 (ratio) [0..1]
+	StandardAnalogOutput1 = 9 # Standard analog output 1 (ratio) [0..1]
+	InputBtRegisters0To31 = 10 # General purpose bits. This range of the boolean input registers is reserved for FieldBus/PLC interface usage.
+	InputBtRegisters32To63 = 11 # General purpose bits. This range of the boolean input registers is reserved for FieldBus/PLC interface usage.
+	InputBitRegisters = 12 # 64 general purpose bits. X: [64..127] - The upper range of the boolean input registers can be used by external RTDE clients (i.e URCAPS).
+	InputIntRegisters = 13 # 48 general purpose integer registers. X: [0..23] - The lower range of the integer input registers is reserved for FieldBus/PLC interface usage. X: [24..47] - The upper range of the integer input registers can be used by external RTDE clients (i.e URCAPS).
+	InputDoubleRegisters = 14 # 48 general purpose double registers. X: [0..23] - The lower range of the double input registers is reserved for FieldBus/PLC interface usage. X: [24..47] - The upper range of the double input registers can be used by external RTDE clients (i.e URCAPS).
+	ExternalForceTorque = 15 # Input external wrench when using ft_rtde_input_enable builtin.

@@ -1,16 +1,14 @@
-import clr
-import os
-clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
-from UnderAutomation.UniversalRobots.PrimaryInterface import PackageUnit as package_unit
+from enum import IntEnum
 
-class PackageUnit(int):
-	NoUnit = package_unit.NoUnit
-	Radian = package_unit.Radian
-	RadianPerSecond = package_unit.RadianPerSecond
-	RadianPerSecondSquared = package_unit.RadianPerSecondSquared
-	Meter = package_unit.Meter
-	MeterPerSecond = package_unit.MeterPerSecond
-	MeterPersSecondSquared = package_unit.MeterPersSecondSquared
-	CelciusDegree = package_unit.CelciusDegree
-	Volt = package_unit.Volt
-	Amp = package_unit.Amp
+class PackageUnit(IntEnum):
+	'''Physical units of receives measures'''
+	NoUnit = 0 # No unit
+	Radian = 1 # rad
+	RadianPerSecond = 2 # rad/s
+	RadianPerSecondSquared = 3 # rad/s²
+	Meter = 4 # m
+	MeterPerSecond = 5 # m/s
+	MetersPerSecondSquared = 6 # m/s²
+	CelsiusDegree = 7 # °C
+	Volt = 8 # V
+	Amp = 9 # A

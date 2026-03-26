@@ -1,8 +1,6 @@
-import clr
-import os
-clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
-from UnderAutomation.UniversalRobots.Rest import RestApiVersion as rest_api_version
+from enum import IntEnum
 
-class RestApiVersion(int):
-	V1 = rest_api_version.V1
-	Latest = rest_api_version.Latest
+class RestApiVersion(IntEnum):
+	'''REST API version for PolyscopeX robots'''
+	V1 = 1 # API Version 1
+	Latest = 1 # Latest API version (currently V1)

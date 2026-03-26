@@ -1,8 +1,6 @@
-import clr
-import os
-clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
-from UnderAutomation.UniversalRobots.Rtde import RtdeVersions as rtde_versions
+from enum import IntEnum
 
-class RtdeVersions(int):
-	V1 = rtde_versions.V1
-	V2 = rtde_versions.V2
+class RtdeVersions(IntEnum):
+	'''RTDE version numbers'''
+	V1 = 1 # Rtde version 1
+	V2 = 2 # Rtde version 2

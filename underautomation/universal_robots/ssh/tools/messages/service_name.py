@@ -1,8 +1,6 @@
-import clr
-import os
-clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..", "..", "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
-from UnderAutomation.UniversalRobots.Ssh.Tools.Messages import ServiceName as service_name
+from enum import IntEnum
 
-class ServiceName(int):
-	UserAuthentication = service_name.UserAuthentication
-	Connection = service_name.Connection
+class ServiceName(IntEnum):
+	'''Specifies list of supported services'''
+	UserAuthentication = 0 # ssh-userauth
+	Connection = 1 # ssh-connection

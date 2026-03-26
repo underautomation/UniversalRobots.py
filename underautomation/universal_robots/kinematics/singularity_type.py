@@ -1,9 +1,8 @@
-import clr
-import os
-clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
-from UnderAutomation.UniversalRobots.Kinematics import SingularityType as singularity_type
+from enum import IntEnum
 
-class SingularityType(int):
-	Wrist = singularity_type.Wrist
-	Elbow = singularity_type.Elbow
-	Shoulder = singularity_type.Shoulder
+class SingularityType(IntEnum):
+	'''Types of singularities'''
+	None_ = 0 # No singularity
+	Wrist = 1 # Wrist singularity
+	Elbow = 2 # Elbow singularity
+	Shoulder = 4 # Shoulder singularity

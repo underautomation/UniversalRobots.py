@@ -1,8 +1,6 @@
-import clr
-import os
-clr.AddReference(os.path.realpath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "..",  'lib', 'UnderAutomation.UniversalRobots.dll')))
-from UnderAutomation.UniversalRobots.Ssh.Tools.Messages.Connection import GlobalRequestName as global_request_name
+from enum import IntEnum
 
-class GlobalRequestName(int):
-	TcpIpForward = global_request_name.TcpIpForward
-	CancelTcpIpForward = global_request_name.CancelTcpIpForward
+class GlobalRequestName(IntEnum):
+	'''Specifies supported request names.'''
+	TcpIpForward = 0 # tcpip-forward
+	CancelTcpIpForward = 1 # cancel-tcpip-forward
