@@ -25,7 +25,7 @@ setuptools.setup(
     classifiers=[],
     package_dir={"": "."},
     packages=setuptools.find_packages(where="."),
-    python_requires=">=3.7",
+    python_requires="<3.14,>=3.7",
     install_requires=[
         'pythonnet==3.0.5'
     ],
