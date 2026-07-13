@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.primary_interface.package_unit import PackageUnit
 from UnderAutomation.UniversalRobots.PrimaryInterface import PackageDescriptionAttribute as package_description_attribute
 from UnderAutomation.UniversalRobots.PrimaryInterface import PackageUnit as package_unit
@@ -13,7 +13,7 @@ class PackageDescriptionAttribute:
 		:param unit: Physical unit of the measured value.
 		'''
 		if(_internal == 0):
-			self._instance = package_description_attribute(description, unit)
+			self._instance = package_description_attribute(description, package_unit(int(unit)))
 		else:
 			self._instance = _internal
 

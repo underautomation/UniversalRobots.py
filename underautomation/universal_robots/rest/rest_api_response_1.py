@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.rest.rest_api_response import RestApiResponse
 from UnderAutomation.UniversalRobots.Rest import RestApiResponse as rest_api_response_1
 
@@ -9,7 +9,7 @@ class RestApiResponse1(RestApiResponse, typing.Generic[T]):
 	def __init__(self, baseResponse: RestApiResponse, _internal = 0):
 		'''Creates a new RestApiResponse from a base response'''
 		if(_internal == 0):
-			self._instance = rest_api_response_1(baseResponse)
+			self._instance = rest_api_response_1(baseResponse._instance if baseResponse else None)
 		else:
 			self._instance = _internal
 

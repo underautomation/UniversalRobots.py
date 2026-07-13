@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.rtde.i_rtde_registers_value import IRtdeRegistersValue
 from underautomation.universal_robots.rtde.rtde_value_1 import RtdeValue1
 from UnderAutomation.UniversalRobots.Rtde import RtdeRegistersValue as rtde_registers_value_1

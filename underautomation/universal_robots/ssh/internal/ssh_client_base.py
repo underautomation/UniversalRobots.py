@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.ssh.tools.ssh_command import SshCommand
 from underautomation.universal_robots.ssh.tools.shell import Shell
 from underautomation.universal_robots.ssh.tools.shell_stream import ShellStream

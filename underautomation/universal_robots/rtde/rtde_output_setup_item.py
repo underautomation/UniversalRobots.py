@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.rtde.rtde_output_data import RtdeOutputData
 from underautomation.universal_robots.rtde.rtde_data_description_1 import RtdeDataDescription1
 from underautomation.universal_robots.rtde.internal.rtde_setup_item_1 import RtdeSetupItem1
@@ -15,7 +15,7 @@ class RtdeOutputSetupItem(RtdeSetupItem1[RtdeOutputData]):
 		:param index: Zero-based register index for array/register variables.
 		'''
 		if(_internal == 0):
-			self._instance = rtde_output_setup_item(data, index)
+			self._instance = rtde_output_setup_item(rtde_output_data(int(data)), index)
 		else:
 			self._instance = _internal
 

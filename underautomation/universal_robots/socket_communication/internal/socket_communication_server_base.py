@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.socket_communication.i_socket_handler import ISocketHandler
 from underautomation.universal_robots.socket_communication.socket_client import SocketClient
 from underautomation.universal_robots.internal.ur_service_base import URServiceBase

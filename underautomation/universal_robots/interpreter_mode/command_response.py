@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.interpreter_mode.command_response_status import CommandResponseStatus
 from UnderAutomation.UniversalRobots.InterpreterMode import CommandResponse as command_response
 from UnderAutomation.UniversalRobots.InterpreterMode import CommandResponseStatus as command_response_status

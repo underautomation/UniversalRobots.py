@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from UnderAutomation.UniversalRobots.Ssh.Tools.Sftp import SftpFileStream as sftp_file_stream
 from System.IO import SeekOrigin as seek_origin
 

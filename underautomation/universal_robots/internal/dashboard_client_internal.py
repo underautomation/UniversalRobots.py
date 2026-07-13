@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.dashboard.internal.dashboard_client_base import DashboardClientBase
 from UnderAutomation.UniversalRobots.Internal import DashboardClientInternal as dashboard_client_internal
 

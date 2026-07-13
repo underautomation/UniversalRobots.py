@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from UnderAutomation.UniversalRobots.Kinematics import TransformationSet as transformation_set
 
 class TransformationSet:

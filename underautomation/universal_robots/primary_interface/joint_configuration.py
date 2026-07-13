@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from UnderAutomation.UniversalRobots.PrimaryInterface import JointConfiguration as joint_configuration
 
 class JointConfiguration:

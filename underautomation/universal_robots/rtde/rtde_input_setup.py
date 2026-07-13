@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.rtde.internal.rtde_setup_2 import RtdeSetup2
 from underautomation.universal_robots.rtde.rtde_input_setup_item import RtdeInputSetupItem
 from underautomation.universal_robots.rtde.rtde_input_data import RtdeInputData
@@ -13,6 +13,23 @@ class RtdeInputSetup(RtdeSetup2[RtdeInputSetupItem, RtdeInputData]):
 			self._instance = rtde_input_setup()
 		else:
 			self._instance = _internal
+
+	def add(self, data: RtdeInputData) -> RtdeInputSetupItem:
+		'''Adds a variable to the recipe with register index 0.
+
+		:param data: The RTDE variable to add.
+		:returns: The created setup item.
+		'''
+		return RtdeInputSetupItem(None, None, self._instance.Add(data))
+
+	def add(self, data: RtdeInputData, index: int) -> RtdeInputSetupItem:
+		'''Adds a variable to the recipe with the specified register index.
+
+		:param data: The RTDE variable to add.
+		:param index: Register index for array/register variables.
+		:returns: The created setup item.
+		'''
+		return RtdeInputSetupItem(None, None, self._instance.Add(data, index))
 
 	def __str__(self):
 		return self._instance.ToString() if self._instance is not None else ""

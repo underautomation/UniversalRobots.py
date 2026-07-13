@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.rtde.rtde_types import RtdeTypes
 from UnderAutomation.UniversalRobots.Rtde import RtdeDataDescription as rtde_data_description_1
 from UnderAutomation.UniversalRobots.Rtde import RtdeTypes as rtde_types

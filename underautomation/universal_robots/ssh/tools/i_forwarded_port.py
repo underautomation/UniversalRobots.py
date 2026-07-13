@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from UnderAutomation.UniversalRobots.Ssh.Tools import IForwardedPort as i_forwarded_port
 
 class IForwardedPort:

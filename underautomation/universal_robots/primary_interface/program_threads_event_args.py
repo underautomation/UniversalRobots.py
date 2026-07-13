@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.primary_interface.program_thread import ProgramThread
 from underautomation.universal_robots.common.package_event_args import PackageEventArgs
 from UnderAutomation.UniversalRobots.PrimaryInterface import ProgramThreadsEventArgs as program_threads_event_args

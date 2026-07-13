@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.common.package_event_args import PackageEventArgs
 from UnderAutomation.UniversalRobots.PrimaryInterface import SingularityInfoPackageEventArgs as singularity_info_package_event_args
 

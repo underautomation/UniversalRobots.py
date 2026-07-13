@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.common.i_ur_dh_parameters import IUrDhParameters
 from underautomation.universal_robots.primary_interface.joint_kinematics_info import JointKinematicsInfo
 from underautomation.universal_robots.common.package_event_args import PackageEventArgs

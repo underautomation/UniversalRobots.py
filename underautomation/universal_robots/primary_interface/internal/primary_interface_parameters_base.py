@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.primary_interface.interfaces import Interfaces
 from UnderAutomation.UniversalRobots.PrimaryInterface.Internal import PrimaryInterfaceParametersBase as primary_interface_parameters_base
 from UnderAutomation.UniversalRobots.PrimaryInterface import Interfaces as interfaces

@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.socket_communication.internal.socket_communication_server_base import SocketCommunicationServerBase
 from UnderAutomation.UniversalRobots.Internal import SocketCommunicationServerInternal as socket_communication_server_internal
 

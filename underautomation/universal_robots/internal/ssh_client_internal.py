@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.ssh.internal.ssh_client_base import SshClientBase
 from UnderAutomation.UniversalRobots.Internal import SshClientInternal as ssh_client_internal
 

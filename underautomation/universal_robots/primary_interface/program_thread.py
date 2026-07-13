@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from UnderAutomation.UniversalRobots.PrimaryInterface import ProgramThread as program_thread
 
 class ProgramThread:

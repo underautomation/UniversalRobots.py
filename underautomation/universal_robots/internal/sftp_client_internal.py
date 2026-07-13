@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.ssh.internal.sftp_client_base import SftpClientBase
 from UnderAutomation.UniversalRobots.Internal import SftpClientInternal as sftp_client_internal
 

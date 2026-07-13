@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.license.license_info import LicenseInfo
 from UnderAutomation.UniversalRobots.License import InvalidLicenseException as invalid_license_exception
 

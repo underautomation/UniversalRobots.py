@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from datetime import datetime, timedelta
 from UnderAutomation.UniversalRobots.Ssh.Tools.Sftp import SftpFileAttributes as sftp_file_attributes
 

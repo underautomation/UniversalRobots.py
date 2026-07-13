@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.common.analog_ranges import AnalogRanges
 from underautomation.universal_robots.common.safety_status import SafetyStatus
 from underautomation.universal_robots.primary_interface.masterboard_digital_io import MasterboardDigitalIO

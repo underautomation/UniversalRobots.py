@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from UnderAutomation.UniversalRobots.InterpreterMode.Internal import InterpreterModeClientParametersBase as interpreter_mode_client_parameters_base
 
 class InterpreterModeClientParametersBase:

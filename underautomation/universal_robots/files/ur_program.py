@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.files.ur_archive import URArchive
 from UnderAutomation.UniversalRobots.Files import URProgram as ur_program
 

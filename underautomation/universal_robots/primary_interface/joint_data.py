@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.common.joint_modes import JointModes
 from UnderAutomation.UniversalRobots.PrimaryInterface import JointData as joint_data
 from UnderAutomation.UniversalRobots.Common import JointModes as joint_modes

@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.interpreter_mode.internal.interpreter_mode_client_base import InterpreterModeClientBase
 from UnderAutomation.UniversalRobots.Internal import InterpreterModeClientInternal as interpreter_mode_client_internal
 

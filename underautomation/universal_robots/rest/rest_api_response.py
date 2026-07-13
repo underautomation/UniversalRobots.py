@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from UnderAutomation.UniversalRobots.Rest import RestApiResponse as rest_api_response
 from System.Net import HttpStatusCode as http_status_code
 

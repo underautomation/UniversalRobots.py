@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.xml_rpc.internal.xml_rpc_server_base import XmlRpcServerBase
 from UnderAutomation.UniversalRobots.XmlRpc import XmlRpcServer as xml_rpc_server
 

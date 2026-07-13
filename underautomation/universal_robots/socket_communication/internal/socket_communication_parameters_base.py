@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from UnderAutomation.UniversalRobots.SocketCommunication.Internal import SocketCommunicationParametersBase as socket_communication_parameters_base
 
 class SocketCommunicationParametersBase:

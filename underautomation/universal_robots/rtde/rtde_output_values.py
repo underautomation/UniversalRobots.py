@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.rtde.rtde_output_setup_item import RtdeOutputSetupItem
 from underautomation.universal_robots.common.joints_double_values import JointsDoubleValues
 from underautomation.universal_robots.common.pose import Pose

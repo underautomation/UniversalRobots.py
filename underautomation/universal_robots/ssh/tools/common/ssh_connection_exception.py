@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.ssh.tools.messages.transport.disconnect_reason import DisconnectReason
 from underautomation.universal_robots.ssh.tools.common.ssh_exception import SshException
 from UnderAutomation.UniversalRobots.Ssh.Tools.Common import SshConnectionException as ssh_connection_exception
@@ -15,7 +15,7 @@ class SshConnectionException(SshException):
 		:param inner: The inner.
 		'''
 		if(_internal == 0):
-			self._instance = ssh_connection_exception(message, disconnectReasonCode, inner)
+			self._instance = ssh_connection_exception(message, disconnect_reason(int(disconnectReasonCode)), inner)
 		else:
 			self._instance = _internal
 

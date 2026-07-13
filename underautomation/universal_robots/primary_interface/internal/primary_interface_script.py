@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.common.status_code import StatusCode
 from UnderAutomation.UniversalRobots.PrimaryInterface.Internal import PrimaryInterfaceScript as primary_interface_script
 from UnderAutomation.UniversalRobots.Common import StatusCode as status_code

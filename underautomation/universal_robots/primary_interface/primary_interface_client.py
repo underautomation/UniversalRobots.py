@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.primary_interface.interfaces import Interfaces
 from underautomation.universal_robots.primary_interface.internal.primary_interface_client_base import PrimaryInterfaceClientBase
 from UnderAutomation.UniversalRobots.PrimaryInterface import PrimaryInterfaceClient as primary_interface_client

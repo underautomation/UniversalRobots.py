@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from UnderAutomation.UniversalRobots.Ssh.Tools import IRemotePathTransformation as i_remote_path_transformation
 
 class IRemotePathTransformation:

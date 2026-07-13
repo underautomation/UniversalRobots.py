@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.rest.rest_api_version import RestApiVersion
 from underautomation.universal_robots.rest.internal.rest_client_base import RestClientBase
 from UnderAutomation.UniversalRobots.Rest import RestClient as rest_client

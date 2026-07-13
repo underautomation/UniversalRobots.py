@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.ssh.tools.common.ssh_exception import SshException
 from UnderAutomation.UniversalRobots.Ssh.Tools.Common import SshPassPhraseNullOrEmptyException as ssh_pass_phrase_null_or_empty_exception
 

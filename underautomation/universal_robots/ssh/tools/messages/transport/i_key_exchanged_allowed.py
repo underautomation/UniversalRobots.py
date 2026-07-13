@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from UnderAutomation.UniversalRobots.Ssh.Tools.Messages.Transport import IKeyExchangedAllowed as i_key_exchanged_allowed
 
 class IKeyExchangedAllowed:

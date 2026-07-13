@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from UnderAutomation.UniversalRobots.SocketCommunication import ISocketHandler as i_socket_handler
 
 class ISocketHandler:

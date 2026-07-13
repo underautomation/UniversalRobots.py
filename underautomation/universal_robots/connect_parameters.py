@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.common.primary_interface_connect_parameters import PrimaryInterfaceConnectParameters
 from underautomation.universal_robots.common.dashboard_connect_parameters import DashboardConnectParameters
 from underautomation.universal_robots.common.socket_communication_connect_parameters import SocketCommunicationConnectParameters

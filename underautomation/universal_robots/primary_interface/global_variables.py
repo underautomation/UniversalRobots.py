@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.primary_interface.global_variables_firmware_version import GlobalVariablesFirmwareVersion
 from underautomation.universal_robots.common.global_variable import GlobalVariable
 from underautomation.universal_robots.primary_interface.global_variables_event_args import GlobalVariablesEventArgs

@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.common.pose import Pose
 from underautomation.universal_robots.xml_rpc.xml_rpc_type import XmlRpcType
 from underautomation.universal_robots.xml_rpc.xml_rpc_struct_value import XmlRpcStructValue
@@ -11,7 +11,7 @@ class XmlRpcPoseValue(XmlRpcStructValue):
 	def __init__(self, pose: Pose, _internal = 0):
 		'''Creates a new pose Value'''
 		if(_internal == 0):
-			self._instance = xml_rpc_pose_value(pose)
+			self._instance = xml_rpc_pose_value(pose._instance if pose else None)
 		else:
 			self._instance = _internal
 

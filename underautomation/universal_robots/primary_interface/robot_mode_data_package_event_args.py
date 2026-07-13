@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.common.robot_modes import RobotModes
 from underautomation.universal_robots.common.control_modes import ControlModes
 from underautomation.universal_robots.common.package_event_args import PackageEventArgs

@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.common.internal_error_event_args import InternalErrorEventArgs
 from UnderAutomation.UniversalRobots.Internal import URServiceBase as ur_service_base
 

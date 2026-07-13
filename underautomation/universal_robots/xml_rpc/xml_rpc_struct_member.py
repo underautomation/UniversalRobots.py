@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.xml_rpc.xml_rpc_value import XmlRpcValue
 from UnderAutomation.UniversalRobots.XmlRpc import XmlRpcStructMember as xml_rpc_struct_member
 
@@ -12,7 +12,7 @@ class XmlRpcStructMember:
 		:param value: The member value.
 		'''
 		if(_internal == 0):
-			self._instance = xml_rpc_struct_member(name, value)
+			self._instance = xml_rpc_struct_member(name, value._instance if value else None)
 		else:
 			self._instance = _internal
 

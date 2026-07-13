@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.ssh.tools.common.ssh_exception import SshException
 from UnderAutomation.UniversalRobots.Ssh.Tools.Common import SshAuthenticationException as ssh_authentication_exception
 

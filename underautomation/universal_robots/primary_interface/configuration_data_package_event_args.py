@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.common.i_ur_dh_parameters import IUrDhParameters
 from underautomation.universal_robots.common.controller_box_types import ControllerBoxTypes
 from underautomation.universal_robots.common.robot_models import RobotModels
@@ -84,7 +84,7 @@ class ConfigurationDataPackageEventArgs(PackageEventArgs, IUrDhParameters):
 
 	@property
 	def robot_type(self) -> RobotModels:
-		'''Model of the robot (UR3, UR5, UR10, UR16)'''
+		'''Model of the robot (UR3, UR5, UR10, UR16, ...)'''
 		return RobotModels(int(self._instance.RobotType))
 
 	@robot_type.setter

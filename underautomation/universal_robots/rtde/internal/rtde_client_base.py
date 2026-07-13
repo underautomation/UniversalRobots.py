@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.rtde.rtde_text_message_event_args import RtdeTextMessageEventArgs
 from underautomation.universal_robots.rtde.rtde_states import RTDEStates
 from underautomation.universal_robots.rtde.rtde_versions import RtdeVersions

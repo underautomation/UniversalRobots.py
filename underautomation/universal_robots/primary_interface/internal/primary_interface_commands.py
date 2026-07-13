@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.common.status_code import StatusCode
 from underautomation.universal_robots.dashboard.operational_modes import OperationalModes
 from underautomation.universal_robots.primary_interface.requested_types import RequestedTypes

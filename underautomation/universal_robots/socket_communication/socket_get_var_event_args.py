@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.socket_communication.socket_client import SocketClient
 from UnderAutomation.UniversalRobots.SocketCommunication import SocketGetVarEventArgs as socket_get_var_event_args
 

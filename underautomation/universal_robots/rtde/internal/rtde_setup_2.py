@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from UnderAutomation.UniversalRobots.Rtde.Internal import RtdeSetup as rtde_setup_2
 
 T = typing.TypeVar('T')

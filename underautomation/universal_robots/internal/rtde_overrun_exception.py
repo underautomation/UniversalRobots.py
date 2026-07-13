@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from UnderAutomation.UniversalRobots.Internal import RtdeOverrunException as rtde_overrun_exception
 
 class RtdeOverrunException:

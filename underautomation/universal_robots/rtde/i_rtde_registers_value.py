@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from UnderAutomation.UniversalRobots.Rtde import IRtdeRegistersValue as i_rtde_registers_value
 
 class IRtdeRegistersValue:

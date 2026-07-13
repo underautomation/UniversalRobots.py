@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.xml_rpc.xml_rpc_type import XmlRpcType
 from underautomation.universal_robots.xml_rpc.xml_rpc_value import XmlRpcValue
 from UnderAutomation.UniversalRobots.XmlRpc import XmlRpcUnknownValue as xml_rpc_unknown_value

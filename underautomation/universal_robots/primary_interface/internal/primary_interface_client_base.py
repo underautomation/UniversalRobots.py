@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.primary_interface.robot_mode_data_package_event_args import RobotModeDataPackageEventArgs
 from underautomation.universal_robots.primary_interface.joint_data_package_event_args import JointDataPackageEventArgs
 from underautomation.universal_robots.primary_interface.tool_data_package_event_args import ToolDataPackageEventArgs

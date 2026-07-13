@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.ssh.tools.sftp.sftp_file import SftpFile
 from underautomation.universal_robots.ssh.tools.sftp.sftp_file_sytem_information import SftpFileSytemInformation
 from underautomation.universal_robots.ssh.tools.sftp.sftp_file_stream import SftpFileStream

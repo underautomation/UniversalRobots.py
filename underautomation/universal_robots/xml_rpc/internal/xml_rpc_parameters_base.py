@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from UnderAutomation.UniversalRobots.XmlRpc.Internal import XmlRpcParametersBase as xml_rpc_parameters_base
 
 class XmlRpcParametersBase:

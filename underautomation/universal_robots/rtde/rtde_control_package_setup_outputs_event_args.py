@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.common.package_event_args import PackageEventArgs
 from UnderAutomation.UniversalRobots.Rtde import RtdeControlPackageSetupOutputsEventArgs as rtde_control_package_setup_outputs_event_args
 

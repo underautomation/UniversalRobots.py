@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from UnderAutomation.UniversalRobots.Ssh.Tools.Common import ShellDataEventArgs as shell_data_event_args
 
 class ShellDataEventArgs:

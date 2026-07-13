@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.ssh.tools.common.exception_event_args import ExceptionEventArgs
 from UnderAutomation.UniversalRobots.Ssh.Tools import Shell as shell
 

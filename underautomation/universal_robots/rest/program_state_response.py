@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.rest.rest_program_state import RestProgramState
 from UnderAutomation.UniversalRobots.Rest import ProgramStateResponse as program_state_response
 from UnderAutomation.UniversalRobots.Rest import RestProgramState as rest_program_state

@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.common.output_modes import OutputModes
 from underautomation.universal_robots.common.digital_output_configurations import DigitalOutputConfigurations
 from underautomation.universal_robots.common.package_event_args import PackageEventArgs

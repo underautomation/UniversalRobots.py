@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.kinematics.ur10e_dh_parameters import Ur10eDhParameters
 from UnderAutomation.UniversalRobots.Kinematics import Ur12eDhParameters as ur12e_dh_parameters
 

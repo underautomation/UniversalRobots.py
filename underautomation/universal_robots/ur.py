@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.internal.primary_interface_client_internal import PrimaryInterfaceClientInternal
 from underautomation.universal_robots.internal.xml_rpc_server_internal import XmlRpcServerInternal
 from underautomation.universal_robots.internal.dashboard_client_internal import DashboardClientInternal

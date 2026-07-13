@@ -1,5 +1,5 @@
+from __future__ import annotations
 import typing
-from __future__ import annotation
 from underautomation.universal_robots.common.package_event_args import PackageEventArgs
 from UnderAutomation.UniversalRobots.PrimaryInterface import RuntimeExceptionMessageEventArgs as runtime_exception_message_event_args
 

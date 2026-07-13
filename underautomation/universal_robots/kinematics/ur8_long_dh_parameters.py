@@ -1,13 +1,13 @@
 from __future__ import annotations
 import typing
 from underautomation.universal_robots.common.i_ur_dh_parameters import IUrDhParameters
-from UnderAutomation.UniversalRobots.Kinematics import Ur5eDhParameters as ur5e_dh_parameters
+from UnderAutomation.UniversalRobots.Kinematics import Ur8LongDhParameters as ur8_long_dh_parameters
 
-class Ur5eDhParameters(IUrDhParameters):
-	'''Denavit-Hartenberg parameters for the UR5e robot (e-Series).'''
+class Ur8LongDhParameters(IUrDhParameters):
+	'''Denavit-Hartenberg parameters for the UR8 Long robot.'''
 	def __init__(self, _internal = 0):
 		if(_internal == 0):
-			self._instance = ur5e_dh_parameters()
+			self._instance = ur8_long_dh_parameters()
 		else:
 			self._instance = _internal
 
@@ -42,7 +42,7 @@ class Ur5eDhParameters(IUrDhParameters):
 		return self.__str__()
 
 	def __eq__(self, other) -> bool:
-		if not isinstance(other, Ur5eDhParameters):
+		if not isinstance(other, Ur8LongDhParameters):
 			NotImplemented
 		return self._instance.Equals(other._instance)
 
