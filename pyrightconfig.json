@@ -1,0 +1,28 @@
+{
+  "include": [
+    "underautomation",
+    "tests"
+  ],
+  "exclude": [
+    ".venv",
+    "dist",
+    "**/__pycache__"
+  ],
+  "extraPaths": [
+    "."
+  ],
+  "pythonVersion": "3.7",
+  "typeCheckingMode": "off",
+  "reportMissingImports": "error",
+  "reportMissingModuleSource": "error",
+  "reportImportCycles": "none",
+  "reportGeneralTypeIssues": "error",
+  "reportOptionalMemberAccess": "error",
+  "reportAttributeAccessIssue": "none",
+  "reportCallIssue": "error",
+  "reportIndexIssue": "none",
+  "reportOperatorIssue": "error",
+  "reportArgumentType": "none",
+  "reportReturnType": "error",
+  "reportAssignmentType": "error"
+}

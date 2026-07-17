@@ -20,7 +20,7 @@ class RtdeInputSetup(RtdeSetup2[RtdeInputSetupItem, RtdeInputData]):
 		:param data: The RTDE variable to add.
 		:returns: The created setup item.
 		'''
-		return RtdeInputSetupItem(None, None, self._instance.Add(data))
+		return RtdeInputSetupItem(None, None, self._instance.Add(rtde_input_data(data)))
 
 	def add(self, data: RtdeInputData, index: int) -> RtdeInputSetupItem:
 		'''Adds a variable to the recipe with the specified register index.
@@ -29,7 +29,7 @@ class RtdeInputSetup(RtdeSetup2[RtdeInputSetupItem, RtdeInputData]):
 		:param index: Register index for array/register variables.
 		:returns: The created setup item.
 		'''
-		return RtdeInputSetupItem(None, None, self._instance.Add(data, index))
+		return RtdeInputSetupItem(None, None, self._instance.Add(rtde_input_data(data), index))
 
 	def __str__(self):
 		return self._instance.ToString() if self._instance is not None else ""

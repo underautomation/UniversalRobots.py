@@ -1,0 +1,4 @@
+include README.md
+recursive-include underautomation/universal_robots/lib *.dll *.txt
+prune tests
+prune examples
