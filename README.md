@@ -192,41 +192,38 @@ python examples/launcher.py
 ```
 ╔════════════════════════════════════════════════════════════════════════════════╗
 ║                                                                                ║
-║   ██╗   ██╗███╗   ██╗██╗██╗   ██╗███████╗██████╗ ███████╗ █████╗ ██╗          ║
-║   ██║   ██║████╗  ██║██║██║   ██║██╔════╝██╔══██╗██╔════╝██╔══██╗██║          ║
-║   ...                                                                          ║
-║                                                                                ║
-║        Universal Robots Python SDK - Interactive Example Launcher              ║
+║            Universal Robots Python SDK - Interactive Example Launcher          ║
 ║                                                                                ║
 ╚════════════════════════════════════════════════════════════════════════════════╝
 
 ╔════════════════════════════════════════════════════════════════════════════════╗
-║                              SELECT A CATEGORY                                 ║
+║                                SELECT A CATEGORY                               ║
 ╠════════════════════════════════════════════════════════════════════════════════╣
 ║                                                                                ║
 ║  📋  1. DASHBOARD            (4 examples)                                      ║
-║         Dashboard Server (Polyscope Legacy) - load/play/stop programs          ║
+║         Dashboard Server (Polyscope Legacy) - load/play/stop programs, ...     ║
 ║                                                                                ║
-║  🌐  2. REST                 (3 examples)                                      ║
-║         REST API (PolyscopeX) - robot & program control via HTTP               ║
+║  🦾  2. KINEMATICS           (1 example)                                       ║
+║         Kinematics - offline forward & inverse kinematics, no connection needed║
 ║                                                                                ║
-║  ⚡  3. RTDE                 (3 examples)                                      ║
-║         RTDE - real-time data streaming up to 500 Hz, I/O & registers          ║
+║  🔑  3. LICENSE              (1 example)                                       ║
+║         License management - activation & status                               ║
 ║                                                                                ║
-║  📂  4. SFTP                 (3 examples)                                      ║
-║         SFTP - file transfer, list/download/upload programs                    ║
-║                                                                                ║
-║  🔗  5. PRIMARY_INTERFACE    (3 examples)                                      ║
+║  🔗  4. PRIMARY_INTERFACE    (3 examples)                                      ║
 ║         Primary Interface - robot telemetry packets, send URScript             ║
 ║                                                                                ║
-║  🦾  6. KINEMATICS           (1 example)                                       ║
-║         Kinematics - offline forward & inverse kinematics                      ║
+║  🌐  5. REST                 (3 examples)                                      ║
+║         REST API (PolyscopeX) - robot & program control via HTTP               ║
 ║                                                                                ║
-║  🔑  7. LICENSE              (1 example)                                       ║
-║         License management - activation & status                               ║
+║  ⚡  6. RTDE                 (2 examples)                                      ║
+║         RTDE - real-time data streaming up to 500 Hz, I/O & registers          ║
+║                                                                                ║
+║  📂  7. SFTP                 (3 examples)                                      ║
+║         SFTP - file transfer, list/download/upload programs                    ║
 ║                                                                                ║
 ╠════════════════════════════════════════════════════════════════════════════════╣
 ║  0. Exit                                                                       ║
+║                                                                                ║
 ╚════════════════════════════════════════════════════════════════════════════════╝
 ```
 
