@@ -10,22 +10,6 @@ class IRtdeRegistersValue:
 		else:
 			self._instance = _internal
 
-	def get_value(self, index: int) -> typing.Any:
-		'''Gets the value at the specified register index.
-
-		:param index: The absolute register index.
-		:returns: The value stored at the given index.
-		'''
-		return self._instance.GetValue(index)
-
-	def set_value(self, index: int, value: typing.Any) -> None:
-		'''Sets the value at the specified register index.
-
-		:param index: The absolute register index.
-		:param value: The value to store.
-		'''
-		self._instance.SetValue(index, value)
-
 	@property
 	def lower_range_index(self) -> int:
 		'''Gets the lower-bound register index for this register range.'''

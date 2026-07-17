@@ -12,15 +12,6 @@ class RtdeBaseValues1(RtdeBaseValues, typing.Generic[T]):
 		else:
 			self._instance = _internal
 
-	def get_value(self, data: T, index: int) -> typing.Any:
-		'''Gets the current value of the specified RTDE variable at a given register index.
-
-		:param data: The RTDE variable identifier.
-		:param index: The absolute register index.
-		:returns: The current value at the given index.
-		'''
-		return self._instance.GetValue(data, index)
-
 	def __str__(self):
 		return self._instance.ToString() if self._instance is not None else ""
 

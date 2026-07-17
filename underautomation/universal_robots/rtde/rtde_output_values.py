@@ -22,14 +22,6 @@ class RtdeOutputValues(RtdeBaseValues1[RtdeOutputData]):
 		else:
 			self._instance = _internal
 
-	def get_value(self, item: RtdeOutputSetupItem) -> typing.Any:
-		'''Gets the current value for the output variable described by a setup item.
-
-		:param item: The output setup item identifying the variable and register index.
-		:returns: The current value.
-		'''
-		return self._instance.GetValue(item._instance if item else None)
-
 	@property
 	def timestamp(self) -> float:
 		'''Time elapsed since the controller was started [s]'''

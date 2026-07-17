@@ -11,12 +11,6 @@ class KinematicsResult:
 		else:
 			self._instance = _internal
 
-	def equals(self, obj: typing.Any) -> bool:
-		return self._instance.Equals(obj)
-
-	def get_hash_code(self) -> int:
-		return self._instance.GetHashCode()
-
 	@property
 	def tool_transform(self) -> typing.List[float]:
 		'''4x4 transformation matrix of the tool'''

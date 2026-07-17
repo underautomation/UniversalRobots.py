@@ -40,15 +40,6 @@ class ShellStream:
 		'''
 		return self._instance.Read(buffer, offset, count)
 
-	def seek(self, offset: int, origin: typing.Any) -> int:
-		'''This method is not supported.
-
-		:param offset: A byte offset relative to the origin parameter.
-		:param origin: A value of type SeekOrigin indicating the reference point used to obtain the new position.
-		:returns: The new position within the current stream.
-		'''
-		return self._instance.Seek(offset, seek_origin(int(origin)))
-
 	def set_length(self, value: int) -> None:
 		'''This method is not supported.
 
@@ -64,41 +55,6 @@ class ShellStream:
 		:param count: The number of bytes to be written to the current stream.
 		'''
 		self._instance.Write(buffer, offset, count)
-
-	def expect(self, regex: typing.Any, timeout: typing.Any) -> str:
-		'''Expects the expression specified by regular expression.
-
-		:param regex: The regular expression to expect.
-		:param timeout: Time to wait for input.
-		:returns: The text available in the shell that contains all the text that ends with expected expression, or null if the specified time has elapsed.
-		'''
-		return self._instance.Expect(regex, timeout)
-
-	def begin_expect(self, timeout: typing.Any, callback: typing.Any, state: typing.Any, expectActions: typing.List[ExpectAction]) -> typing.Any:
-		'''Begins the expect.
-
-		:param timeout: The timeout.
-		:param callback: The callback.
-		:param state: The state.
-		:param expectActions: The expect actions.
-		:returns: An IAsyncResult that references the asynchronous operation.
-		'''
-		return self._instance.BeginExpect(timeout, callback, state, [x._instance if x else None for x in expectActions])
-
-	def end_expect(self, asyncResult: typing.Any) -> str:
-		'''Ends the execute.
-
-		:param asyncResult: The async result.
-		'''
-		return self._instance.EndExpect(asyncResult)
-
-	def read_line(self, timeout: typing.Any) -> str:
-		'''Reads a line from the shell. If line is not available it will block the execution and will wait for new line.
-
-		:param timeout: Time to wait for input.
-		:returns: The line read from the shell, or null when no input is received for the specified timeout.
-		'''
-		return self._instance.ReadLine(timeout)
 
 	def write_line(self, line: str) -> None:
 		'''Writes the line to the shell.

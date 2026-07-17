@@ -12,14 +12,6 @@ class ProgramState:
 		else:
 			self._instance = _internal
 
-	def equals(self, obj: typing.Any) -> bool:
-		'''Determines whether the specified object is equal to this program state.'''
-		return self._instance.Equals(obj)
-
-	def get_hash_code(self) -> int:
-		'''Returns a hash code for this program state.'''
-		return self._instance.GetHashCode()
-
 	@property
 	def state(self) -> ProgramStates:
 		'''Running state of the loaded program'''

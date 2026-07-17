@@ -20,15 +20,6 @@ class SshClientBase(URServiceBase):
 		'''Disconnects this client from the SSH server'''
 		self._instance.Disconnect()
 
-	def create_command(self, commandText: str, encoding: typing.Any) -> SshCommand:
-		'''Creates the command to be executed with specified encoding.
-
-		:param commandText: The command text.
-		:param encoding: The encoding to use for results.
-		:returns: SshCommand object which uses specified encoding.
-		'''
-		return SshCommand(self._instance.CreateCommand(commandText, encoding))
-
 	def run_command(self, commandText: str) -> SshCommand:
 		'''Creates and executes the command.
 
@@ -36,12 +27,6 @@ class SshClientBase(URServiceBase):
 		:returns: Returns an instance of SshCommand with execution results.
 		'''
 		return SshCommand(self._instance.RunCommand(commandText))
-
-	def create_shell(self, encoding: typing.Any, input: str, output: typing.Any, extendedOutput: typing.Any, terminalName: str, columns: int, rows: int, width: int, height: int, terminalModes: typing.Any, bufferSize: int) -> Shell:
-		return Shell(self._instance.CreateShell(encoding, input, output, extendedOutput, terminalName, columns, rows, width, height, terminalModes, bufferSize))
-
-	def create_shell_stream(self, terminalName: str, columns: int, rows: int, width: int, height: int, bufferSize: int, terminalModeValues: typing.Any) -> ShellStream:
-		return ShellStream(self._instance.CreateShellStream(terminalName, columns, rows, width, height, bufferSize, terminalModeValues))
 
 	@property
 	def connected(self) -> bool:

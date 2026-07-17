@@ -19,23 +19,6 @@ class RtdeInputValues(RtdeBaseValues1[RtdeInputData]):
 		else:
 			self._instance = _internal
 
-	def set_value(self, data: RtdeInputData, index: int, value: typing.Any) -> None:
-		'''Sets the value for the specified RTDE input variable at a given register index.
-
-		:param data: The input variable identifier.
-		:param index: The absolute register index.
-		:param value: The value to assign.
-		'''
-		self._instance.SetValue(rtde_input_data(int(data)), index, value)
-
-	def get_value(self, item: RtdeInputSetupItem) -> typing.Any:
-		'''Gets the current value for the input variable described by a setup item.
-
-		:param item: The input setup item identifying the variable and register index.
-		:returns: The current value.
-		'''
-		return self._instance.GetValue(item._instance if item else None)
-
 	def reset(self) -> None:
 		'''Resets all input values to their defaults.'''
 		self._instance.Reset()

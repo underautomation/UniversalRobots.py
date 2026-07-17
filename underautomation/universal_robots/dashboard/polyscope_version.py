@@ -10,14 +10,6 @@ class PolyscopeVersion:
 		else:
 			self._instance = _internal
 
-	def equals(self, obj: typing.Any) -> bool:
-		'''Determines whether the specified object is equal to this Polyscope version.'''
-		return self._instance.Equals(obj)
-
-	def get_hash_code(self) -> int:
-		'''Returns a hash code for this Polyscope version.'''
-		return self._instance.GetHashCode()
-
 	@property
 	def date(self) -> str:
 		'''Release date (example : "Nov 2020")'''

@@ -20,14 +20,6 @@ class URInstallation(URArchive):
 		'''Load a *.installation file from path'''
 		return URInstallation(None, ur_installation.Load(urpFile))
 
-	def equals(self, obj: typing.Any) -> bool:
-		'''Determines whether the specified object is equal to this installation.'''
-		return self._instance.Equals(obj)
-
-	def get_hash_code(self) -> int:
-		'''Returns a hash code for this installation.'''
-		return self._instance.GetHashCode()
-
 	def __str__(self):
 		return self._instance.ToString() if self._instance is not None else ""
 

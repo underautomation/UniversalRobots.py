@@ -18,11 +18,6 @@ class URArchive:
 		'''
 		return self._instance.Save(directory)
 
-	@staticmethod
-	def load(fileStream: typing.Any) -> typing.Any:
-		'''Load a UR archive from stream and decode it as XML'''
-		return ur_archive.Load(fileStream)
-
 	@property
 	def xml(self) -> typing.Any:
 		'''XML description of the object'''

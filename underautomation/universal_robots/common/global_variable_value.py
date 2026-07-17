@@ -33,21 +33,6 @@ class GlobalVariableValue:
 		'''Returns variable value if type is Float. Il type is int, it casts it to float. If Type is bool, it returns 1 or 0. Else it returns NaN'''
 		return self._instance.ToFloat()
 
-	def to_matrix(self) -> typing.Any:
-		'''Return variable value GlobalVariable[,] if variable is a matrix. First dimension is row index and second dimension is column index. Use GetLength(0) to get row number and GetLength(1) to get column count'''
-		return self._instance.ToMatrix()
-
-	def equals(self, obj: typing.Any) -> bool:
-		'''Determines whether the specified object is a GlobalVariableValue with the same type and value.
-
-		:param obj: The object to compare with.
-		'''
-		return self._instance.Equals(obj)
-
-	def get_hash_code(self) -> int:
-		'''Returns a hash code based on the variable type and value.'''
-		return self._instance.GetHashCode()
-
 	@staticmethod
 	def parse(message: str) -> 'GlobalVariableValue':
 		'''Estimate variable value from its string representation'''

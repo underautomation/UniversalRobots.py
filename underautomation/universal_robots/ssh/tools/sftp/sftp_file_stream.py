@@ -32,15 +32,6 @@ class SftpFileStream:
 		'''
 		return self._instance.ReadByte()
 
-	def seek(self, offset: int, origin: typing.Any) -> int:
-		'''Sets the position within the current stream.
-
-		:param offset: A byte offset relative to the origin parameter.
-		:param origin: A value of type SeekOrigin indicating the reference point used to obtain the new position.
-		:returns: The new position within the current stream.
-		'''
-		return self._instance.Seek(offset, seek_origin(int(origin)))
-
 	def set_length(self, value: int) -> None:
 		'''Sets the length of the current stream.
 

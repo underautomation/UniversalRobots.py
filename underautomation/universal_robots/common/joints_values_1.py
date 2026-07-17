@@ -11,21 +11,6 @@ class JointsValues1(typing.Generic[T]):
 		else:
 			self._instance = _internal
 
-	def equals(self, obj: typing.Any) -> bool:
-		'''Determines whether the specified object is equal to the current joint values.
-
-		:param obj: The object to compare with.
-		:returns: true if all joint values are equal; otherwise, false.
-		'''
-		return self._instance.Equals(obj)
-
-	def get_hash_code(self) -> int:
-		'''Returns a hash code for this joint values instance.
-
-		:returns: A hash code based on all six joint values.
-		'''
-		return self._instance.GetHashCode()
-
 	@property
 	def base(self) -> T:
 		'''Joint 1 out of 6'''

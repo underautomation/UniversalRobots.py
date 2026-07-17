@@ -10,14 +10,6 @@ class CommandResponse:
 		else:
 			self._instance = _internal
 
-	def equals(self, obj: typing.Any) -> bool:
-		'''Determines whether the specified object is equal to this response.'''
-		return self._instance.Equals(obj)
-
-	def get_hash_code(self) -> int:
-		'''Returns a hash code for this response.'''
-		return self._instance.GetHashCode()
-
 	@property
 	def succeed(self) -> bool:
 		'''The command as succeeded'''

@@ -15,18 +15,6 @@ class XmlRpcPoseValue(XmlRpcStructValue):
 		else:
 			self._instance = _internal
 
-	def equals(self, obj: typing.Any) -> bool:
-		'''Determines whether the specified object is equal to this instance.
-
-		:param obj: The object to compare with.
-		:returns: true if the specified object is an XmlRpcPoseValue with the same pose; otherwise, false.
-		'''
-		return self._instance.Equals(obj)
-
-	def get_hash_code(self) -> int:
-		'''Returns a hash code for this instance.'''
-		return self._instance.GetHashCode()
-
 	@property
 	def value(self) -> Pose:
 		'''Pose Value'''

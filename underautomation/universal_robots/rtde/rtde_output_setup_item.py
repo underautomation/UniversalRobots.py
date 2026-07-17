@@ -19,12 +19,6 @@ class RtdeOutputSetupItem(RtdeSetupItem1[RtdeOutputData]):
 		else:
 			self._instance = _internal
 
-	def equals(self, obj: typing.Any) -> bool:
-		return self._instance.Equals(obj)
-
-	def get_hash_code(self) -> int:
-		return self._instance.GetHashCode()
-
 	@property
 	def description(self) -> RtdeDataDescription1[RtdeOutputData]:
 		'''Gets the description metadata for this output variable.'''

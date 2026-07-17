@@ -11,14 +11,6 @@ class GlobalVariable(GlobalVariableValue):
 		else:
 			self._instance = _internal
 
-	def equals(self, obj: typing.Any) -> bool:
-		'''Determines whether the specified object is a GlobalVariable with the same name, type, and value.'''
-		return self._instance.Equals(obj)
-
-	def get_hash_code(self) -> int:
-		'''Returns a hash code based on the variable name, type, and value.'''
-		return self._instance.GetHashCode()
-
 	@property
 	def name(self) -> str:
 		'''Variable name'''

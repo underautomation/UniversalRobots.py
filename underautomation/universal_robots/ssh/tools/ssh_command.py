@@ -10,24 +10,6 @@ class SshCommand:
 		else:
 			self._instance = _internal
 
-	def begin_execute(self, commandText: str, callback: typing.Any, state: typing.Any) -> typing.Any:
-		'''Begins an asynchronous command execution.
-
-		:param commandText: The command text.
-		:param callback: An optional asynchronous callback, to be called when the command execution is complete.
-		:param state: A user-provided object that distinguishes this particular asynchronous read request from other requests.
-		:returns: An IAsyncResult that represents the asynchronous command execution, which could still be pending.
-		'''
-		return self._instance.BeginExecute(commandText, callback, state)
-
-	def end_execute(self, asyncResult: typing.Any) -> str:
-		'''Waits for the pending asynchronous command execution to complete.
-
-		:param asyncResult: The reference to the pending asynchronous request to finish.
-		:returns: Command execution result.
-		'''
-		return self._instance.EndExecute(asyncResult)
-
 	def execute(self, commandText: str) -> str:
 		'''Executes the specified command text.
 

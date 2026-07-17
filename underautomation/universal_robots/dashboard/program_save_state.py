@@ -10,14 +10,6 @@ class ProgramSaveState:
 		else:
 			self._instance = _internal
 
-	def equals(self, obj: typing.Any) -> bool:
-		'''Determines whether the specified object is equal to this program save state.'''
-		return self._instance.Equals(obj)
-
-	def get_hash_code(self) -> int:
-		'''Returns a hash code for this program save state.'''
-		return self._instance.GetHashCode()
-
 	@property
 	def is_saved(self) -> bool:
 		'''Is the program saved'''

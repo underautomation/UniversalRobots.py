@@ -23,12 +23,16 @@ class UR(URServiceBase):
 		else:
 			self._instance = _internal
 
-	def connect(self, parameters: ConnectParameters) -> None:
+	def connect(self, ip_or_parameters: str | ConnectParameters) -> None:
+		'''Connects to a robot with default parameters
+
+		:param ip: Robot IP address
+		'''
 		'''Connects to a robot with specific parameters
 
 		:param parameters: Connection parameters
 		'''
-		self._instance.Connect(parameters._instance if parameters else None)
+		self._instance.Connect(getattr(ip_or_parameters, '_instance', ip_or_parameters))
 
 	def disconnect(self) -> None:
 		'''Disconnects all clients and disable all services'''

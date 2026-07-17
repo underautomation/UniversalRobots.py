@@ -13,12 +13,6 @@ class RestApiResponse1(RestApiResponse, typing.Generic[T]):
 		else:
 			self._instance = _internal
 
-	def equals(self, obj: typing.Any) -> bool:
-		return self._instance.Equals(obj)
-
-	def get_hash_code(self) -> int:
-		return self._instance.GetHashCode()
-
 	@property
 	def value(self) -> T:
 		'''Typed value from the response'''

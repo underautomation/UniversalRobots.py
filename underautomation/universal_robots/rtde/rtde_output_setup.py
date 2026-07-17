@@ -15,22 +15,14 @@ class RtdeOutputSetup(RtdeSetup2[RtdeOutputSetupItem, RtdeOutputData]):
 		else:
 			self._instance = _internal
 
-	def add(self, data: RtdeOutputData) -> RtdeOutputSetupItem:
-		'''Adds a variable to the recipe with register index 0.
-
-		:param data: The RTDE variable to add.
-		:returns: The created setup item.
-		'''
-		return RtdeOutputSetupItem(None, None, self._instance.Add(rtde_output_data(data)))
-
-	def add(self, data: RtdeOutputData, index: int) -> RtdeOutputSetupItem:
+	def add(self, data: RtdeOutputData, index: int=0) -> RtdeOutputSetupItem:
 		'''Adds a variable to the recipe with the specified register index.
 
 		:param data: The RTDE variable to add.
 		:param index: Register index for array/register variables.
 		:returns: The created setup item.
 		'''
-		return RtdeOutputSetupItem(None, None, self._instance.Add(rtde_output_data(data), index))
+		return RtdeOutputSetupItem(None, None, self._instance.Add(rtde_output_data(int(data)), index))
 
 	def __str__(self):
 		return self._instance.ToString() if self._instance is not None else ""

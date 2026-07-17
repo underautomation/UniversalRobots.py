@@ -11,21 +11,6 @@ class CartesianCoordinates:
 		else:
 			self._instance = _internal
 
-	def equals(self, obj: typing.Any) -> bool:
-		'''Determines whether the specified object is equal to the current cartesian coordinates.
-
-		:param obj: The object to compare with.
-		:returns: true if coordinates are equal; otherwise, false.
-		'''
-		return self._instance.Equals(obj)
-
-	def get_hash_code(self) -> int:
-		'''Returns a hash code for this cartesian coordinates instance.
-
-		:returns: A hash code based on all six coordinate values.
-		'''
-		return self._instance.GetHashCode()
-
 	@property
 	def x(self) -> float:
 		'''X coordinate in meters or m/s'''
