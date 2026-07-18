@@ -25,12 +25,9 @@ class UR(URServiceBase):
 
 	def connect(self, ip_or_parameters: str | ConnectParameters) -> None:
 		'''Connects to a robot with default parameters
+		Connects to a robot with specific parameters
 
-		:param ip: Robot IP address
-		'''
-		'''Connects to a robot with specific parameters
-
-		:param parameters: Connection parameters
+		:param ip_or_parameters: Robot IP address — or — Connection parameters
 		'''
 		self._instance.Connect(getattr(ip_or_parameters, '_instance', ip_or_parameters))
 
