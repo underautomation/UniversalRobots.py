@@ -20,6 +20,14 @@ class SshClientBase(URServiceBase):
 		'''Disconnects this client from the SSH server'''
 		self._instance.Disconnect()
 
+	def create_command(self, commandText: str) -> SshCommand:
+		'''Creates the command to be executed.
+
+		:param commandText: The command text.
+		:returns: SshCommand object.
+		'''
+		return SshCommand(self._instance.CreateCommand(commandText))
+
 	def run_command(self, commandText: str) -> SshCommand:
 		'''Creates and executes the command.
 
@@ -27,6 +35,19 @@ class SshClientBase(URServiceBase):
 		:returns: Returns an instance of SshCommand with execution results.
 		'''
 		return SshCommand(self._instance.RunCommand(commandText))
+
+	def create_shell_stream(self, terminalName: str, columns: int, rows: int, width: int, height: int, bufferSize: int) -> ShellStream:
+		'''Creates the shell stream.
+
+		:param terminalName: The TERM environment variable.
+		:param columns: The terminal width in columns.
+		:param rows: The terminal width in rows.
+		:param width: The terminal height in pixels.
+		:param height: The terminal height in pixels.
+		:param bufferSize: The size of the buffer.
+		:returns: The created ShellStream instance.
+		'''
+		return ShellStream(self._instance.CreateShellStream(terminalName, columns, rows, width, height, bufferSize))
 
 	@property
 	def connected(self) -> bool:

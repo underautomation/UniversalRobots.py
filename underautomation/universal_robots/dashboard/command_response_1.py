@@ -7,7 +7,7 @@ T = typing.TypeVar('T')
 class CommandResponse1(CommandResponse, typing.Generic[T]):
 	'''Answer returned by a command which contains a typed value.'''
 	def __init__(self, command: CommandResponse, _internal = 0):
-		'''Initializes a new instance of CommandResponse`1 by copying the base response data.
+		'''Initializes a new instance of CommandResponse by copying the base response data.
 
 		:param command: The base command response to copy from.
 		'''

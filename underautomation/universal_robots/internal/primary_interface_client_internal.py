@@ -13,12 +13,30 @@ class PrimaryInterfaceClientInternal(PrimaryInterfaceClientBase):
 		else:
 			self._instance = _internal
 
-	def connect(self, port: Interfaces) -> None:
-		'''Connect to a specific interface
+	@typing.overload
+	def connect(self, port: Interfaces) -> None: ...
 
-		:param port: Interface to connect to
+	@typing.overload
+	def connect(self) -> None: ...
+
+	def connect(self, *args, **kwargs) -> None:
+		'''Connect to a specific interface
+		Connect to primary interface
+
+		Arguments: (port)
+		Arguments: ()
+		:param port: Interface to connect to.
 		'''
-		self._instance.Connect(interfaces(int(port)))
+		__a = _bind_overload(args, kwargs, ['port'], {})
+		if __a is not None:
+			port, = __a
+			self._instance.Connect(interfaces(int(port)))
+			return
+		__a = _bind_overload(args, kwargs, [], {})
+		if __a is not None:
+			self._instance.Connect()
+			return
+		raise TypeError("connect(): no overload takes these arguments")
 
 	def __str__(self):
 		return self._instance.ToString() if self._instance is not None else ""
@@ -33,3 +51,16 @@ class PrimaryInterfaceClientInternal(PrimaryInterfaceClientBase):
 
 	def __hash__(self) -> int:
 		return self._instance.GetHashCode() if self._instance is not None else 0
+
+def _bind_overload(args, kwargs, names, defaults):
+	if len(args) > len(names) or any(k not in names[len(args):] for k in kwargs):
+		return None
+	values = list(args)
+	for name in names[len(args):]:
+		if name in kwargs:
+			values.append(kwargs[name])
+		elif name in defaults:
+			values.append(defaults[name])
+		else:
+			return None
+	return values

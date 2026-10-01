@@ -9,6 +9,7 @@ from underautomation.universal_robots.internal.ur_service_base import URServiceB
 from UnderAutomation.UniversalRobots.Ssh.Internal import SftpClientBase as sftp_client_base
 from System.IO import FileMode as file_mode
 from System.IO import FileAccess as file_access
+import System
 
 class SftpClientBase(URServiceBase):
 	'''Implementation of the SSH File Transfer Protocol (SFTP) over SSH for transfering files to the robot controller'''
@@ -58,14 +59,32 @@ class SftpClientBase(URServiceBase):
 		'''
 		self._instance.DeleteFile(path)
 
-	def rename_file(self, oldPath: str, newPath: str, isPosix: bool) -> None:
+	@typing.overload
+	def rename_file(self, oldPath: str, newPath: str, isPosix: bool) -> None: ...
+
+	@typing.overload
+	def rename_file(self, oldPath: str, newPath: str) -> None: ...
+
+	def rename_file(self, *args, **kwargs) -> None:
 		'''Renames remote file from old path to new path.
 
+		Arguments: (oldPath, newPath, isPosix)
+		Arguments: (oldPath, newPath)
 		:param oldPath: Path to the old file location.
 		:param newPath: Path to the new file location.
 		:param isPosix: if set to true then perform a posix rename.
 		'''
-		self._instance.RenameFile(oldPath, newPath, isPosix)
+		__a = _bind_overload(args, kwargs, ['oldPath', 'newPath', 'isPosix'], {})
+		if __a is not None:
+			oldPath, newPath, isPosix = __a
+			self._instance.RenameFile(oldPath, newPath, isPosix)
+			return
+		__a = _bind_overload(args, kwargs, ['oldPath', 'newPath'], {})
+		if __a is not None:
+			oldPath, newPath = __a
+			self._instance.RenameFile(oldPath, newPath)
+			return
+		raise TypeError("rename_file(): no overload takes these arguments")
 
 	def symbolic_link(self, path: str, linkPath: str) -> None:
 		'''Creates a symbolic link from old path to new path.
@@ -74,6 +93,9 @@ class SftpClientBase(URServiceBase):
 		:param linkPath: The new path.
 		'''
 		self._instance.SymbolicLink(path, linkPath)
+
+	def list_directory(self, path: str, listCallback: typing.Callable[[int], None]=None) -> typing.List[SftpFile]:
+		return [SftpFile(x) for x in self._instance.ListDirectory(path, (listCallback._instance if hasattr(listCallback, '_instance') else System.Action[System.Int32](lambda _x0: listCallback(_x0))) if listCallback else None)]
 
 	def enumerate_programs(self) -> typing.List[str]:
 		'''Enumerates programs with .urp extension. It searches recursively programs in "/programs" if it exists, or "/home/ur/ursim-current/programs" for simulator
@@ -105,6 +127,12 @@ class SftpClientBase(URServiceBase):
 		'''
 		return self._instance.Exists(path)
 
+	def download_file(self, path: str, localPath: str, downloadCallback: typing.Callable[[int], None]=None) -> None:
+		self._instance.DownloadFile(path, localPath, (downloadCallback._instance if hasattr(downloadCallback, '_instance') else System.Action[System.UInt64](lambda _x0: downloadCallback(_x0))) if downloadCallback else None)
+
+	def upload_file(self, localPath: str, path: str, uploadCallback: typing.Callable[[int], None]=None) -> None:
+		self._instance.UploadFile(localPath, path, (uploadCallback._instance if hasattr(uploadCallback, '_instance') else System.Action[System.UInt64](lambda _x0: uploadCallback(_x0))) if uploadCallback else None)
+
 	def get_status(self, path: str) -> SftpFileSytemInformation:
 		'''Gets status using statvfs@openssh.com request.
 
@@ -113,14 +141,47 @@ class SftpClientBase(URServiceBase):
 		'''
 		return SftpFileSytemInformation(self._instance.GetStatus(path))
 
-	def create(self, path: str, bufferSize: int) -> SftpFileStream:
-		'''Creates or overwrites the specified file.
+	def append_all_lines(self, path: str, contents: typing.List[str]) -> None:
+		'''Appends lines to a file, creating the file if it does not already exist.
 
+		:param path: The file to append the lines to. The file is created if it does not already exist.
+		:param contents: The lines to append to the file.
+		'''
+		self._instance.AppendAllLines(path, contents)
+
+	def append_all_text(self, path: str, contents: str) -> None:
+		'''Appends the specified string to the file, creating the file if it does not already exist.
+
+		:param path: The file to append the specified string to.
+		:param contents: The string to append to the file.
+		'''
+		self._instance.AppendAllText(path, contents)
+
+	@typing.overload
+	def create(self, path: str, bufferSize: int) -> SftpFileStream: ...
+
+	@typing.overload
+	def create(self, path: str) -> SftpFileStream: ...
+
+	def create(self, *args, **kwargs) -> SftpFileStream:
+		'''Creates or overwrites the specified file.
+		Creates or overwrites a file in the specified path.
+
+		Arguments: (path, bufferSize)
+		Arguments: (path)
 		:param path: The path and name of the file to create.
 		:param bufferSize: The maximum number of bytes buffered for reads and writes to the file.
 		:returns: A SftpFileStream that provides read/write access to the file specified in path.
 		'''
-		return SftpFileStream(self._instance.Create(path, bufferSize))
+		__a = _bind_overload(args, kwargs, ['path', 'bufferSize'], {})
+		if __a is not None:
+			path, bufferSize = __a
+			return SftpFileStream(self._instance.Create(path, bufferSize))
+		__a = _bind_overload(args, kwargs, ['path'], {})
+		if __a is not None:
+			path, = __a
+			return SftpFileStream(self._instance.Create(path))
+		raise TypeError("create(): no overload takes these arguments")
 
 	def delete(self, path: str) -> None:
 		'''Deletes the specified file or directory.
@@ -185,6 +246,30 @@ class SftpClientBase(URServiceBase):
 		'''
 		return self._instance.ReadAllBytes(path)
 
+	def read_all_lines(self, path: str) -> typing.List[str]:
+		'''Opens a text file, reads all lines of the file using UTF-8 encoding, and closes the file.
+
+		:param path: The file to open for reading.
+		:returns: A string array containing all lines of the file.
+		'''
+		return self._instance.ReadAllLines(path)
+
+	def read_all_text(self, path: str) -> str:
+		'''Opens a text file, reads all lines of the file with the UTF-8 encoding, and closes the file.
+
+		:param path: The file to open for reading.
+		:returns: A string containing all lines of the file.
+		'''
+		return self._instance.ReadAllText(path)
+
+	def read_lines(self, path: str) -> typing.List[str]:
+		'''Reads the lines of a file with the UTF-8 encoding.
+
+		:param path: The file to read.
+		:returns: The lines of the file.
+		'''
+		return self._instance.ReadLines(path)
+
 	def write_all_bytes(self, path: str, bytes: typing.List[int]) -> None:
 		'''Writes the specified byte array to the specified file, and closes the file.
 
@@ -200,6 +285,14 @@ class SftpClientBase(URServiceBase):
 		:param contents: The lines to write to the file.
 		'''
 		self._instance.WriteAllLines(path, contents)
+
+	def write_all_text(self, path: str, contents: str) -> None:
+		'''Writes the specified string to the file using the UTF-8 encoding, and closes the file.
+
+		:param path: The file to write to.
+		:param contents: The string to write to the file.
+		'''
+		self._instance.WriteAllText(path, contents)
 
 	def get_attributes(self, path: str) -> SftpFileAttributes:
 		'''Gets the SftpFileAttributes of the file on the path.
@@ -263,3 +356,16 @@ class SftpClientBase(URServiceBase):
 
 	def __hash__(self) -> int:
 		return self._instance.GetHashCode() if self._instance is not None else 0
+
+def _bind_overload(args, kwargs, names, defaults):
+	if len(args) > len(names) or any(k not in names[len(args):] for k in kwargs):
+		return None
+	values = list(args)
+	for name in names[len(args):]:
+		if name in kwargs:
+			values.append(kwargs[name])
+		elif name in defaults:
+			values.append(defaults[name])
+		else:
+			return None
+	return values

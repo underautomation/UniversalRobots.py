@@ -49,6 +49,10 @@ class Shell:
 		'''Stops this shell.'''
 		self._instance.Stop()
 
+	def dispose(self) -> None:
+		'''Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.'''
+		self._instance.Dispose()
+
 	@property
 	def is_started(self) -> bool:
 		'''Gets a value indicating whether this shell is started.'''

@@ -200,7 +200,7 @@ class DashboardClientBase(URServiceBase):
 
 	@property
 	def before_shutdown(self) -> typing.Any:
-		'''Event raised when function Shutdown is called.'''
+		'''Event raised when function shutdown() is called.'''
 		return self._instance.BeforeShutdown
 
 	@before_shutdown.setter

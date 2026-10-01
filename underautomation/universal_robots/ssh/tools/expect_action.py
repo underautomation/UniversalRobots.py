@@ -1,12 +1,13 @@
 from __future__ import annotations
 import typing
 from UnderAutomation.UniversalRobots.Ssh.Tools import ExpectAction as expect_action
+import System
 
 class ExpectAction:
 	'''Specifies behavior for expected expression'''
-	def __init__(self, expect: typing.Any, action: typing.Any, _internal = 0):
+	def __init__(self, expect: typing.Any, action: typing.Callable[[str], None], _internal = 0):
 		if(_internal == 0):
-			self._instance = expect_action(expect, action)
+			self._instance = expect_action(expect, (action._instance if hasattr(action, '_instance') else System.Action[System.String](lambda _x0: action(_x0))) if action else None)
 		else:
 			self._instance = _internal
 
@@ -16,7 +17,7 @@ class ExpectAction:
 		return self._instance.Expect
 
 	@property
-	def action(self) -> typing.Any:
+	def action(self) -> typing.Callable[[str], None]:
 		'''Gets the action to perform when expected expression is found.'''
 		return self._instance.Action
 

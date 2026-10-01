@@ -12,14 +12,31 @@ class RtdeSetup2(typing.Generic[T, U]):
 		else:
 			self._instance = _internal
 
-	def add(self, data: U, index: int=0) -> T:
-		'''Adds a variable to the recipe with the specified register index.
+	@typing.overload
+	def add(self, data: U, index: int=0) -> T: ...
 
+	@typing.overload
+	def add(self, data: U) -> T: ...
+
+	def add(self, *args, **kwargs) -> T:
+		'''Adds a variable to the recipe with the specified register index.
+		Adds a variable to the recipe with register index 0.
+
+		Arguments: (data, index)
+		Arguments: (data)
 		:param data: The RTDE variable to add.
 		:param index: Register index for array/register variables.
 		:returns: The created setup item.
 		'''
-		return self._instance.Add(data, index)
+		__a = _bind_overload(args, kwargs, ['data', 'index'], {'index': 0})
+		if __a is not None:
+			data, index = __a
+			return self._instance.Add(data, index)
+		__a = _bind_overload(args, kwargs, ['data'], {})
+		if __a is not None:
+			data, = __a
+			return self._instance.Add(data)
+		raise TypeError("add(): no overload takes these arguments")
 
 	def remove(self, data: U, index: int=-1) -> int:
 		'''Removes all items matching the specified variable and optionally a specific register index.
@@ -30,17 +47,34 @@ class RtdeSetup2(typing.Generic[T, U]):
 		'''
 		return self._instance.Remove(data, index)
 
-	def contains(self, data: U, index: int=0) -> bool:
-		'''Determines whether the recipe contains the specified variable at the given register index.
+	@typing.overload
+	def contains(self, data: U, index: int=0) -> bool: ...
 
+	@typing.overload
+	def contains(self, data: U) -> bool: ...
+
+	def contains(self, *args, **kwargs) -> bool:
+		'''Determines whether the recipe contains the specified variable at the given register index.
+		Determines whether the recipe contains the specified variable at any register index.
+
+		Arguments: (data, index)
+		Arguments: (data)
 		:param data: The RTDE variable to look for.
 		:param index: Register index to match.
 		:returns: true if found; otherwise false.
 		'''
-		return self._instance.Contains(data, index)
+		__a = _bind_overload(args, kwargs, ['data', 'index'], {'index': 0})
+		if __a is not None:
+			data, index = __a
+			return self._instance.Contains(data, index)
+		__a = _bind_overload(args, kwargs, ['data'], {})
+		if __a is not None:
+			data, = __a
+			return self._instance.Contains(data)
+		raise TypeError("contains(): no overload takes these arguments")
 
 	def to_distinct_list(self) -> typing.List[T]:
-		'''Returns a deduplicated array of setup items, removing duplicates by Data and Index.
+		'''Returns a deduplicated array of setup items, removing duplicates by data and index.
 
 		:returns: An array of distinct setup items.
 		'''
@@ -67,3 +101,16 @@ class RtdeSetup2(typing.Generic[T, U]):
 
 	def __len__(self) -> int:
 		return self._instance.Count
+
+def _bind_overload(args, kwargs, names, defaults):
+	if len(args) > len(names) or any(k not in names[len(args):] for k in kwargs):
+		return None
+	values = list(args)
+	for name in names[len(args):]:
+		if name in kwargs:
+			values.append(kwargs[name])
+		elif name in defaults:
+			values.append(defaults[name])
+		else:
+			return None
+	return values

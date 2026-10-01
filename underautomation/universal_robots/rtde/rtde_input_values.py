@@ -11,7 +11,7 @@ from UnderAutomation.UniversalRobots.Rtde import RtdeInputValues as rtde_input_v
 from UnderAutomation.UniversalRobots.Rtde import RtdeInputData as rtde_input_data
 
 class RtdeInputValues(RtdeBaseValues1[RtdeInputData]):
-	'''Holds the current values for all RTDE input variables (client-to-robot). Use this to prepare data before calling RtdeInputValues).'''
+	'''Holds the current values for all RTDE input variables (client-to-robot). Use this to prepare data before calling write_inputs().'''
 	def __init__(self, _internal = 0):
 		'''Initializes a new instance with default values for all input variables.'''
 		if(_internal == 0):

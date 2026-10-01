@@ -6,7 +6,7 @@ from UnderAutomation.UniversalRobots.XmlRpc import XmlRpcValue as xml_rpc_value
 from UnderAutomation.UniversalRobots.XmlRpc import XmlRpcType as xml_rpc_type
 
 class XmlRpcValue:
-	'''Base class of all elements transmitted by XML-RPC. The Type property indicates the type into which this object can be cast to obtain the value.'''
+	'''Base class of all elements transmitted by XML-RPC. The type property indicates the type into which this object can be cast to obtain the value.'''
 	def __init__(self, _internal = 0):
 		if(_internal == 0):
 			self._instance = xml_rpc_value()

@@ -14,6 +14,21 @@ from underautomation.universal_robots.license.license_info import LicenseInfo
 from underautomation.universal_robots.internal.ur_service_base import URServiceBase
 from UnderAutomation.UniversalRobots import UR as ur
 
+class _StaticProperty:
+	'''Property of the class, readable from the class or from an instance'''
+	def __init__(self, fget, fset=None):
+		self._fget = fget
+		self._fset = fset
+		self.__doc__ = fget.__doc__
+
+	def __get__(self, obj, owner=None):
+		return self._fget()
+
+	def __set__(self, obj, value):
+		if self._fset is None:
+			raise AttributeError("read-only property")
+		self._fset(value)
+
 class UR(URServiceBase):
 	'''Main entry point for connecting to and interacting with a Universal Robots controller. Provides access to all communication interfaces: Primary Interface, Dashboard, RTDE, SSH, SFTP, XML-RPC, Socket Communication, Interpreter Mode, and REST API.'''
 	def __init__(self, _internal = 0):
@@ -27,7 +42,7 @@ class UR(URServiceBase):
 		'''Connects to a robot with default parameters
 		Connects to a robot with specific parameters
 
-		:param ip_or_parameters: Robot IP address — or — Connection parameters
+		:param ip_or_parameters: Robot IP address. Or: Connection parameters.
 		'''
 		self._instance.Connect(getattr(ip_or_parameters, '_instance', ip_or_parameters))
 
@@ -100,10 +115,13 @@ class UR(URServiceBase):
 		'''Indicates that at least one of the implemented services is enabled'''
 		return self._instance.Enabled
 
-	@property
-	def license_info(self) -> LicenseInfo:
+	@staticmethod
+	def _get_license_info() -> LicenseInfo:
 		'''Return information about your license'''
-		return LicenseInfo(None, None, self._instance.LicenseInfo)
+		return LicenseInfo(None, None, ur.LicenseInfo)
+
+	license_info = _StaticProperty(_get_license_info)
+	del _get_license_info
 
 	def __str__(self):
 		return self._instance.ToString() if self._instance is not None else ""

@@ -10,17 +10,37 @@ class SshCommand:
 		else:
 			self._instance = _internal
 
-	def execute(self, commandText: str) -> str:
-		'''Executes the specified command text.
+	@typing.overload
+	def execute(self, commandText: str) -> str: ...
 
+	@typing.overload
+	def execute(self) -> str: ...
+
+	def execute(self, *args, **kwargs) -> str:
+		'''Executes the specified command text.
+		Executes command specified by command_text property.
+
+		Arguments: (commandText)
+		Arguments: ()
 		:param commandText: The command text.
 		:returns: Command execution result
 		'''
-		return self._instance.Execute(commandText)
+		__a = _bind_overload(args, kwargs, ['commandText'], {})
+		if __a is not None:
+			commandText, = __a
+			return self._instance.Execute(commandText)
+		__a = _bind_overload(args, kwargs, [], {})
+		if __a is not None:
+			return self._instance.Execute()
+		raise TypeError("execute(): no overload takes these arguments")
 
 	def cancel_async(self) -> None:
 		'''Cancels command execution in asynchronous scenarios.'''
 		self._instance.CancelAsync()
+
+	def dispose(self) -> None:
+		'''Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.'''
+		self._instance.Dispose()
 
 	@property
 	def command_text(self) -> str:
@@ -81,3 +101,16 @@ class SshCommand:
 	def __exit__(self, exc_type, exc_val, exc_tb):
 		self._instance.Dispose()
 		return False
+
+def _bind_overload(args, kwargs, names, defaults):
+	if len(args) > len(names) or any(k not in names[len(args):] for k in kwargs):
+		return None
+	values = list(args)
+	for name in names[len(args):]:
+		if name in kwargs:
+			values.append(kwargs[name])
+		elif name in defaults:
+			values.append(defaults[name])
+		else:
+			return None
+	return values

@@ -80,9 +80,27 @@ class PrimaryInterfaceCommands:
 		'''Close popup'''
 		return StatusCode(int(self._instance.ClosePopup(id)))
 
-	def reply_popup(self, id: int, value: str, type: RequestedTypes) -> StatusCode:
-		'''Reply popup'''
-		return StatusCode(int(self._instance.ReplyPopup(id, value, requested_types(int(type)))))
+	@typing.overload
+	def reply_popup(self, id: int, value: str, type: RequestedTypes) -> StatusCode: ...
+
+	@typing.overload
+	def reply_popup(self, id: int, value: bool | float | int | str) -> StatusCode: ...
+
+	def reply_popup(self, *args, **kwargs) -> StatusCode:
+		'''Reply popup
+
+		Arguments: (id, value, type)
+		Arguments: (id, value)
+		'''
+		__a = _bind_overload(args, kwargs, ['id', 'value', 'type'], {})
+		if __a is not None:
+			id, value, type = __a
+			return StatusCode(int(self._instance.ReplyPopup(id, value, requested_types(int(type)))))
+		__a = _bind_overload(args, kwargs, ['id', 'value'], {})
+		if __a is not None:
+			id, value = __a
+			return StatusCode(int(self._instance.ReplyPopup(id, value)))
+		raise TypeError("reply_popup(): no overload takes these arguments")
 
 	def release_brakes(self) -> StatusCode:
 		'''Release brakes'''
@@ -129,3 +147,16 @@ class PrimaryInterfaceCommands:
 
 	def __hash__(self) -> int:
 		return self._instance.GetHashCode() if self._instance is not None else 0
+
+def _bind_overload(args, kwargs, names, defaults):
+	if len(args) > len(names) or any(k not in names[len(args):] for k in kwargs):
+		return None
+	values = list(args)
+	for name in names[len(args):]:
+		if name in kwargs:
+			values.append(kwargs[name])
+		elif name in defaults:
+			values.append(defaults[name])
+		else:
+			return None
+	return values
