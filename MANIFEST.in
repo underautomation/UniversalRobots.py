@@ -1,5 +1,6 @@
 include README.md
 include License.md
+include underautomation/py.typed
 recursive-include underautomation/universal_robots/lib *.dll *.txt
 prune tests
 prune examples

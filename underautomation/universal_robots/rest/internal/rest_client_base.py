@@ -25,7 +25,7 @@ class RestClientBase(URServiceBase):
 		self._instance.Disable()
 
 	def change_robot_state(self, action: RobotStateAction) -> RestApiResponse:
-		'''Change the robot's operational state. PUT /robotstate/v1/state
+		'''Change the robot's operational state.
 
 		:param action: The state action to perform
 		:returns: API response indicating success or failure
@@ -53,7 +53,7 @@ class RestClientBase(URServiceBase):
 		return RestApiResponse(self._instance.BrakeRelease())
 
 	def load_program(self, programName: str) -> RestApiResponse:
-		'''Load a program by name. PUT /program/v1/load
+		'''Load a program by name.
 
 		:param programName: Name of the program to load (without .urp extension)
 		:returns: API response indicating success or failure
@@ -61,7 +61,7 @@ class RestClientBase(URServiceBase):
 		return RestApiResponse(self._instance.LoadProgram(programName))
 
 	def change_program_state(self, action: ProgramStateAction) -> RestApiResponse:
-		'''Change the program state. PUT /program/v1/state
+		'''Change the program state.
 
 		:param action: The program action to perform
 		:returns: API response indicating success or failure
@@ -85,7 +85,7 @@ class RestClientBase(URServiceBase):
 		return RestApiResponse(self._instance.Resume())
 
 	def get_program_state(self) -> RestApiResponse1[ProgramStateResponse]:
-		'''Get the current program state. GET /program/v1/state
+		'''Get the current program state.
 
 		:returns: API response with the current program state
 		'''

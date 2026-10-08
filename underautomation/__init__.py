@@ -1,3 +1,5 @@
+# Loads the DLL of this package for every namespace of 'underautomation'.
+# Install one UnderAutomation package per Python environment. For several robot brands, use the UnderAutomation.Robotics package.
 import clr
 import os
 

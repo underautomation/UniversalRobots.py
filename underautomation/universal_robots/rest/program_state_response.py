@@ -5,7 +5,7 @@ from UnderAutomation.UniversalRobots.Rest import ProgramStateResponse as program
 from UnderAutomation.UniversalRobots.Rest import RestProgramState as rest_program_state
 
 class ProgramStateResponse:
-	'''Response from GET /program/v1/state endpoint'''
+	'''State of the program, returned by get_program_state().'''
 	def __init__(self, _internal = 0):
 		if(_internal == 0):
 			self._instance = program_state_response()

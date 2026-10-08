@@ -6,6 +6,11 @@ import System
 class ExpectAction:
 	'''Specifies behavior for expected expression'''
 	def __init__(self, expect: typing.Any, action: typing.Callable[[str], None], _internal = 0):
+		'''Initializes a new instance of the ExpectAction class.
+
+		:param expect: The expect regular expression.
+		:param action: The action to perform.
+		'''
 		if(_internal == 0):
 			self._instance = expect_action(expect, (action._instance if hasattr(action, '_instance') else System.Action[System.String](lambda _x0: action(_x0))) if action else None)
 		else:

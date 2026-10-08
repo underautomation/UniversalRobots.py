@@ -95,6 +95,12 @@ class SftpClientBase(URServiceBase):
 		self._instance.SymbolicLink(path, linkPath)
 
 	def list_directory(self, path: str, listCallback: typing.Callable[[int], None]=None) -> typing.List[SftpFile]:
+		'''Retrieves list of files in remote directory.
+
+		:param path: The path.
+		:param listCallback: The list callback.
+		:returns: A list of files.
+		'''
 		return [SftpFile(x) for x in self._instance.ListDirectory(path, (listCallback._instance if hasattr(listCallback, '_instance') else System.Action[System.Int32](lambda _x0: listCallback(_x0))) if listCallback else None)]
 
 	def enumerate_programs(self) -> typing.List[str]:
@@ -128,9 +134,21 @@ class SftpClientBase(URServiceBase):
 		return self._instance.Exists(path)
 
 	def download_file(self, path: str, localPath: str, downloadCallback: typing.Callable[[int], None]=None) -> None:
+		'''Downloads remote file specified by the path into the stream.
+
+		:param path: File to download.
+		:param localPath: Local file to download
+		:param downloadCallback: The download callback.
+		'''
 		self._instance.DownloadFile(path, localPath, (downloadCallback._instance if hasattr(downloadCallback, '_instance') else System.Action[System.UInt64](lambda _x0: downloadCallback(_x0))) if downloadCallback else None)
 
 	def upload_file(self, localPath: str, path: str, uploadCallback: typing.Callable[[int], None]=None) -> None:
+		'''Uploads file into remote file.
+
+		:param localPath: Local file to read and transfer.
+		:param path: Remote file path.
+		:param uploadCallback: The upload callback.
+		'''
 		self._instance.UploadFile(localPath, path, (uploadCallback._instance if hasattr(uploadCallback, '_instance') else System.Action[System.UInt64](lambda _x0: uploadCallback(_x0))) if uploadCallback else None)
 
 	def get_status(self, path: str) -> SftpFileSytemInformation:

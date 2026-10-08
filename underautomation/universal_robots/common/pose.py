@@ -62,10 +62,12 @@ class Pose(CartesianCoordinates):
 
 	@staticmethod
 	def from4x4_matrix_to_rotation_vector(matrixTransform: typing.List[float]) -> 'Pose':
+		'''Convert a transformation 4x4 matrix to rotation vector'''
 		return Pose(None, None, None, None, None, None, pose.From4x4MatrixToRotationVector(matrixTransform))
 
 	@staticmethod
 	def from4x4_matrix_to_rpy(matrixTransform: typing.List[float]) -> 'Pose':
+		'''Convert a transformation 4x4 matrix to RPY pose'''
 		return Pose(None, None, None, None, None, None, pose.From4x4MatrixToRPY(matrixTransform))
 
 	@property

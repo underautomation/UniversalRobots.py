@@ -8,6 +8,10 @@ from UnderAutomation.UniversalRobots.XmlRpc import XmlRpcType as xml_rpc_type
 class XmlRpcArrayValue(XmlRpcValue):
 	'''Represents an array of XmlRpcValue that can be exchange with the robot via XML-RPC'''
 	def __init__(self, value: typing.Any, _internal = 0):
+		'''Initializes a new array value with the specified elements.
+
+		:param value: The elements to add to the array.
+		'''
 		if(_internal == 0):
 			self._instance = xml_rpc_array_value(value)
 		else:

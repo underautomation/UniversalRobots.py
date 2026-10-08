@@ -18,18 +18,24 @@ class KinematicsUtils:
 
 	@staticmethod
 	def dh_transform(theta: float, d: float, a: float, alpha: float) -> typing.List[float]:
-		'''Computes the 4×4 Denavit-Hartenberg homogeneous transformation matrix for one joint.
+		'''Computes the 4x4 Denavit-Hartenberg homogeneous transformation matrix for one joint.
 
 		:param theta: Joint angle in radians.
 		:param d: Link offset along the previous z-axis, in meters.
 		:param a: Link length along the rotated x-axis, in meters.
 		:param alpha: Link twist angle in radians.
-		:returns: A 4×4 homogeneous transformation matrix.
+		:returns: A 4x4 homogeneous transformation matrix.
 		'''
 		return kinematics_utils.DHTransform(theta, d, a, alpha)
 
 	@staticmethod
 	def homogeneous_multiply(A: typing.List[float], B: typing.List[float]) -> typing.List[float]:
+		'''Multiplies two 4x4 homogeneous transformation matrices, optimized for DH transforms.
+
+		:param A: Left 4x4 matrix.
+		:param B: Right 4x4 matrix.
+		:returns: Product 4x4 matrix A x B.
+		'''
 		return kinematics_utils.HomogeneousMultiply(A, B)
 
 	@staticmethod
@@ -54,6 +60,12 @@ class KinematicsUtils:
 
 	@staticmethod
 	def inverse_kinematics(toolTransform: typing.List[float], dhParameters: IUrDhParameters) -> typing.List[float]:
+		'''Analytical inverse kinematics Returns a list of candidate joint vectors; filters out singularities.
+
+		:param toolTransform: 4x4 tool transform matrix.
+		:param dhParameters: Robot DH parameters.
+		:returns: Array of candidate joint angles (6 elements each).
+		'''
 		return kinematics_utils.InverseKinematics(toolTransform, dhParameters._instance if dhParameters else None)
 
 	@staticmethod

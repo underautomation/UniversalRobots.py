@@ -44,6 +44,7 @@ setuptools.setup(
     include_package_data=True,
     package_data={
         "underautomation": [
+            "py.typed",
             "universal_robots/lib/*.dll",
             "universal_robots/lib/*.txt",
         ],
