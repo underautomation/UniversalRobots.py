@@ -24,8 +24,9 @@ It works with real robots and with the URSim simulator.
 - **RTDE:** read the robot data at up to 500 Hz (TCP pose, joint angles, forces, I/O, registers) and write
   inputs and registers.
 - **Dashboard Server** (PolyScope): load, play and stop programs, power on and off, release the brakes,
-  read the robot mode.
-- **REST API** (PolyScope X): control the robot state and the programs over HTTP.
+  read the robot mode and the safety mode.
+- **REST API** (PolyScope X): control the robot state and the programs over HTTP, read the robot and
+  safety modes, list, upload and download the program files.
 - **Primary Interface:** receive the data packets of the robot and send URScript commands.
 - **SFTP:** list, download and upload programs and files over SSH.
 - **Kinematics:** offline forward and inverse kinematics for every UR model, without connection.
@@ -235,6 +236,9 @@ write.
 - Write inputs: digital and analog outputs, integer, double and boolean registers.
 - Choose the frequency, from 1 to 500 Hz (RTDE version 2).
 - Handle each new sample in the `output_data_received` event.
+- Read the software version, the control box type and the tool flange type of the controller
+  (`software_version`, `control_box_type`, `tool_flange_type`), on PolyScope 5.26.3 or later and
+  PolyScope X 10.15 or later.
 
 ```python
 from underautomation.universal_robots.ur import UR
@@ -275,10 +279,10 @@ e-Series robots.
 
 - Load, play, stop and pause programs.
 - Power the arm on and off, release the brakes.
-- Read the robot mode, the safety status and the PolyScope version.
+- Read the robot mode, the safety status, the safety mode and the PolyScope version.
 - Show and close popups on the teach pendant.
-- Set the operational mode (manual or automatic) for remote control.
-- Add messages to the log of the controller.
+- Set the operational mode (manual or automatic) for remote control. Read the user role.
+- Add messages to the log of the controller, save the log, generate flight reports and support files.
 
 ```python
 from underautomation.universal_robots.ur import UR
@@ -305,6 +309,16 @@ robot.disconnect()
 The REST API exists on PolyScope X robots. It controls the robot and the programs
 over HTTP.
 
+- Power the arm on and off, release the brakes, unlock a protective stop, restart the safety.
+- Load, play, pause, resume and stop programs.
+- Read the robot mode, the safety mode, the operational mode, the remote control state and the
+  PolyScope X version.
+- Show and close popups on the teach pendant.
+- List, upload, replace and download the program files.
+
+`robot.rest` has the same method names as `robot.dashboard`, so one function controls both families.
+Only the brakes differ: `brake_release()` on `robot.rest`, `release_brake()` on `robot.dashboard`.
+
 ```python
 from underautomation.universal_robots.ur import UR
 from underautomation.universal_robots.connect_parameters import ConnectParameters
@@ -320,6 +334,12 @@ robot.rest.load_program("my_program")
 robot.rest.play()
 state = robot.rest.get_program_state()
 print(state.value)
+
+print(robot.rest.get_safety_mode().value)
+
+for program in robot.rest.get_programs().value:
+    print(program.name)
+robot.rest.download_program_to_file("my_program", "my_program.urpx")
 
 robot.disconnect()
 ```
