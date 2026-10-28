@@ -24,7 +24,8 @@ class XmlRpcEventArg:
 	@property
 	def arguments(self) -> typing.List[XmlRpcValue]:
 		'''The arguments of the method called'''
-		return [XmlRpcValue(x) for x in self._instance.Arguments]
+		__r = self._instance.Arguments
+		return None if __r is None else [None if x is None else XmlRpcValue(x) for x in __r]
 
 	@property
 	def end_point(self) -> typing.Any:
@@ -34,7 +35,8 @@ class XmlRpcEventArg:
 	@property
 	def answer(self) -> XmlRpcValue:
 		'''Response to be provided to the robot by the user'''
-		return XmlRpcValue(self._instance.Answer)
+		__r = self._instance.Answer
+		return None if __r is None else XmlRpcValue(__r)
 
 	@answer.setter
 	def answer(self, value: XmlRpcValue):

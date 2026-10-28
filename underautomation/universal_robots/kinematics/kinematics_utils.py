@@ -46,7 +46,8 @@ class KinematicsUtils:
 		:param dhParameters: Robot DH parameters.
 		:returns: Tool transform and intermediate transforms.
 		'''
-		return KinematicsResult(kinematics_utils.ForwardKinematics(jointAnglesRad, dhParameters._instance if dhParameters else None))
+		__r = kinematics_utils.ForwardKinematics(jointAnglesRad, dhParameters._instance if dhParameters else None)
+		return None if __r is None else KinematicsResult(__r)
 
 	@staticmethod
 	def get_nearest_solution(jointSolutions: typing.List[float], jointReference: typing.List[float]) -> typing.List[float]:
@@ -88,7 +89,8 @@ class KinematicsUtils:
 		:param model: UR robot model identifier.
 		:returns: DH parameters for the specified model.
 		'''
-		return IUrDhParameters(kinematics_utils.GetDhParametersFromModel(robot_models_extended(int(model))))
+		__r = kinematics_utils.GetDhParametersFromModel(robot_models_extended(int(model)))
+		return None if __r is None else IUrDhParameters(__r)
 
 	def __str__(self):
 		return self._instance.ToString() if self._instance is not None else ""

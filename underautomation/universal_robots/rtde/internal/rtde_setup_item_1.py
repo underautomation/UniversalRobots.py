@@ -40,7 +40,8 @@ class RtdeSetupItem1(typing.Generic[T]):
 	@property
 	def description(self) -> RtdeDataDescription1[T]:
 		'''Gets the description metadata for this variable (name, type, array info).'''
-		return RtdeDataDescription1[T](self._instance.Description)
+		__r = self._instance.Description
+		return None if __r is None else RtdeDataDescription1[T](__r)
 
 	@property
 	def name(self) -> str:

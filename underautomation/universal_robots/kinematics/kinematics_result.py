@@ -23,7 +23,8 @@ class KinematicsResult:
 	@property
 	def individual_local_transforms(self) -> TransformationSet:
 		'''Individual local transformation matrices of each joint'''
-		return TransformationSet(self._instance.IndividualLocalTransforms)
+		__r = self._instance.IndividualLocalTransforms
+		return None if __r is None else TransformationSet(__r)
 
 	@individual_local_transforms.setter
 	def individual_local_transforms(self, value: TransformationSet):
@@ -32,7 +33,8 @@ class KinematicsResult:
 	@property
 	def cumulative_global_transforms(self) -> TransformationSet:
 		'''Cumulative global transformation matrices of each joint'''
-		return TransformationSet(self._instance.CumulativeGlobalTransforms)
+		__r = self._instance.CumulativeGlobalTransforms
+		return None if __r is None else TransformationSet(__r)
 
 	@cumulative_global_transforms.setter
 	def cumulative_global_transforms(self, value: TransformationSet):

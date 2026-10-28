@@ -2,6 +2,8 @@ from __future__ import annotations
 import typing
 from underautomation.universal_robots.rtde.rtde_text_message_event_args import RtdeTextMessageEventArgs
 from underautomation.universal_robots.rtde.rtde_states import RTDEStates
+from underautomation.universal_robots.common.control_box_type import ControlBoxType
+from underautomation.universal_robots.common.tool_flange_type import ToolFlangeType
 from underautomation.universal_robots.rtde.rtde_versions import RtdeVersions
 from underautomation.universal_robots.rtde.rtde_output_setup_item import RtdeOutputSetupItem
 from underautomation.universal_robots.rtde.rtde_input_setup_item import RtdeInputSetupItem
@@ -16,6 +18,8 @@ from underautomation.universal_robots.rtde.rtde_basic_request_event_args import 
 from underautomation.universal_robots.common.package_event_args import PackageEventArgs
 from UnderAutomation.UniversalRobots.Rtde.Internal import RtdeClientBase as rtde_client_base
 from UnderAutomation.UniversalRobots.Rtde import RTDEStates as rtde_states
+from UnderAutomation.UniversalRobots.Common import ControlBoxType as control_box_type
+from UnderAutomation.UniversalRobots.Common import ToolFlangeType as tool_flange_type
 from UnderAutomation.UniversalRobots.Rtde import RtdeVersions as rtde_versions
 
 class RtdeClientBase(URServiceBase):
@@ -93,7 +97,8 @@ class RtdeClientBase(URServiceBase):
 	@property
 	def last_text_message(self) -> RtdeTextMessageEventArgs:
 		'''Last text received from the robot'''
-		return RtdeTextMessageEventArgs(self._instance.LastTextMessage)
+		__r = self._instance.LastTextMessage
+		return None if __r is None else RtdeTextMessageEventArgs(__r)
 
 	@property
 	def state(self) -> RTDEStates:
@@ -111,6 +116,21 @@ class RtdeClientBase(URServiceBase):
 		return self._instance.IP
 
 	@property
+	def software_version(self) -> str:
+		'''Software version of the controller (for example "5.26.3"), read automatically at connection. Null when the controller does not provide it (PolyScope older than 5.26.3 or PolyScope X older than 10.15) or when it could not be read.'''
+		return self._instance.SoftwareVersion
+
+	@property
+	def control_box_type(self) -> ControlBoxType:
+		'''Type of the control box, read automatically at connection. Unknown when the controller does not provide it or when it could not be read.'''
+		return ControlBoxType(int(self._instance.ControlBoxType))
+
+	@property
+	def tool_flange_type(self) -> ToolFlangeType:
+		'''Version of the tool flange, read automatically at connection. Unknown when the controller does not provide it or when it could not be read.'''
+		return ToolFlangeType(int(self._instance.ToolFlangeType))
+
+	@property
 	def applied_frequency(self) -> float:
 		'''Output data frequency requested to the robot, only for RTDE version 2'''
 		return self._instance.AppliedFrequency
@@ -123,12 +143,14 @@ class RtdeClientBase(URServiceBase):
 	@property
 	def output_setup(self) -> typing.List[RtdeOutputSetupItem]:
 		'''List of all data sent from the robot to the PC (robot point of view)'''
-		return [RtdeOutputSetupItem(None, None, x) for x in self._instance.OutputSetup]
+		__r = self._instance.OutputSetup
+		return None if __r is None else [None if x is None else RtdeOutputSetupItem(None, None, x) for x in __r]
 
 	@property
 	def input_setup(self) -> typing.List[RtdeInputSetupItem]:
 		'''List of all data the PC can write to the robot (robot point of view)'''
-		return [RtdeInputSetupItem(None, None, x) for x in self._instance.InputSetup]
+		__r = self._instance.InputSetup
+		return None if __r is None else [None if x is None else RtdeInputSetupItem(None, None, x) for x in __r]
 
 	@property
 	def output_recipe_id(self) -> int:
@@ -153,7 +175,8 @@ class RtdeClientBase(URServiceBase):
 	@property
 	def output_data_values(self) -> RtdeOutputValues:
 		'''Last data received from the robot'''
-		return RtdeOutputValues(self._instance.OutputDataValues)
+		__r = self._instance.OutputDataValues
+		return None if __r is None else RtdeOutputValues(__r)
 
 	def __str__(self):
 		return self._instance.ToString() if self._instance is not None else ""

@@ -35,7 +35,8 @@ class RtdeParametersBase:
 	@property
 	def output_setup(self) -> RtdeOutputSetup:
 		'''List of all output data the robot will send to your application'''
-		return RtdeOutputSetup(self._instance.OutputSetup)
+		__r = self._instance.OutputSetup
+		return None if __r is None else RtdeOutputSetup(__r)
 
 	@output_setup.setter
 	def output_setup(self, value: RtdeOutputSetup):
@@ -44,7 +45,8 @@ class RtdeParametersBase:
 	@property
 	def input_setup(self) -> RtdeInputSetup:
 		'''List of all input data you can send to the robot'''
-		return RtdeInputSetup(self._instance.InputSetup)
+		__r = self._instance.InputSetup
+		return None if __r is None else RtdeInputSetup(__r)
 
 	@input_setup.setter
 	def input_setup(self, value: RtdeInputSetup):

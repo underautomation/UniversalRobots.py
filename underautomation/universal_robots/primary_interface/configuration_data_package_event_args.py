@@ -103,7 +103,8 @@ class ConfigurationDataPackageEventArgs(PackageEventArgs, IUrDhParameters):
 	@property
 	def base(self) -> JointConfiguration:
 		'''Base joint configuration'''
-		return JointConfiguration(self._instance.Base)
+		__r = self._instance.Base
+		return None if __r is None else JointConfiguration(__r)
 
 	@base.setter
 	def base(self, value: JointConfiguration):
@@ -112,7 +113,8 @@ class ConfigurationDataPackageEventArgs(PackageEventArgs, IUrDhParameters):
 	@property
 	def shoulder(self) -> JointConfiguration:
 		'''Shoulder joint configuration'''
-		return JointConfiguration(self._instance.Shoulder)
+		__r = self._instance.Shoulder
+		return None if __r is None else JointConfiguration(__r)
 
 	@shoulder.setter
 	def shoulder(self, value: JointConfiguration):
@@ -121,7 +123,8 @@ class ConfigurationDataPackageEventArgs(PackageEventArgs, IUrDhParameters):
 	@property
 	def elbow(self) -> JointConfiguration:
 		'''Elbow joint configuration'''
-		return JointConfiguration(self._instance.Elbow)
+		__r = self._instance.Elbow
+		return None if __r is None else JointConfiguration(__r)
 
 	@elbow.setter
 	def elbow(self, value: JointConfiguration):
@@ -130,7 +133,8 @@ class ConfigurationDataPackageEventArgs(PackageEventArgs, IUrDhParameters):
 	@property
 	def wrist1(self) -> JointConfiguration:
 		'''Wrist1 joint configuration'''
-		return JointConfiguration(self._instance.Wrist1)
+		__r = self._instance.Wrist1
+		return None if __r is None else JointConfiguration(__r)
 
 	@wrist1.setter
 	def wrist1(self, value: JointConfiguration):
@@ -139,7 +143,8 @@ class ConfigurationDataPackageEventArgs(PackageEventArgs, IUrDhParameters):
 	@property
 	def wrist2(self) -> JointConfiguration:
 		'''Wrist2 joint configuration'''
-		return JointConfiguration(self._instance.Wrist2)
+		__r = self._instance.Wrist2
+		return None if __r is None else JointConfiguration(__r)
 
 	@wrist2.setter
 	def wrist2(self, value: JointConfiguration):
@@ -148,7 +153,8 @@ class ConfigurationDataPackageEventArgs(PackageEventArgs, IUrDhParameters):
 	@property
 	def wrist3(self) -> JointConfiguration:
 		'''Wrist3 (Tool) joint configuration'''
-		return JointConfiguration(self._instance.Wrist3)
+		__r = self._instance.Wrist3
+		return None if __r is None else JointConfiguration(__r)
 
 	@wrist3.setter
 	def wrist3(self, value: JointConfiguration):

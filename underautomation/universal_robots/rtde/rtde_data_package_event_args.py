@@ -24,7 +24,8 @@ class RtdeDataPackageEventArgs(PackageEventArgs):
 	@property
 	def output_data_values(self) -> RtdeOutputValues:
 		'''Gets or sets the decoded output values contained in this data package.'''
-		return RtdeOutputValues(self._instance.OutputDataValues)
+		__r = self._instance.OutputDataValues
+		return None if __r is None else RtdeOutputValues(__r)
 
 	@output_data_values.setter
 	def output_data_values(self, value: RtdeOutputValues):

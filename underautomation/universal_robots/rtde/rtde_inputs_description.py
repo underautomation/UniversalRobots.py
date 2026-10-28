@@ -13,7 +13,8 @@ class RtdeInputsDescription:
 			self._instance = _internal
 
 	def get(self, data: RtdeInputData) -> RtdeInputDataDescription:
-		return RtdeInputDataDescription(self._instance.Get(rtde_input_data(int(data))))
+		__r = self._instance.Get(rtde_input_data(int(data)))
+		return None if __r is None else RtdeInputDataDescription(__r)
 
 	@property
 	def items(self) -> typing.Any:
@@ -22,82 +23,98 @@ class RtdeInputsDescription:
 	@property
 	def speed_slider_mask(self) -> RtdeInputDataDescription:
 		'''0 = don't change speed slider with this input, 1 = use speed_slider_fraction to set speed slider value'''
-		return RtdeInputDataDescription(self._instance.SpeedSliderMask)
+		__r = self._instance.SpeedSliderMask
+		return None if __r is None else RtdeInputDataDescription(__r)
 
 	@property
 	def speed_slider_fraction(self) -> RtdeInputDataDescription:
 		'''new speed slider value'''
-		return RtdeInputDataDescription(self._instance.SpeedSliderFraction)
+		__r = self._instance.SpeedSliderFraction
+		return None if __r is None else RtdeInputDataDescription(__r)
 
 	@property
 	def standard_digital_output_mask(self) -> RtdeInputDataDescription:
 		'''Standard digital output bit mask'''
-		return RtdeInputDataDescription(self._instance.StandardDigitalOutputMask)
+		__r = self._instance.StandardDigitalOutputMask
+		return None if __r is None else RtdeInputDataDescription(__r)
 
 	@property
 	def configurable_digital_output_mask(self) -> RtdeInputDataDescription:
 		'''Configurable digital output bit mask'''
-		return RtdeInputDataDescription(self._instance.ConfigurableDigitalOutputMask)
+		__r = self._instance.ConfigurableDigitalOutputMask
+		return None if __r is None else RtdeInputDataDescription(__r)
 
 	@property
 	def standard_digital_output(self) -> RtdeInputDataDescription:
 		'''Standard digital outputs'''
-		return RtdeInputDataDescription(self._instance.StandardDigitalOutput)
+		__r = self._instance.StandardDigitalOutput
+		return None if __r is None else RtdeInputDataDescription(__r)
 
 	@property
 	def configurable_digital_output(self) -> RtdeInputDataDescription:
 		'''Configurable digital outputs'''
-		return RtdeInputDataDescription(self._instance.ConfigurableDigitalOutput)
+		__r = self._instance.ConfigurableDigitalOutput
+		return None if __r is None else RtdeInputDataDescription(__r)
 
 	@property
 	def standard_analog_output_mask(self) -> RtdeInputDataDescription:
 		'''Standard analog output mask'''
-		return RtdeInputDataDescription(self._instance.StandardAnalogOutputMask)
+		__r = self._instance.StandardAnalogOutputMask
+		return None if __r is None else RtdeInputDataDescription(__r)
 
 	@property
 	def standard_analog_output_type(self) -> RtdeInputDataDescription:
 		'''Output domain {0=current[mA], 1=voltage[V]}. Bits 0-1: standard_analog_output_0 | standard_analog_output_1'''
-		return RtdeInputDataDescription(self._instance.StandardAnalogOutputType)
+		__r = self._instance.StandardAnalogOutputType
+		return None if __r is None else RtdeInputDataDescription(__r)
 
 	@property
 	def standard_analog_output0(self) -> RtdeInputDataDescription:
 		'''Standard analog output 0 (ratio) [0..1]'''
-		return RtdeInputDataDescription(self._instance.StandardAnalogOutput0)
+		__r = self._instance.StandardAnalogOutput0
+		return None if __r is None else RtdeInputDataDescription(__r)
 
 	@property
 	def standard_analog_output1(self) -> RtdeInputDataDescription:
 		'''Standard analog output 1 (ratio) [0..1]'''
-		return RtdeInputDataDescription(self._instance.StandardAnalogOutput1)
+		__r = self._instance.StandardAnalogOutput1
+		return None if __r is None else RtdeInputDataDescription(__r)
 
 	@property
 	def input_bt_registers0_to31(self) -> RtdeInputDataDescription:
 		'''General purpose bits. This range of the boolean input registers is reserved for FieldBus/PLC interface usage.'''
-		return RtdeInputDataDescription(self._instance.InputBtRegisters0To31)
+		__r = self._instance.InputBtRegisters0To31
+		return None if __r is None else RtdeInputDataDescription(__r)
 
 	@property
 	def input_bt_registers32_to63(self) -> RtdeInputDataDescription:
 		'''General purpose bits. This range of the boolean input registers is reserved for FieldBus/PLC interface usage.'''
-		return RtdeInputDataDescription(self._instance.InputBtRegisters32To63)
+		__r = self._instance.InputBtRegisters32To63
+		return None if __r is None else RtdeInputDataDescription(__r)
 
 	@property
 	def input_bit_registers(self) -> RtdeInputDataDescription:
 		'''64 general purpose bits. X: [64..127] - The upper range of the boolean input registers can be used by external RTDE clients (i.e URCAPS).'''
-		return RtdeInputDataDescription(self._instance.InputBitRegisters)
+		__r = self._instance.InputBitRegisters
+		return None if __r is None else RtdeInputDataDescription(__r)
 
 	@property
 	def input_int_registers(self) -> RtdeInputDataDescription:
 		'''48 general purpose integer registers. X: [0..23] - The lower range of the integer input registers is reserved for FieldBus/PLC interface usage. X: [24..47] - The upper range of the integer input registers can be used by external RTDE clients (i.e URCAPS).'''
-		return RtdeInputDataDescription(self._instance.InputIntRegisters)
+		__r = self._instance.InputIntRegisters
+		return None if __r is None else RtdeInputDataDescription(__r)
 
 	@property
 	def input_double_registers(self) -> RtdeInputDataDescription:
 		'''48 general purpose double registers. X: [0..23] - The lower range of the double input registers is reserved for FieldBus/PLC interface usage. X: [24..47] - The upper range of the double input registers can be used by external RTDE clients (i.e URCAPS).'''
-		return RtdeInputDataDescription(self._instance.InputDoubleRegisters)
+		__r = self._instance.InputDoubleRegisters
+		return None if __r is None else RtdeInputDataDescription(__r)
 
 	@property
 	def external_force_torque(self) -> RtdeInputDataDescription:
 		'''Input external wrench when using ft_rtde_input_enable builtin.'''
-		return RtdeInputDataDescription(self._instance.ExternalForceTorque)
+		__r = self._instance.ExternalForceTorque
+		return None if __r is None else RtdeInputDataDescription(__r)
 
 	def __str__(self):
 		return self._instance.ToString() if self._instance is not None else ""

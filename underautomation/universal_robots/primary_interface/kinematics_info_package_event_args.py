@@ -25,7 +25,8 @@ class KinematicsInfoPackageEventArgs(PackageEventArgs, IUrDhParameters):
 	@property
 	def base(self) -> JointKinematicsInfo:
 		'''Base kinematics info'''
-		return JointKinematicsInfo(self._instance.Base)
+		__r = self._instance.Base
+		return None if __r is None else JointKinematicsInfo(__r)
 
 	@base.setter
 	def base(self, value: JointKinematicsInfo):
@@ -34,7 +35,8 @@ class KinematicsInfoPackageEventArgs(PackageEventArgs, IUrDhParameters):
 	@property
 	def shoulder(self) -> JointKinematicsInfo:
 		'''Shoulder kinematics info'''
-		return JointKinematicsInfo(self._instance.Shoulder)
+		__r = self._instance.Shoulder
+		return None if __r is None else JointKinematicsInfo(__r)
 
 	@shoulder.setter
 	def shoulder(self, value: JointKinematicsInfo):
@@ -43,7 +45,8 @@ class KinematicsInfoPackageEventArgs(PackageEventArgs, IUrDhParameters):
 	@property
 	def elbow(self) -> JointKinematicsInfo:
 		'''Elbow kinematics info'''
-		return JointKinematicsInfo(self._instance.Elbow)
+		__r = self._instance.Elbow
+		return None if __r is None else JointKinematicsInfo(__r)
 
 	@elbow.setter
 	def elbow(self, value: JointKinematicsInfo):
@@ -52,7 +55,8 @@ class KinematicsInfoPackageEventArgs(PackageEventArgs, IUrDhParameters):
 	@property
 	def wrist1(self) -> JointKinematicsInfo:
 		'''Wrist1 kinematics info'''
-		return JointKinematicsInfo(self._instance.Wrist1)
+		__r = self._instance.Wrist1
+		return None if __r is None else JointKinematicsInfo(__r)
 
 	@wrist1.setter
 	def wrist1(self, value: JointKinematicsInfo):
@@ -61,7 +65,8 @@ class KinematicsInfoPackageEventArgs(PackageEventArgs, IUrDhParameters):
 	@property
 	def wrist2(self) -> JointKinematicsInfo:
 		'''Wrist2 kinematics info'''
-		return JointKinematicsInfo(self._instance.Wrist2)
+		__r = self._instance.Wrist2
+		return None if __r is None else JointKinematicsInfo(__r)
 
 	@wrist2.setter
 	def wrist2(self, value: JointKinematicsInfo):
@@ -70,7 +75,8 @@ class KinematicsInfoPackageEventArgs(PackageEventArgs, IUrDhParameters):
 	@property
 	def wrist3(self) -> JointKinematicsInfo:
 		'''Wrist3 (Tool) kinematics info'''
-		return JointKinematicsInfo(self._instance.Wrist3)
+		__r = self._instance.Wrist3
+		return None if __r is None else JointKinematicsInfo(__r)
 
 	@wrist3.setter
 	def wrist3(self, value: JointKinematicsInfo):

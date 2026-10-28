@@ -14,11 +14,13 @@ class CartesianInfoPackageEventArgs(PackageEventArgs):
 
 	def as_pose(self) -> Pose:
 		'''Returns the current cartesian position as a Pose object'''
-		return Pose(None, None, None, None, None, None, self._instance.AsPose())
+		__r = self._instance.AsPose()
+		return None if __r is None else Pose(None, None, None, None, None, None, __r)
 
 	def as_tcp_offset_pose(self) -> Pose:
 		'''Returns the TCP offset as a Pose object'''
-		return Pose(None, None, None, None, None, None, self._instance.AsTCPOffsetPose())
+		__r = self._instance.AsTCPOffsetPose()
+		return None if __r is None else Pose(None, None, None, None, None, None, __r)
 
 	@property
 	def x(self) -> float:

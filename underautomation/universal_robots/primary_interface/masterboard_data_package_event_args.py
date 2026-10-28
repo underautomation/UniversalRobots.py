@@ -2,11 +2,13 @@ from __future__ import annotations
 import typing
 from underautomation.universal_robots.common.analog_ranges import AnalogRanges
 from underautomation.universal_robots.common.safety_status import SafetyStatus
+from underautomation.universal_robots.common.safety_modes import SafetyModes
 from underautomation.universal_robots.primary_interface.masterboard_digital_io import MasterboardDigitalIO
 from underautomation.universal_robots.common.package_event_args import PackageEventArgs
 from UnderAutomation.UniversalRobots.PrimaryInterface import MasterboardDataPackageEventArgs as masterboard_data_package_event_args
 from UnderAutomation.UniversalRobots.Common import AnalogRanges as analog_ranges
 from UnderAutomation.UniversalRobots.Common import SafetyStatus as safety_status
+from UnderAutomation.UniversalRobots.Common import SafetyModes as safety_modes
 
 class MasterboardDataPackageEventArgs(PackageEventArgs):
 	'''Masterboard data'''
@@ -134,6 +136,21 @@ class MasterboardDataPackageEventArgs(PackageEventArgs):
 		self._instance.Safetymode = safety_status(int(value))
 
 	@property
+	def safety_mode_value(self) -> SafetyModes:
+		'''Safety mode as a SafetyModes value. Unknown if the robot sent a value this SDK does not know.'''
+		return SafetyModes(int(self._instance.SafetyModeValue))
+
+	@property
+	def is_protective_stopped(self) -> bool:
+		'''True if the robot is in a protective, safeguard or enabling device stop.'''
+		return self._instance.IsProtectiveStopped
+
+	@property
+	def safety_mode_allows_execution(self) -> bool:
+		'''True if the safety mode lets the robot move (Normal or Reduced).'''
+		return self._instance.SafetyModeAllowsExecution
+
+	@property
 	def in_reduced_mode(self) -> int:
 		'''Robot is in reduced speed mode'''
 		return self._instance.InReducedMode
@@ -163,7 +180,8 @@ class MasterboardDataPackageEventArgs(PackageEventArgs):
 	@property
 	def digital_inputs(self) -> MasterboardDigitalIO:
 		'''Register where each bit is a digital input value'''
-		return MasterboardDigitalIO(self._instance.DigitalInputs)
+		__r = self._instance.DigitalInputs
+		return None if __r is None else MasterboardDigitalIO(__r)
 
 	@digital_inputs.setter
 	def digital_inputs(self, value: MasterboardDigitalIO):
@@ -172,7 +190,8 @@ class MasterboardDataPackageEventArgs(PackageEventArgs):
 	@property
 	def digital_outputs(self) -> MasterboardDigitalIO:
 		'''Register where each bit is a digital output value'''
-		return MasterboardDigitalIO(self._instance.DigitalOutputs)
+		__r = self._instance.DigitalOutputs
+		return None if __r is None else MasterboardDigitalIO(__r)
 
 	@digital_outputs.setter
 	def digital_outputs(self, value: MasterboardDigitalIO):

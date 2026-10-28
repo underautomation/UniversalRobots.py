@@ -44,7 +44,7 @@ class RtdeClient(RtdeClientBase):
 		return self._instance.GetHashCode() if self._instance is not None else 0
 
 # Static description of all available RTDE output variables.
-RtdeClient.AllOutputsDescription = RtdeOutputsDescription(rtde_client.AllOutputsDescription)
+RtdeClient.AllOutputsDescription = None if rtde_client.AllOutputsDescription is None else RtdeOutputsDescription(rtde_client.AllOutputsDescription)
 
 # Static description of all available RTDE input variables.
-RtdeClient.AllInputsDescription = RtdeInputsDescription(rtde_client.AllInputsDescription)
+RtdeClient.AllInputsDescription = None if rtde_client.AllInputsDescription is None else RtdeInputsDescription(rtde_client.AllInputsDescription)

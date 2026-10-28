@@ -58,52 +58,62 @@ class UR(URServiceBase):
 		:param key: The associated key supplied by UnderAutomation
 		:returns: Information about the supplied license
 		'''
-		return LicenseInfo(None, None, ur.RegisterLicense(licensee, key))
+		__r = ur.RegisterLicense(licensee, key)
+		return None if __r is None else LicenseInfo(None, None, __r)
 
 	@property
 	def primary_interface(self) -> PrimaryInterfaceClientInternal:
 		'''Interact with robot via Primary Interface'''
-		return PrimaryInterfaceClientInternal(self._instance.PrimaryInterface)
+		__r = self._instance.PrimaryInterface
+		return None if __r is None else PrimaryInterfaceClientInternal(__r)
 
 	@property
 	def xml_rpc(self) -> XmlRpcServerInternal:
 		'''Interact with robot via XML-RPC'''
-		return XmlRpcServerInternal(self._instance.XmlRpc)
+		__r = self._instance.XmlRpc
+		return None if __r is None else XmlRpcServerInternal(__r)
 
 	@property
 	def dashboard(self) -> DashboardClientInternal:
 		'''Interact with robot via Dashboard'''
-		return DashboardClientInternal(self._instance.Dashboard)
+		__r = self._instance.Dashboard
+		return None if __r is None else DashboardClientInternal(__r)
 
 	@property
 	def socket_communication(self) -> SocketCommunicationServerInternal:
 		'''Interact with robot via Socket communication'''
-		return SocketCommunicationServerInternal(self._instance.SocketCommunication)
+		__r = self._instance.SocketCommunication
+		return None if __r is None else SocketCommunicationServerInternal(__r)
 
 	@property
 	def rtde(self) -> RtdeClientInternal:
 		'''Interact with robot via RTDE'''
-		return RtdeClientInternal(self._instance.Rtde)
+		__r = self._instance.Rtde
+		return None if __r is None else RtdeClientInternal(__r)
 
 	@property
 	def ssh(self) -> SshClientInternal:
 		'''Interact with robot via SSH'''
-		return SshClientInternal(self._instance.Ssh)
+		__r = self._instance.Ssh
+		return None if __r is None else SshClientInternal(__r)
 
 	@property
 	def sftp(self) -> SftpClientInternal:
 		'''Interact with robot via SFTP'''
-		return SftpClientInternal(self._instance.Sftp)
+		__r = self._instance.Sftp
+		return None if __r is None else SftpClientInternal(__r)
 
 	@property
 	def interpreter_mode(self) -> InterpreterModeClientInternal:
 		'''Interact with robot via Interpreter Mode'''
-		return InterpreterModeClientInternal(self._instance.InterpreterMode)
+		__r = self._instance.InterpreterMode
+		return None if __r is None else InterpreterModeClientInternal(__r)
 
 	@property
 	def rest(self) -> RestClientInternal:
 		'''Interact with robot via REST API (PolyscopeX only)'''
-		return RestClientInternal(self._instance.Rest)
+		__r = self._instance.Rest
+		return None if __r is None else RestClientInternal(__r)
 
 	@property
 	def ip(self) -> str:
@@ -118,7 +128,8 @@ class UR(URServiceBase):
 	@staticmethod
 	def _get_license_info() -> LicenseInfo:
 		'''Return information about your license'''
-		return LicenseInfo(None, None, ur.LicenseInfo)
+		__r = ur.LicenseInfo
+		return None if __r is None else LicenseInfo(None, None, __r)
 
 	license_info = _StaticProperty(_get_license_info)
 	del _get_license_info

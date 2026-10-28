@@ -18,7 +18,8 @@ class XmlRpcPoseValue(XmlRpcStructValue):
 	@property
 	def value(self) -> Pose:
 		'''Pose Value'''
-		return Pose(None, None, None, None, None, None, self._instance.Value)
+		__r = self._instance.Value
+		return None if __r is None else Pose(None, None, None, None, None, None, __r)
 
 	@property
 	def type(self) -> XmlRpcType:

@@ -51,7 +51,8 @@ class LicenseInfo:
 	@property
 	def trial_period_expiration_date(self) -> datetime | None:
 		'''The date the product will expire. Null if the product is licensed.'''
-		return None if self._instance.TrialPeriodExpirationDate is None else datetime(1, 1, 1) + timedelta(microseconds=self._instance.TrialPeriodExpirationDate.Ticks // 10)
+		__r = self._instance.TrialPeriodExpirationDate
+		return None if __r is None else datetime(1, 1, 1) + timedelta(microseconds=__r.Ticks // 10)
 
 	@property
 	def state(self) -> LicenseState:
@@ -71,12 +72,14 @@ class LicenseInfo:
 	@property
 	def license_issued_date(self) -> datetime | None:
 		'''The date you get the license'''
-		return None if self._instance.LicenseIssuedDate is None else datetime(1, 1, 1) + timedelta(microseconds=self._instance.LicenseIssuedDate.Ticks // 10)
+		__r = self._instance.LicenseIssuedDate
+		return None if __r is None else datetime(1, 1, 1) + timedelta(microseconds=__r.Ticks // 10)
 
 	@property
 	def maintenance_expiration_date(self) -> datetime | None:
 		'''The date your maintenance contract end and you no longer can use this license with newer versions.'''
-		return None if self._instance.MaintenanceExpirationDate is None else datetime(1, 1, 1) + timedelta(microseconds=self._instance.MaintenanceExpirationDate.Ticks // 10)
+		__r = self._instance.MaintenanceExpirationDate
+		return None if __r is None else datetime(1, 1, 1) + timedelta(microseconds=__r.Ticks // 10)
 
 	def __str__(self):
 		return self._instance.ToString() if self._instance is not None else ""

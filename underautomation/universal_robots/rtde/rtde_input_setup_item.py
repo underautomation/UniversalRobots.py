@@ -22,7 +22,8 @@ class RtdeInputSetupItem(RtdeSetupItem1[RtdeInputData]):
 	@property
 	def description(self) -> RtdeDataDescription1[RtdeInputData]:
 		'''Gets the description metadata for this input variable.'''
-		return RtdeDataDescription1[RtdeInputData](self._instance.Description)
+		__r = self._instance.Description
+		return None if __r is None else RtdeDataDescription1[RtdeInputData](__r)
 
 	def __str__(self):
 		return self._instance.ToString() if self._instance is not None else ""

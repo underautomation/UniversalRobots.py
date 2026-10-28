@@ -15,11 +15,13 @@ class GlobalVariableValue:
 
 	def to_list(self) -> typing.List['GlobalVariableValue']:
 		'''Returns an array of GlobalVariableValue if Type is List. Else, null is returned'''
-		return [GlobalVariableValue(x) for x in self._instance.ToList()]
+		__r = self._instance.ToList()
+		return None if __r is None else [None if x is None else GlobalVariableValue(x) for x in __r]
 
 	def to_pose(self) -> Pose:
 		'''Returns a Pose if Type is Pose. Else, null is returned'''
-		return Pose(None, None, None, None, None, None, self._instance.ToPose())
+		__r = self._instance.ToPose()
+		return None if __r is None else Pose(None, None, None, None, None, None, __r)
 
 	def to_bool(self) -> bool:
 		'''Returns variable value if type is Bool. Il type is Float or Int, it returns True if value is not 0. Else, it returns false'''
@@ -36,7 +38,8 @@ class GlobalVariableValue:
 	@staticmethod
 	def parse(message: str) -> 'GlobalVariableValue':
 		'''Estimate variable value from its string representation'''
-		return GlobalVariableValue(global_variable_value.Parse(message))
+		__r = global_variable_value.Parse(message)
+		return None if __r is None else GlobalVariableValue(__r)
 
 	@property
 	def type(self) -> GlobalVariableTypes:

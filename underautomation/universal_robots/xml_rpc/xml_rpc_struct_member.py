@@ -28,7 +28,8 @@ class XmlRpcStructMember:
 	@property
 	def value(self) -> XmlRpcValue:
 		'''The value of this struct member.'''
-		return XmlRpcValue(self._instance.Value)
+		__r = self._instance.Value
+		return None if __r is None else XmlRpcValue(__r)
 
 	@value.setter
 	def value(self, value: XmlRpcValue):

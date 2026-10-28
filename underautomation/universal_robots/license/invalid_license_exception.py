@@ -14,7 +14,8 @@ class InvalidLicenseException:
 	@property
 	def license_info(self) -> LicenseInfo:
 		'''The license that causes this exception'''
-		return LicenseInfo(None, None, self._instance.LicenseInfo)
+		__r = self._instance.LicenseInfo
+		return None if __r is None else LicenseInfo(None, None, __r)
 
 	def __str__(self):
 		return self._instance.ToString() if self._instance is not None else ""

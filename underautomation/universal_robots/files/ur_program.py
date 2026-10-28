@@ -18,7 +18,8 @@ class URProgram(URArchive):
 	@staticmethod
 	def load(urpFile: str) -> 'URProgram':
 		'''Load a *.urp program from file path'''
-		return URProgram(None, ur_program.Load(urpFile))
+		__r = ur_program.Load(urpFile)
+		return None if __r is None else URProgram(None, __r)
 
 	def __str__(self):
 		return self._instance.ToString() if self._instance is not None else ""

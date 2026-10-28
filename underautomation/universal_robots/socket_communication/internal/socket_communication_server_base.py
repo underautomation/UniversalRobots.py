@@ -58,7 +58,8 @@ class SocketCommunicationServerBase(URServiceBase, ISocketHandler):
 	@property
 	def connected_clients(self) -> typing.List[SocketClient]:
 		'''List of all connected clients. One robot can open multiple sockets.'''
-		return [SocketClient(x) for x in self._instance.ConnectedClients]
+		__r = self._instance.ConnectedClients
+		return None if __r is None else [None if x is None else SocketClient(x) for x in __r]
 
 	@property
 	def enabled(self) -> bool:

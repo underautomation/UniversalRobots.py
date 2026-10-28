@@ -37,7 +37,8 @@ class SftpFile:
 	@property
 	def attributes(self) -> SftpFileAttributes:
 		'''Gets the file attributes.'''
-		return SftpFileAttributes(self._instance.Attributes)
+		__r = self._instance.Attributes
+		return None if __r is None else SftpFileAttributes(__r)
 
 	@property
 	def full_name(self) -> str:

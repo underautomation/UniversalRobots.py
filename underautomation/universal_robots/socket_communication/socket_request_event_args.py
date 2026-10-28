@@ -19,7 +19,8 @@ class SocketRequestEventArgs:
 	@property
 	def client(self) -> SocketClient:
 		'''Robot IP information'''
-		return SocketClient(self._instance.Client)
+		__r = self._instance.Client
+		return None if __r is None else SocketClient(__r)
 
 	def __str__(self):
 		return self._instance.ToString() if self._instance is not None else ""

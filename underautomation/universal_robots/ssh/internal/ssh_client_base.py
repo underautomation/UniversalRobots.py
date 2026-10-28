@@ -26,7 +26,8 @@ class SshClientBase(URServiceBase):
 		:param commandText: The command text.
 		:returns: SshCommand object.
 		'''
-		return SshCommand(self._instance.CreateCommand(commandText))
+		__r = self._instance.CreateCommand(commandText)
+		return None if __r is None else SshCommand(__r)
 
 	def run_command(self, commandText: str) -> SshCommand:
 		'''Creates and executes the command.
@@ -34,7 +35,8 @@ class SshClientBase(URServiceBase):
 		:param commandText: The command text.
 		:returns: Returns an instance of SshCommand with execution results.
 		'''
-		return SshCommand(self._instance.RunCommand(commandText))
+		__r = self._instance.RunCommand(commandText)
+		return None if __r is None else SshCommand(__r)
 
 	def create_shell_stream(self, terminalName: str, columns: int, rows: int, width: int, height: int, bufferSize: int) -> ShellStream:
 		'''Creates the shell stream.
@@ -47,7 +49,8 @@ class SshClientBase(URServiceBase):
 		:param bufferSize: The size of the buffer.
 		:returns: The created ShellStream instance.
 		'''
-		return ShellStream(self._instance.CreateShellStream(terminalName, columns, rows, width, height, bufferSize))
+		__r = self._instance.CreateShellStream(terminalName, columns, rows, width, height, bufferSize)
+		return None if __r is None else ShellStream(__r)
 
 	@property
 	def connected(self) -> bool:

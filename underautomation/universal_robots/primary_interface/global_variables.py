@@ -28,14 +28,16 @@ class GlobalVariables:
 
 	def get_all(self) -> typing.List[GlobalVariable]:
 		'''Returns a list of all variables declared in the robot'''
-		return [GlobalVariable(x) for x in self._instance.GetAll()]
+		__r = self._instance.GetAll()
+		return None if __r is None else [None if x is None else GlobalVariable(x) for x in __r]
 
 	def get_by_name(self, name: str) -> GlobalVariable:
 		'''Get a variable by its name. Null is returned if the variable doesn't exist
 
 		:param name: Variable name, not case sensitive
 		'''
-		return GlobalVariable(self._instance.GetByName(name))
+		__r = self._instance.GetByName(name)
+		return None if __r is None else GlobalVariable(__r)
 
 	@property
 	def firmware_version(self) -> GlobalVariablesFirmwareVersion:

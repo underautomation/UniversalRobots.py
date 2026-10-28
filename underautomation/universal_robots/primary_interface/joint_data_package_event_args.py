@@ -15,7 +15,8 @@ class JointDataPackageEventArgs(PackageEventArgs):
 	@property
 	def base(self) -> JointData:
 		'''Base joint data'''
-		return JointData(self._instance.Base)
+		__r = self._instance.Base
+		return None if __r is None else JointData(__r)
 
 	@base.setter
 	def base(self, value: JointData):
@@ -24,7 +25,8 @@ class JointDataPackageEventArgs(PackageEventArgs):
 	@property
 	def shoulder(self) -> JointData:
 		'''Shoulder joint data'''
-		return JointData(self._instance.Shoulder)
+		__r = self._instance.Shoulder
+		return None if __r is None else JointData(__r)
 
 	@shoulder.setter
 	def shoulder(self, value: JointData):
@@ -33,7 +35,8 @@ class JointDataPackageEventArgs(PackageEventArgs):
 	@property
 	def elbow(self) -> JointData:
 		'''Elbow joint data'''
-		return JointData(self._instance.Elbow)
+		__r = self._instance.Elbow
+		return None if __r is None else JointData(__r)
 
 	@elbow.setter
 	def elbow(self, value: JointData):
@@ -42,7 +45,8 @@ class JointDataPackageEventArgs(PackageEventArgs):
 	@property
 	def wrist1(self) -> JointData:
 		'''Wrist1 joint data'''
-		return JointData(self._instance.Wrist1)
+		__r = self._instance.Wrist1
+		return None if __r is None else JointData(__r)
 
 	@wrist1.setter
 	def wrist1(self, value: JointData):
@@ -51,7 +55,8 @@ class JointDataPackageEventArgs(PackageEventArgs):
 	@property
 	def wrist2(self) -> JointData:
 		'''Wrist2 joint data'''
-		return JointData(self._instance.Wrist2)
+		__r = self._instance.Wrist2
+		return None if __r is None else JointData(__r)
 
 	@wrist2.setter
 	def wrist2(self, value: JointData):
@@ -60,7 +65,8 @@ class JointDataPackageEventArgs(PackageEventArgs):
 	@property
 	def wrist3(self) -> JointData:
 		'''Wrist3 (Tool) joint data'''
-		return JointData(self._instance.Wrist3)
+		__r = self._instance.Wrist3
+		return None if __r is None else JointData(__r)
 
 	@wrist3.setter
 	def wrist3(self, value: JointData):

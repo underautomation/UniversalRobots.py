@@ -22,11 +22,13 @@ class Pose(CartesianCoordinates):
 
 	def from_rotation_vector_to_rpy(self) -> 'Pose':
 		'''Consider this pose as a Rotation Vector And convert it to a new RPY position'''
-		return Pose(None, None, None, None, None, None, self._instance.FromRotationVectorToRPY())
+		__r = self._instance.FromRotationVectorToRPY()
+		return None if __r is None else Pose(None, None, None, None, None, None, __r)
 
 	def from_rpy_to_rotation_vector(self) -> 'Pose':
 		'''Consider this pose as RPY And convert it to a new Rotation Vector'''
-		return Pose(None, None, None, None, None, None, self._instance.FromRPYToRotationVector())
+		__r = self._instance.FromRPYToRotationVector()
+		return None if __r is None else Pose(None, None, None, None, None, None, __r)
 
 	@staticmethod
 	def try_parse(value: str, pose: 'Pose') -> bool:
@@ -58,17 +60,20 @@ class Pose(CartesianCoordinates):
 	@staticmethod
 	def from_quaternion_to_rotation_vector(x: float, y: float, z: float, w: float) -> 'Pose':
 		'''Converts a quaternion to UR rotation vector'''
-		return Pose(None, None, None, None, None, None, pose.FromQuaternionToRotationVector(x, y, z, w))
+		__r = pose.FromQuaternionToRotationVector(x, y, z, w)
+		return None if __r is None else Pose(None, None, None, None, None, None, __r)
 
 	@staticmethod
 	def from4x4_matrix_to_rotation_vector(matrixTransform: typing.List[float]) -> 'Pose':
 		'''Convert a transformation 4x4 matrix to rotation vector'''
-		return Pose(None, None, None, None, None, None, pose.From4x4MatrixToRotationVector(matrixTransform))
+		__r = pose.From4x4MatrixToRotationVector(matrixTransform)
+		return None if __r is None else Pose(None, None, None, None, None, None, __r)
 
 	@staticmethod
 	def from4x4_matrix_to_rpy(matrixTransform: typing.List[float]) -> 'Pose':
 		'''Convert a transformation 4x4 matrix to RPY pose'''
-		return Pose(None, None, None, None, None, None, pose.From4x4MatrixToRPY(matrixTransform))
+		__r = pose.From4x4MatrixToRPY(matrixTransform)
+		return None if __r is None else Pose(None, None, None, None, None, None, __r)
 
 	@property
 	def rx_degrees(self) -> float:

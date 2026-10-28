@@ -101,7 +101,8 @@ class SftpClientBase(URServiceBase):
 		:param listCallback: The list callback.
 		:returns: A list of files.
 		'''
-		return [SftpFile(x) for x in self._instance.ListDirectory(path, (listCallback._instance if hasattr(listCallback, '_instance') else System.Action[System.Int32](lambda _x0: listCallback(_x0))) if listCallback else None)]
+		__r = self._instance.ListDirectory(path, (listCallback._instance if hasattr(listCallback, '_instance') else System.Action[System.Int32](lambda _x0: listCallback(_x0))) if listCallback else None)
+		return None if __r is None else [None if x is None else SftpFile(x) for x in __r]
 
 	def enumerate_programs(self) -> typing.List[str]:
 		'''Enumerates programs with .urp extension. It searches recursively programs in "/programs" if it exists, or "/home/ur/ursim-current/programs" for simulator
@@ -123,7 +124,8 @@ class SftpClientBase(URServiceBase):
 		:param path: The path.
 		:returns: A reference to SftpFile file object.
 		'''
-		return SftpFile(self._instance.Get(path))
+		__r = self._instance.Get(path)
+		return None if __r is None else SftpFile(__r)
 
 	def exists(self, path: str) -> bool:
 		'''Checks whether file or directory exists;
@@ -157,7 +159,8 @@ class SftpClientBase(URServiceBase):
 		:param path: The path.
 		:returns: A SftpFileSytemInformation instance that contains file status information.
 		'''
-		return SftpFileSytemInformation(self._instance.GetStatus(path))
+		__r = self._instance.GetStatus(path)
+		return None if __r is None else SftpFileSytemInformation(__r)
 
 	def append_all_lines(self, path: str, contents: typing.List[str]) -> None:
 		'''Appends lines to a file, creating the file if it does not already exist.
@@ -194,11 +197,13 @@ class SftpClientBase(URServiceBase):
 		__a = _bind_overload(args, kwargs, ['path', 'bufferSize'], {})
 		if __a is not None:
 			path, bufferSize = __a
-			return SftpFileStream(self._instance.Create(path, bufferSize))
+			__r = self._instance.Create(path, bufferSize)
+			return None if __r is None else SftpFileStream(__r)
 		__a = _bind_overload(args, kwargs, ['path'], {})
 		if __a is not None:
 			path, = __a
-			return SftpFileStream(self._instance.Create(path))
+			__r = self._instance.Create(path)
+			return None if __r is None else SftpFileStream(__r)
 		raise TypeError("create(): no overload takes these arguments")
 
 	def delete(self, path: str) -> None:
@@ -246,7 +251,8 @@ class SftpClientBase(URServiceBase):
 		:param path: The file to be opened for reading.
 		:returns: A read-only SftpFileStream on the specified path.
 		'''
-		return SftpFileStream(self._instance.OpenRead(path))
+		__r = self._instance.OpenRead(path)
+		return None if __r is None else SftpFileStream(__r)
 
 	def open_write(self, path: str) -> SftpFileStream:
 		'''Opens a file for writing.
@@ -254,7 +260,8 @@ class SftpClientBase(URServiceBase):
 		:param path: The file to be opened for writing.
 		:returns: An unshared SftpFileStream object on the specified path with Write access.
 		'''
-		return SftpFileStream(self._instance.OpenWrite(path))
+		__r = self._instance.OpenWrite(path)
+		return None if __r is None else SftpFileStream(__r)
 
 	def read_all_bytes(self, path: str) -> typing.List[int]:
 		'''Opens a binary file, reads the contents of the file into a byte array, and closes the file.
@@ -318,7 +325,8 @@ class SftpClientBase(URServiceBase):
 		:param path: The path to the file.
 		:returns: The SftpFileAttributes of the file on the path.
 		'''
-		return SftpFileAttributes(self._instance.GetAttributes(path))
+		__r = self._instance.GetAttributes(path)
+		return None if __r is None else SftpFileAttributes(__r)
 
 	def set_attributes(self, path: str, fileAttributes: SftpFileAttributes) -> None:
 		'''Sets the specified SftpFileAttributes of the file on the specified path.

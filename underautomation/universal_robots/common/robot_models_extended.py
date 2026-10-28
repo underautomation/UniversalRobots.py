@@ -1,7 +1,7 @@
 from enum import IntEnum
 
 class RobotModelsExtended(IntEnum):
-	'''Model of a UR robot (including e-Series and extended payload models)'''
+	'''Model of a UR robot (including e-Series and extended payload models). The G Series models are not listed here: the factory kinematic parameters of the G Series are not published yet.'''
 	UR3e = 0 # UR3e (e-Series).
 	UR5e = 1 # UR5e (e-Series).
 	UR7e = 2 # UR7e (e-Series).

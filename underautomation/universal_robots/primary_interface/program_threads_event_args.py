@@ -15,7 +15,8 @@ class ProgramThreadsEventArgs(PackageEventArgs):
 	@property
 	def threads(self) -> typing.List[ProgramThread]:
 		'''Array of currently running program threads.'''
-		return [ProgramThread(x) for x in self._instance.Threads]
+		__r = self._instance.Threads
+		return None if __r is None else [None if x is None else ProgramThread(x) for x in __r]
 
 	@threads.setter
 	def threads(self, value: typing.List[ProgramThread]):

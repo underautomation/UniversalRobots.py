@@ -134,22 +134,26 @@ class RtdeInputValues(RtdeBaseValues1[RtdeInputData]):
 	@property
 	def input_bit_registers(self) -> RtdeBitRegistersValue:
 		'''64 general purpose bits. X: [64..127] - The upper range of the boolean input registers can be used by external RTDE clients (i.e URCAPS).'''
-		return RtdeBitRegistersValue(self._instance.InputBitRegisters)
+		__r = self._instance.InputBitRegisters
+		return None if __r is None else RtdeBitRegistersValue(__r)
 
 	@property
 	def input_int_registers(self) -> RtdeIntRegistersValue:
 		'''48 general purpose integer registers. X: [0..23] - The lower range of the integer input registers is reserved for FieldBus/PLC interface usage. X: [24..47] - The upper range of the integer input registers can be used by external RTDE clients (i.e URCAPS).'''
-		return RtdeIntRegistersValue(self._instance.InputIntRegisters)
+		__r = self._instance.InputIntRegisters
+		return None if __r is None else RtdeIntRegistersValue(__r)
 
 	@property
 	def input_double_registers(self) -> RtdeDoubleRegistersValue:
 		'''48 general purpose double registers. X: [0..23] - The lower range of the double input registers is reserved for FieldBus/PLC interface usage. X: [24..47] - The upper range of the double input registers can be used by external RTDE clients (i.e URCAPS).'''
-		return RtdeDoubleRegistersValue(self._instance.InputDoubleRegisters)
+		__r = self._instance.InputDoubleRegisters
+		return None if __r is None else RtdeDoubleRegistersValue(__r)
 
 	@property
 	def external_force_torque(self) -> CartesianCoordinates:
 		'''Input external wrench when using ft_rtde_input_enable builtin.'''
-		return CartesianCoordinates(None, None, None, None, None, None, self._instance.ExternalForceTorque)
+		__r = self._instance.ExternalForceTorque
+		return None if __r is None else CartesianCoordinates(None, None, None, None, None, None, __r)
 
 	@external_force_torque.setter
 	def external_force_torque(self, value: CartesianCoordinates):

@@ -14,7 +14,8 @@ class SocketGetVarEventArgs:
 	@property
 	def client(self) -> SocketClient:
 		'''Robot remote endpoint'''
-		return SocketClient(self._instance.Client)
+		__r = self._instance.Client
+		return None if __r is None else SocketClient(__r)
 
 	@property
 	def name(self) -> str:

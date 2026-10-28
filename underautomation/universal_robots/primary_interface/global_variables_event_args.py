@@ -14,7 +14,8 @@ class GlobalVariablesEventArgs:
 	@property
 	def variables(self) -> typing.List[GlobalVariable]:
 		'''New list of all up to date variables'''
-		return [GlobalVariable(x) for x in self._instance.Variables]
+		__r = self._instance.Variables
+		return None if __r is None else [None if x is None else GlobalVariable(x) for x in __r]
 
 	def __str__(self):
 		return self._instance.ToString() if self._instance is not None else ""

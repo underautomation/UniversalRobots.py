@@ -14,7 +14,8 @@ class RtdeBaseValues:
 	@property
 	def values(self) -> typing.List[RtdeValue]:
 		'''Gets a copy of all RTDE values held by this instance.'''
-		return [RtdeValue(x) for x in self._instance.Values]
+		__r = self._instance.Values
+		return None if __r is None else [None if x is None else RtdeValue(x) for x in __r]
 
 	def __str__(self):
 		return self._instance.ToString() if self._instance is not None else ""

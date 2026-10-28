@@ -43,7 +43,8 @@ class ConnectParameters:
 	@property
 	def primary_interface(self) -> PrimaryInterfaceConnectParameters:
 		'''Primary Interface connection parameters (port 30001/30002).'''
-		return PrimaryInterfaceConnectParameters(self._instance.PrimaryInterface)
+		__r = self._instance.PrimaryInterface
+		return None if __r is None else PrimaryInterfaceConnectParameters(__r)
 
 	@primary_interface.setter
 	def primary_interface(self, value: PrimaryInterfaceConnectParameters):
@@ -52,7 +53,8 @@ class ConnectParameters:
 	@property
 	def dashboard(self) -> DashboardConnectParameters:
 		'''Dashboard Server connection parameters (port 29999).'''
-		return DashboardConnectParameters(self._instance.Dashboard)
+		__r = self._instance.Dashboard
+		return None if __r is None else DashboardConnectParameters(__r)
 
 	@dashboard.setter
 	def dashboard(self, value: DashboardConnectParameters):
@@ -61,7 +63,8 @@ class ConnectParameters:
 	@property
 	def socket_communication(self) -> SocketCommunicationConnectParameters:
 		'''Socket communication connection parameters for exchanging data with URScript programs.'''
-		return SocketCommunicationConnectParameters(self._instance.SocketCommunication)
+		__r = self._instance.SocketCommunication
+		return None if __r is None else SocketCommunicationConnectParameters(__r)
 
 	@socket_communication.setter
 	def socket_communication(self, value: SocketCommunicationConnectParameters):
@@ -70,7 +73,8 @@ class ConnectParameters:
 	@property
 	def ssh(self) -> SshConnectParameters:
 		'''SSH and SFTP connection parameters for file transfer and remote shell access.'''
-		return SshConnectParameters(self._instance.Ssh)
+		__r = self._instance.Ssh
+		return None if __r is None else SshConnectParameters(__r)
 
 	@ssh.setter
 	def ssh(self, value: SshConnectParameters):
@@ -79,7 +83,8 @@ class ConnectParameters:
 	@property
 	def rtde(self) -> RtdeConnectParameters:
 		'''Real-Time Data Exchange (RTDE) connection parameters (port 30004).'''
-		return RtdeConnectParameters(self._instance.Rtde)
+		__r = self._instance.Rtde
+		return None if __r is None else RtdeConnectParameters(__r)
 
 	@rtde.setter
 	def rtde(self, value: RtdeConnectParameters):
@@ -88,7 +93,8 @@ class ConnectParameters:
 	@property
 	def xml_rpc(self) -> XmlRpcConnectParameters:
 		'''XML-RPC connection parameters for remote procedure calls.'''
-		return XmlRpcConnectParameters(self._instance.XmlRpc)
+		__r = self._instance.XmlRpc
+		return None if __r is None else XmlRpcConnectParameters(__r)
 
 	@xml_rpc.setter
 	def xml_rpc(self, value: XmlRpcConnectParameters):
@@ -97,7 +103,8 @@ class ConnectParameters:
 	@property
 	def interpreter_mode(self) -> InterpreterModeConnectParameters:
 		'''Interpreter Mode connection parameters for sending URScript lines interactively.'''
-		return InterpreterModeConnectParameters(self._instance.InterpreterMode)
+		__r = self._instance.InterpreterMode
+		return None if __r is None else InterpreterModeConnectParameters(__r)
 
 	@interpreter_mode.setter
 	def interpreter_mode(self, value: InterpreterModeConnectParameters):
@@ -106,7 +113,8 @@ class ConnectParameters:
 	@property
 	def rest(self) -> RestConnectParameters:
 		'''REST API connection parameters (PolyscopeX only)'''
-		return RestConnectParameters(self._instance.Rest)
+		__r = self._instance.Rest
+		return None if __r is None else RestConnectParameters(__r)
 
 	@rest.setter
 	def rest(self, value: RestConnectParameters):

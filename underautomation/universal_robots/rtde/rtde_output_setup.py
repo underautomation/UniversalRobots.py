@@ -22,7 +22,8 @@ class RtdeOutputSetup(RtdeSetup2[RtdeOutputSetupItem, RtdeOutputData]):
 		:param index: Register index for array/register variables.
 		:returns: The created setup item.
 		'''
-		return RtdeOutputSetupItem(None, None, self._instance.Add(rtde_output_data(int(data)), index))
+		__r = self._instance.Add(rtde_output_data(int(data)), index)
+		return None if __r is None else RtdeOutputSetupItem(None, None, __r)
 
 	def __str__(self):
 		return self._instance.ToString() if self._instance is not None else ""

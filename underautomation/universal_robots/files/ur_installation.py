@@ -18,7 +18,8 @@ class URInstallation(URArchive):
 	@staticmethod
 	def load(urpFile: str) -> 'URInstallation':
 		'''Load a *.installation file from path'''
-		return URInstallation(None, ur_installation.Load(urpFile))
+		__r = ur_installation.Load(urpFile)
+		return None if __r is None else URInstallation(None, __r)
 
 	def __str__(self):
 		return self._instance.ToString() if self._instance is not None else ""

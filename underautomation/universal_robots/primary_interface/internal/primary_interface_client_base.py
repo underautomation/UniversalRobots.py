@@ -177,117 +177,140 @@ class PrimaryInterfaceClientBase(URServiceBase):
 	@property
 	def robot_mode_data(self) -> RobotModeDataPackageEventArgs:
 		'''Last Robot mode data received'''
-		return RobotModeDataPackageEventArgs(self._instance.RobotModeData)
+		__r = self._instance.RobotModeData
+		return None if __r is None else RobotModeDataPackageEventArgs(__r)
 
 	@property
 	def joint_data(self) -> JointDataPackageEventArgs:
 		'''Last joint data received'''
-		return JointDataPackageEventArgs(self._instance.JointData)
+		__r = self._instance.JointData
+		return None if __r is None else JointDataPackageEventArgs(__r)
 
 	@property
 	def tool_data(self) -> ToolDataPackageEventArgs:
 		'''Last tool data received'''
-		return ToolDataPackageEventArgs(self._instance.ToolData)
+		__r = self._instance.ToolData
+		return None if __r is None else ToolDataPackageEventArgs(__r)
 
 	@property
 	def masterboard_data(self) -> MasterboardDataPackageEventArgs:
 		'''Last masterboard data received'''
-		return MasterboardDataPackageEventArgs(self._instance.MasterboardData)
+		__r = self._instance.MasterboardData
+		return None if __r is None else MasterboardDataPackageEventArgs(__r)
 
 	@property
 	def cartesian_info(self) -> CartesianInfoPackageEventArgs:
 		'''Last cartesian information received'''
-		return CartesianInfoPackageEventArgs(self._instance.CartesianInfo)
+		__r = self._instance.CartesianInfo
+		return None if __r is None else CartesianInfoPackageEventArgs(__r)
 
 	@property
 	def kinematics_info(self) -> KinematicsInfoPackageEventArgs:
 		'''Last kinematics information received'''
-		return KinematicsInfoPackageEventArgs(self._instance.KinematicsInfo)
+		__r = self._instance.KinematicsInfo
+		return None if __r is None else KinematicsInfoPackageEventArgs(__r)
 
 	@property
 	def configuration_data(self) -> ConfigurationDataPackageEventArgs:
 		'''Last configuration data received'''
-		return ConfigurationDataPackageEventArgs(self._instance.ConfigurationData)
+		__r = self._instance.ConfigurationData
+		return None if __r is None else ConfigurationDataPackageEventArgs(__r)
 
 	@property
 	def force_mode_data(self) -> ForceModeDataPackageEventArgs:
 		'''Last force mode data received'''
-		return ForceModeDataPackageEventArgs(self._instance.ForceModeData)
+		__r = self._instance.ForceModeData
+		return None if __r is None else ForceModeDataPackageEventArgs(__r)
 
 	@property
 	def additional_info(self) -> AdditionalInfoPackageEventArgs:
 		'''Last additional information received'''
-		return AdditionalInfoPackageEventArgs(self._instance.AdditionalInfo)
+		__r = self._instance.AdditionalInfo
+		return None if __r is None else AdditionalInfoPackageEventArgs(__r)
 
 	@property
 	def calibration_data(self) -> CalibrationDataPackageEventArgs:
 		'''Last calibration data received'''
-		return CalibrationDataPackageEventArgs(self._instance.CalibrationData)
+		__r = self._instance.CalibrationData
+		return None if __r is None else CalibrationDataPackageEventArgs(__r)
 
 	@property
 	def safety_data(self) -> SafetyDataPackageEventArgs:
 		'''Last safety data received'''
-		return SafetyDataPackageEventArgs(self._instance.SafetyData)
+		__r = self._instance.SafetyData
+		return None if __r is None else SafetyDataPackageEventArgs(__r)
 
 	@property
 	def tool_communication_info(self) -> ToolCommunicationInfoPackageEventArgs:
 		'''Last tool communication information received'''
-		return ToolCommunicationInfoPackageEventArgs(self._instance.ToolCommunicationInfo)
+		__r = self._instance.ToolCommunicationInfo
+		return None if __r is None else ToolCommunicationInfoPackageEventArgs(__r)
 
 	@property
 	def tool_mode_info(self) -> ToolModeInfoPackageEventArgs:
 		'''Last tool mode information received'''
-		return ToolModeInfoPackageEventArgs(self._instance.ToolModeInfo)
+		__r = self._instance.ToolModeInfo
+		return None if __r is None else ToolModeInfoPackageEventArgs(__r)
 
 	@property
 	def singularity_info(self) -> SingularityInfoPackageEventArgs:
 		'''Last singularity information information received'''
-		return SingularityInfoPackageEventArgs(self._instance.SingularityInfo)
+		__r = self._instance.SingularityInfo
+		return None if __r is None else SingularityInfoPackageEventArgs(__r)
 
 	@property
 	def program_threads(self) -> ProgramThreadsEventArgs:
 		'''Last program thread information received'''
-		return ProgramThreadsEventArgs(self._instance.ProgramThreads)
+		__r = self._instance.ProgramThreads
+		return None if __r is None else ProgramThreadsEventArgs(__r)
 
 	@property
 	def version(self) -> VersionEventArgs:
 		'''Version of the robot and FW'''
-		return VersionEventArgs(self._instance.Version)
+		__r = self._instance.Version
+		return None if __r is None else VersionEventArgs(__r)
 
 	@property
 	def key_message(self) -> KeyMessageEventArgs:
 		'''Internal robot events (such as starting or stopping a program)'''
-		return KeyMessageEventArgs(self._instance.KeyMessage)
+		__r = self._instance.KeyMessage
+		return None if __r is None else KeyMessageEventArgs(__r)
 
 	@property
 	def popup_message(self) -> PopupMessageEventArgs:
 		'''Popup message that appears with the Assignment instruction or the URScript popup() function'''
-		return PopupMessageEventArgs(self._instance.PopupMessage)
+		__r = self._instance.PopupMessage
+		return None if __r is None else PopupMessageEventArgs(__r)
 
 	@property
 	def text_message(self) -> TextMessageEventArgs:
 		'''Log message sent with URScript instruction textmsg()'''
-		return TextMessageEventArgs(self._instance.TextMessage)
+		__r = self._instance.TextMessage
+		return None if __r is None else TextMessageEventArgs(__r)
 
 	@property
 	def runtime_exception_message(self) -> RuntimeExceptionMessageEventArgs:
 		'''Reports an error in the execution of the program'''
-		return RuntimeExceptionMessageEventArgs(self._instance.RuntimeExceptionMessage)
+		__r = self._instance.RuntimeExceptionMessage
+		return None if __r is None else RuntimeExceptionMessageEventArgs(__r)
 
 	@property
 	def global_variables(self) -> GlobalVariables:
 		'''List of all variables in current robot program'''
-		return GlobalVariables(self._instance.GlobalVariables)
+		__r = self._instance.GlobalVariables
+		return None if __r is None else GlobalVariables(__r)
 
 	@property
 	def script(self) -> PrimaryInterfaceScript:
 		'''Contains methods to send custom URScript to the robot'''
-		return PrimaryInterfaceScript(self._instance.Script)
+		__r = self._instance.Script
+		return None if __r is None else PrimaryInterfaceScript(__r)
 
 	@property
 	def commands(self) -> PrimaryInterfaceCommands:
 		'''Contains methods to send commands to the robot'''
-		return PrimaryInterfaceCommands(self._instance.Commands)
+		__r = self._instance.Commands
+		return None if __r is None else PrimaryInterfaceCommands(__r)
 
 	@property
 	def ip(self) -> str:
