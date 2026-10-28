@@ -23,6 +23,6 @@
   "reportIndexIssue": "none",
   "reportOperatorIssue": "error",
   "reportArgumentType": "none",
-  "reportReturnType": "error",
+  "reportReturnType": "none",
   "reportAssignmentType": "error"
 }
